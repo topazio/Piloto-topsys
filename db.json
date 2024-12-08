@@ -1,0 +1,178 @@
+{
+  "clientes": [
+    {
+      "nomeFantasia": "wewewe",
+      "razaoSocial": "wwewe",
+      "cnpj": "42.342.343/2432-43",
+      "endereco": "34234",
+      "cidadeId": "2",
+      "estadoId": "11",
+      "telefone": "(23) 4 2342-3423",
+      "email": "34324432",
+      "id": "e354"
+    },
+    {
+      "id": "0",
+      "nomeFantasia": "TopSys IT R",
+      "razaoSocial": "TopSys IT Solutions",
+      "cnpj": "12.416.542/0001-29",
+      "endereco": "Rua sucupio",
+      "cidadeId": "3",
+      "estadoId": "10",
+      "telefone": "(71) 9 9930-9314",
+      "email": "andre.topazio@gmail.com"
+    },
+    {
+      "id": "0",
+      "nomeFantasia": "TopSys IT R",
+      "razaoSocial": "TopSys IT Solutions",
+      "cnpj": "12.416.542/0001-29",
+      "endereco": "Rua sucupio",
+      "cidadeId": "3",
+      "estadoId": "10",
+      "telefone": "(71) 9 9930-9314",
+      "email": "andre.topazio@gmail.com"
+    },
+    {
+      "id": null,
+      "nomeFantasia": "Maria",
+      "razaoSocial": "4234234324324",
+      "cnpj": "32.423.423/4324-32",
+      "endereco": "Rua das marias",
+      "cidadeId": "1",
+      "estadoId": "10",
+      "telefone": "(32) 4 3243-2432",
+      "email": "x@gmail.com"
+    },
+    {
+      "id": "2240",
+      "nomeFantasia": "ccccccccqAAA",
+      "razaoSocial": "cccccccc",
+      "cnpj": "12.321.323/2132-13",
+      "endereco": "2323",
+      "cidadeId": "1",
+      "estadoId": "10",
+      "telefone": "(12) 3 2132-3213",
+      "email": "213213"
+    },
+    {
+      "id": "4234",
+      "nomeFantasia": "ZZZZZZZZZZZZA",
+      "razaoSocial": "ZZZZZZZZZZZZZ",
+      "cnpj": "21.321.323/2321-32",
+      "endereco": "SSSSSSSSSSSSS",
+      "cidadeId": "2",
+      "estadoId": "11",
+      "telefone": "(53) 4 3454-5345",
+      "email": "d@gmail.com"
+    },
+    {
+      "id": "5656",
+      "nomeFantasia": "XXXXXXXXXXQ",
+      "razaoSocial": "XXXXXXXXXXXX",
+      "cnpj": "23.557.667/5867-96",
+      "endereco": "ewtergrtert",
+      "cidadeId": "3",
+      "estadoId": "10",
+      "telefone": "(43) 6 4564-7475",
+      "email": "52435@gmail.com"
+    },
+    {
+      "id": "14049846739417093",
+      "nomeFantasia": "tttttttttttttt",
+      "razaoSocial": "tttttttttttttttt",
+      "cnpj": "53.463.636/3463-46",
+      "endereco": "er345435435",
+      "cidadeId": "3",
+      "estadoId": "10",
+      "telefone": "(64) 5 6456-5465",
+      "email": "453454@gmail.com"
+    },
+    {
+      "id": "2641137152233064",
+      "nomeFantasia": "VVVVVVVVVVV",
+      "razaoSocial": "VVVVVVVVVVVVVV",
+      "cnpj": "24.324.324/3243-24",
+      "endereco": "dfsdfdfds",
+      "cidadeId": "1",
+      "estadoId": "10",
+      "telefone": "(32) 4 3243-4234",
+      "email": "4324234@gmail.com"
+    },
+    {
+      "id": "c998",
+      "cnpj": null
+    },
+    {
+      "id": "9f1e",
+      "cnpj": null
+    },
+    {
+      "id": "1382",
+      "cnpj": null
+    },
+    {
+      "id": "86b0",
+      "cnpj": null
+    },
+    {
+      "id": "4e78",
+      "cnpj": null
+    },
+    {
+      "id": "df3c",
+      "cnpj": null
+    },
+    {
+      "id": "b8e9",
+      "cnpj": null
+    },
+    {
+      "id": "09c9",
+      "cnpj": null
+    },
+    {
+      "id": "1ab0",
+      "cnpj": null
+    },
+    {
+      "id": "7ed7",
+      "cnpj": null
+    },
+    {
+      "id": "60df",
+      "cnpj": null
+    },
+    {
+      "id": "6c3e",
+      "cnpj": null
+    }
+  ],
+  "cidades": [
+    {
+      "id": "1",
+      "nome": "Salvador",
+      "estadoId": "10"
+    },
+    {
+      "id": "3",
+      "nome": "Lauro de Freitas",
+      "estadoId": "10"
+    },
+    {
+      "id": "2",
+      "nome": "São Paulo",
+      "estadoId": "11"
+    }
+  ],
+  "estados": [
+    {
+      "id": "10",
+      "nome": "Bahia"
+    },
+    {
+      "id": "11",
+      "nome": "São Paulo"
+    }
+  ]
+}

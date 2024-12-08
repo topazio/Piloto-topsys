@@ -1,0 +1,122 @@
+<form [formGroup]="formGroup">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+
+      <mat-card-title>Cliente - Cadastro</mat-card-title>
+
+    </mat-card-header>
+
+
+    <mat-card-content>
+
+      <div class="row">
+        <div class="col">
+
+          <nav mat-tab-nav-bar mat-stretch-tabs="false" mat-align-tabs="end" [tabPanel]="tabPanel">
+            <a mat-tab-link routerLink="/cliente/cadastro" active="true" >Cadastro </a>
+            <a mat-tab-link routerLink="/cliente/pesquisa">Pesquisa</a>
+          </nav>
+
+          <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Nome Fantasia</mat-label>
+            <input matInput placeholder="Nome Fantasia" formControlName="nomeFantasia">
+            <mat-error/>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Razão Social</mat-label>
+            <input matInput placeholder="Razão Social" formControlName="razaoSocial">
+            <mat-error/>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>CNPJ</mat-label>
+            <input matInput placeholder="CNPJ" formControlName="cnpj" [dropSpecialCharacters]="false" mask="00.000.000/0000-00">
+            <mat-error />
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>E-mail</mat-label>
+            <input matInput placeholder="E-mail" formControlName="email">
+            <mat-error/>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Endereço</mat-label>
+            <textarea matInput placeholder="Endereço" formControlName="endereco"></textarea>
+            <mat-error/>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Estado</mat-label>
+            <mat-select placeholder="Estado" (selectionChange)="popularCidade()" formControlName="estadoId">
+              <mat-option [value]="">Selecione...</mat-option>
+              @for (estado of estados; track estado.id) {
+                <mat-option [value]="estado.id">{{ estado.nome }}</mat-option>
+              }
+            </mat-select>
+            <mat-error/>
+          </mat-form-field>
+        </div>
+
+
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Cidade</mat-label>
+              <mat-select placeholder="Cidade" formControlName="cidadeId">
+                <mat-option [value]="">Selecione...</mat-option>
+                @for (cidade of cidades; track cidade.id) {
+                  <mat-option [value]="cidade.id">{{ cidade.nome }}</mat-option>
+                }
+              </mat-select>
+              <mat-error/>
+            </mat-form-field>
+          </div>
+
+
+
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Telefone</mat-label>
+              <input matInput #telefone placeholder="Telefone" formControlName="telefone" [dropSpecialCharacters]="false" mask="(00) 0 0000-0000">
+              <!--mat-hint align="end">{{telefone.value.length}} / 5</!--mat-hint-->
+              <mat-error/>
+            </mat-form-field>
+          </div>
+
+
+      </div>
+
+
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button  mat-raised-button color="primary" type="button" (click)="formGroup.valid && save()" [disabled]="!formGroup.valid">Salvar</button>
+
+      <span style="padding: 5px;"></span>
+
+      <button  mat-raised-button color="warn" type="button" (click)="resetForm()" >Limpar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
