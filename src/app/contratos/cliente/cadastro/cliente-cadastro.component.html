@@ -111,12 +111,8 @@
 
 
     </mat-card-content>
-    <mat-card-actions align="end">
-      <button  mat-raised-button color="primary" type="button" (click)="formGroup.valid && save()" [disabled]="!formGroup.valid">Salvar</button>
 
-      <span style="padding: 5px;"></span>
+    <app-crud-botoes-cadastro (methodSave)="save()" (methodResetForm)="resetForm()" [formGroup]="formGroup" />
 
-      <button  mat-raised-button color="warn" type="button" (click)="resetForm()" >Limpar</button>
-    </mat-card-actions>
   </mat-card>
 </form>

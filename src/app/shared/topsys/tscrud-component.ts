@@ -119,7 +119,7 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
     this.find(this.model);
   }
 
-  resetForm() {
+  resetForm(): void {
     this.formGroup.reset();
   }
 }

@@ -34,13 +34,10 @@
       </div>
 
     </mat-card-content>
-    <mat-card-actions align="end">
-      <button  mat-raised-button color="primary" type="button" (click)="pesquisar()" >Pesquisar</button>
 
-      <span style="padding: 5px;"></span>
+    <app-crud-botoes-pesquisa (methodFind)="pesquisar()" (methodResetForm)="resetForm()" />
 
-      <button  mat-raised-button color="warn" type="button" (click)="resetForm()" >Limpar</button>
-    </mat-card-actions>
+
   </mat-card>
 </form>
 

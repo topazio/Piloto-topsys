@@ -2,6 +2,7 @@ import { Component, importProvidersFrom } from '@angular/core';
 import { DashBoardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { provideNgxMask } from 'ngx-mask';
+import { CrudBotoesCadastroComponent } from './shared/crud-botoes-cadastro/crud-botoes-cadastro.component';
 
 
 

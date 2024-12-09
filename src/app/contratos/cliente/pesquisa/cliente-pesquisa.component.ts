@@ -15,6 +15,8 @@ import { TSCrudComponent } from '../../../shared/topsys/tscrud-component';
 import { ICliente } from '../../model/cliente';
 import { ClienteService } from '../../services/cliente.service';
 import { TSCrudService } from '../../../shared/topsys/tscrud-service';
+import { CrudBotoesPesquisaComponent } from "../../../shared/crud-botoes-pesquisa/crud-botoes-pesquisa.component";
+import { CrudTabComponent } from "../../../shared/crud-tab/crud-tab.component";
 
 
 @Component({
@@ -32,7 +34,10 @@ import { TSCrudService } from '../../../shared/topsys/tscrud-service';
     MatDivider,
     MatTableModule,
     MatIcon,
-  ],
+    CrudBotoesPesquisaComponent,
+    CrudTabComponent
+
+],
   templateUrl: './cliente-pesquisa.component.html',
   styleUrl: './cliente-pesquisa.component.scss',
 })

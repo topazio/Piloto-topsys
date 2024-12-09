@@ -18,6 +18,7 @@ import { IEstado } from '../../model/estado';
 import { ICidade } from '../../model/cidade';
 import { ClienteService } from '../../services/cliente.service';
 import { TSCrudService } from '../../../shared/topsys/tscrud-service';
+import { CrudBotoesCadastroComponent } from "../../../shared/crud-botoes-cadastro/crud-botoes-cadastro.component";
 
 
 @Component({
@@ -34,7 +35,8 @@ import { TSCrudService } from '../../../shared/topsys/tscrud-service';
     NgxMaskDirective,
     MatTabsModule,
     RouterLink,
-  ],
+    CrudBotoesCadastroComponent
+],
 })
 export class ClienteCadastroComponent extends TSCrudComponent<ICliente> {
   private estadoService = inject(EstadoService);

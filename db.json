@@ -99,54 +99,19 @@
       "telefone": "(32) 4 3243-4234",
       "email": "4324234@gmail.com"
     },
+
     {
-      "id": "c998",
-      "cnpj": null
-    },
-    {
-      "id": "9f1e",
-      "cnpj": null
-    },
-    {
-      "id": "1382",
-      "cnpj": null
-    },
-    {
-      "id": "86b0",
-      "cnpj": null
-    },
-    {
-      "id": "4e78",
-      "cnpj": null
-    },
-    {
-      "id": "df3c",
-      "cnpj": null
-    },
-    {
-      "id": "b8e9",
-      "cnpj": null
-    },
-    {
-      "id": "09c9",
-      "cnpj": null
-    },
-    {
-      "id": "1ab0",
-      "cnpj": null
-    },
-    {
-      "id": "7ed7",
-      "cnpj": null
-    },
-    {
-      "id": "60df",
-      "cnpj": null
-    },
-    {
-      "id": "6c3e",
-      "cnpj": null
+      "id": null,
+      "nomeFantasia": "34324",
+      "razaoSocial": "324324",
+      "cnpj": "43.243.242/3432-43",
+      "endereco": "344324",
+      "cidadeId": "2",
+      "estadoId": "11",
+      "telefone": "(34) 3 2432-4324",
+      "email": "34324234"
     }
+
   ],
   "cidades": [
     {
