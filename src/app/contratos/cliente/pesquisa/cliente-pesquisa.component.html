@@ -9,18 +9,7 @@
 
     <mat-card-content>
 
-      <div class="row">
-        <div class="col">
-
-          <nav mat-tab-nav-bar mat-stretch-tabs="false" mat-align-tabs="end" [tabPanel]="tabPanel">
-            <a mat-tab-link routerLink="/cliente/cadastro" >Cadastro </a>
-            <a mat-tab-link routerLink="/cliente/pesquisa" active="true" >Pesquisa</a>
-          </nav>
-
-          <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
-
-        </div>
-      </div>
+      <app-crud-tab [activePesquisa]="true" routerLinkCadastro="/cliente/cadastro" routerLinkPesquisa="/cliente/pesquisa"/>
 
       <div class="row">
         <div class="col">

@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-crud-tab',
   standalone: true,
-  imports: [MatTabsModule, RouterLink],
+  imports: [MatTabsModule, RouterLink, MatTabNavPanel],
   templateUrl: './crud-tab.component.html',
   styleUrl: './crud-tab.component.scss'
 })
@@ -13,7 +13,7 @@ export class CrudTabComponent {
   @Input() tabPanel!: string;
   @Input() routerLinkCadastro!: string;
   @Input() routerLinkPesquisa!: string;
-  @Input() activeCadastro!: string;
-  @Input() activePesquisa!: string;
+  @Input() activeCadastro!: boolean;
+  @Input() activePesquisa!: boolean;
 
 }

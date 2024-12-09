@@ -1,8 +1,8 @@
-import { Component, importProvidersFrom } from '@angular/core';
-import { DashBoardComponent } from './dashboard/dashboard.component';
+import { Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { provideNgxMask } from 'ngx-mask';
-import { CrudBotoesCadastroComponent } from './shared/crud-botoes-cadastro/crud-botoes-cadastro.component';
+import { DashBoardComponent } from './shared/componentes/dashboard/dashboard.component';
+
 
 
 
@@ -15,5 +15,5 @@ import { CrudBotoesCadastroComponent } from './shared/crud-botoes-cadastro/crud-
   providers: [provideNgxMask({})]
 })
 export class AppComponent {
-  title = 'Contratos';
+  title = 'Piloto TopSys';
 }

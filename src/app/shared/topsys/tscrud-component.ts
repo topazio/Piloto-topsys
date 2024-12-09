@@ -17,11 +17,7 @@ import { ICliente } from '../../contratos/model/cliente';
 })
 export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
   items: T[] = [];
-
   model: T = {} as T;
-
-  modelSubject = new Subject<T>();
-
   id = 0;
 
   formGroup: FormGroup;
@@ -100,12 +96,14 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
   }
 
 
-  detail(id: any): void {
+  async detail(id: any): Promise<void> {
     this.formGroup.value.id = id;
 
-    this.getServiceMain().getById(id).subscribe((data) => this.modelSubject.next(data));
+    this.model = await firstValueFrom(this.getServiceMain().getById(id)); //.subscribe((data) => this.modelSubject.next(data));
 
-    this.modelSubject.subscribe((data) => {this.model = data; this.formGroup = this.createForm(data)});
+    this.formGroup = this.createForm(this.model);
+
+    //this.modelSubject.subscribe((data) => {this.model = data; this.formGroup = this.createForm(data)});
 
   }
 

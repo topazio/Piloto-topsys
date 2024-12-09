@@ -5,9 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
-import { RouterLink } from '@angular/router';
 import { NgxMaskDirective } from 'ngx-mask';
-
 import { MatTableModule } from '@angular/material/table';
 import { MatIcon } from '@angular/material/icon';
 import { MatDivider } from '@angular/material/divider';
@@ -15,8 +13,8 @@ import { TSCrudComponent } from '../../../shared/topsys/tscrud-component';
 import { ICliente } from '../../model/cliente';
 import { ClienteService } from '../../services/cliente.service';
 import { TSCrudService } from '../../../shared/topsys/tscrud-service';
-import { CrudBotoesPesquisaComponent } from "../../../shared/crud-botoes-pesquisa/crud-botoes-pesquisa.component";
-import { CrudTabComponent } from "../../../shared/crud-tab/crud-tab.component";
+import { CrudBotoesPesquisaComponent } from "../../../shared/componentes/crud-botoes-pesquisa/crud-botoes-pesquisa.component";
+import { CrudTabComponent } from "../../../shared/componentes/crud-tab/crud-tab.component";
 
 
 @Component({
@@ -30,7 +28,6 @@ import { CrudTabComponent } from "../../../shared/crud-tab/crud-tab.component";
     ReactiveFormsModule,
     NgxMaskDirective,
     MatTabsModule,
-    RouterLink,
     MatDivider,
     MatTableModule,
     MatIcon,

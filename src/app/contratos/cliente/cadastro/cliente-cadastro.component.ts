@@ -18,7 +18,9 @@ import { IEstado } from '../../model/estado';
 import { ICidade } from '../../model/cidade';
 import { ClienteService } from '../../services/cliente.service';
 import { TSCrudService } from '../../../shared/topsys/tscrud-service';
-import { CrudBotoesCadastroComponent } from "../../../shared/crud-botoes-cadastro/crud-botoes-cadastro.component";
+import { CrudBotoesCadastroComponent } from "../../../shared/componentes/crud-botoes-cadastro/crud-botoes-cadastro.component";
+import { CrudTabComponent } from '../../../shared/componentes/crud-tab/crud-tab.component';
+import { firstValueFrom } from 'rxjs';
 
 
 @Component({
@@ -34,7 +36,7 @@ import { CrudBotoesCadastroComponent } from "../../../shared/crud-botoes-cadastr
     ReactiveFormsModule,
     NgxMaskDirective,
     MatTabsModule,
-    RouterLink,
+    CrudTabComponent,
     CrudBotoesCadastroComponent
 ],
 })
@@ -57,14 +59,12 @@ export class ClienteCadastroComponent extends TSCrudComponent<ICliente> {
     this.popularEstado();
   }
 
-  override detail(id: any) {
-    super.detail(id);
+  override async detail(id: any): Promise<void> {
+    await super.detail(id);
 
-    this.modelSubject.subscribe((data) =>
-      this.cidadeService
-        .getById(data.cidadeId)
-        .subscribe((cidade) => this.popularCidade(cidade.estadoId))
-    );
+    let estadoId = (await firstValueFrom(this.cidadeService.getById(this.model.cidadeId))).estadoId;
+
+    this.popularCidade(estadoId);
   }
 
 
@@ -92,9 +92,7 @@ export class ClienteCadastroComponent extends TSCrudComponent<ICliente> {
       this.formGroup.patchValue({ estadoId: estadoId });
     }
 
-    this.cidadeService
-      .listPorEstado(this.formGroup.value.estadoId)
-      .subscribe((data) => (this.cidades = data));
+    this.cidadeService.listPorEstado(this.formGroup.value.estadoId).subscribe((data) => (this.cidades = data));
   }
 
   popularEstado() {
