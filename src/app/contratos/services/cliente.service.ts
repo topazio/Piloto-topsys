@@ -1,4 +1,4 @@
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { ICliente } from '../../contratos/model/cliente';
 import { TSCrudService } from '../../shared/topsys/tscrud-service';
