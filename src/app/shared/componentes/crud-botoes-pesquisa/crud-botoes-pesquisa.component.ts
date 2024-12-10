@@ -4,11 +4,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
-  selector: 'app-crud-botoes-pesquisa',
-  standalone: true,
-  imports: [MatButtonModule, MatCardModule],
-  templateUrl: './crud-botoes-pesquisa.component.html',
-  styleUrl: './crud-botoes-pesquisa.component.scss'
+    selector: 'app-crud-botoes-pesquisa',
+    imports: [MatButtonModule, MatCardModule],
+    templateUrl: './crud-botoes-pesquisa.component.html',
+    styleUrl: './crud-botoes-pesquisa.component.scss'
 })
 export class CrudBotoesPesquisaComponent {
   @Output() methodFind = new EventEmitter<any>();

@@ -18,25 +18,23 @@ import { CrudTabComponent } from "../../../shared/componentes/crud-tab/crud-tab.
 
 
 @Component({
-  selector: 'app-cliente-pesquisa',
-  standalone: true,
-  imports: [
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    NgxMaskDirective,
-    MatTabsModule,
-    MatDivider,
-    MatTableModule,
-    MatIcon,
-    CrudBotoesPesquisaComponent,
-    CrudTabComponent
-
-],
-  templateUrl: './cliente-pesquisa.component.html',
-  styleUrl: './cliente-pesquisa.component.scss',
+    selector: 'app-cliente-pesquisa',
+    imports: [
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        NgxMaskDirective,
+        MatTabsModule,
+        MatDivider,
+        MatTableModule,
+        MatIcon,
+        CrudBotoesPesquisaComponent,
+        CrudTabComponent
+    ],
+    templateUrl: './cliente-pesquisa.component.html',
+    styleUrl: './cliente-pesquisa.component.scss'
 })
 export class ClientePesquisaComponent extends TSCrudComponent<ICliente> {
 

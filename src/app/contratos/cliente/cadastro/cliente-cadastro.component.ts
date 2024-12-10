@@ -24,21 +24,20 @@ import { firstValueFrom } from 'rxjs';
 
 
 @Component({
-  selector: 'app-cliente-cadastro',
-  templateUrl: './cliente-cadastro.component.html',
-  styleUrl: './cliente-cadastro.component.scss',
-  standalone: true,
-  imports: [
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    NgxMaskDirective,
-    MatTabsModule,
-    CrudTabComponent,
-    CrudBotoesCadastroComponent
-],
+    selector: 'app-cliente-cadastro',
+    templateUrl: './cliente-cadastro.component.html',
+    styleUrl: './cliente-cadastro.component.scss',
+    imports: [
+        MatInputModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        NgxMaskDirective,
+        MatTabsModule,
+        CrudTabComponent,
+        CrudBotoesCadastroComponent
+    ]
 })
 export class ClienteCadastroComponent extends TSCrudComponent<ICliente> {
   private estadoService = inject(EstadoService);
