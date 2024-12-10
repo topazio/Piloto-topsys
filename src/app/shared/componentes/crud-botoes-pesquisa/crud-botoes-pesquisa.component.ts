@@ -2,11 +2,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-crud-botoes-pesquisa',
   standalone: true,
-  imports: [MatButtonModule, MatCardModule],
+  imports: [MatButtonModule,
+    ButtonModule, MatCardModule],
   templateUrl: './crud-botoes-pesquisa.component.html',
   styleUrl: './crud-botoes-pesquisa.component.scss'
 })

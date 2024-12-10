@@ -1,0 +1,15 @@
+::ng-deep .p-panelmenu .p-panelmenu-content .p-submenu-list:not(.p-panelmenu-root-list) {
+  padding: 0 0 0 0.5rem;
+}
+
+::ng-deep aside a {
+  text-decoration: none !important;
+}
+
+::ng-deep aside a span {
+  font-size: 1em;
+}
+
+::ng-deep .p-panelmenu .p-panelmenu-content .p-submenu-list:not(.p-panelmenu-root-list) {
+  padding: 0 0 0 0;
+}

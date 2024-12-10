@@ -1,11 +1,9 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+<!-- <mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="cliente/cadastro" routerLinkActive="router-link-active" >Cliente</a>
+      <a mat-list-item routerLink="cliente/cadastro" routerLinkActive="router-link-active">Cliente</a>
       <a mat-list-item href="#">Link 2</a>
       <a mat-list-item href="#">Link 3</a>
     </mat-nav-list>
@@ -13,13 +11,9 @@
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       @if (isHandset$ | async) {
-        <button
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
       }
       <span>Sistema Piloto - Angular / TopSys</span>
     </mat-toolbar>
@@ -27,4 +21,19 @@
     <router-outlet />
 
   </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
+<div class="grid-container">
+  <app-prime-header (sidebarToggle)="toggleSidebar()" (sideBarIconToggle)="toggleSideIconBar()"
+    [textHeaderPrimary]="'ED'" (logUserOut)="deslogar($event)"></app-prime-header>
+  <main>
+    <aside [ngClass]="{ collapsed: !sidebarVisible,'px-1 mx-1': sideBarIconFlag, 'w200px': !sideBarIconFlag }"
+      class="shadow-2">
+      <app-prime-sidebar [items]="menus" [sideBarIconOnly]="sideBarIconFlag" />
+    </aside>
+    <div class="content" id="content">
+      <router-outlet />
+    </div>
+  </main>
+  <app-prime-footer [userNome]="'Pedro'" [title]="'PILOTO'" [version]="'Alpha.0000'"
+    class="footerComponent"></app-prime-footer>
+</div>

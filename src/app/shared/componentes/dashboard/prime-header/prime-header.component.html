@@ -1,0 +1,46 @@
+<header>
+  <p-menubar styleClass="shadow-2 bgPrimary600" class="align-content-center p-0 " id="menuHeader" [model]="items">
+    <ng-template pTemplate="start">
+      <div id="menuHeaderStart" styleClass="bg-primary-900">
+        <img src="/logoColored.png" alt="Logo" height="50" class="mb-0" [routerLink]="['/dash/home']" id="logoMenuHeader"
+          pTooltip="HomePage" tooltipPosition="bottom" style="height: 2.75rem;" />
+        <span class="h-full fontAll font2rem  font600"><span class="text-white">SM</span><span
+            class="text-primary-400">PEP</span></span>
+        <button pButton (click)="toggleSidebar()" [text]="true" [raised]="true" severity="secondary"
+          id="buttonMenuCollapse" [size]="'small'">
+          <i class="fa fa-solid fa-bars"></i>
+        </button>
+      </div>
+      <div>
+        <span class="text-white-alpha-50 fontAll">TESTE BREADCRUMBS</span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="end">
+      <div class="flex-inline flex-row gap-2 flex-nowrap align-content-center align-items-center mr-5">
+        <p-divider layout="vertical" styleClass="flex py-1 justify-self-center text-center" [align]="'center'"
+          id="dividerHeader"></p-divider>
+        <p-button [text]="true" [pTooltip]="'Notificações do Usuário'" [raised]="false" styleClass="px-2 py-1"
+          class="  px-2  py-1 small" pButton severity="contrast" [rounded]="false" id="btnTheme">
+          <i class="fa-solid fa-triangle-exclamation font125em"></i>
+        </p-button>
+        <p-button [text]="true" [raised]="false" styleClass="px-2 py-1" class="  px-2  py-1 small" pButton
+          [pTooltip]="'Detalhes do Usuário'" severity="contrast" [rounded]="false" id="btnTheme">
+          <i class="fa-regular fa-id-card font125em"></i>
+        </p-button>
+        <p-button [text]="true" [pTooltip]="'Mensagens do Usuário'" [raised]="false" styleClass="px-2 py-1"
+          class="  px-2  py-1 small" pButton severity="contrast" [rounded]="false" id="btnTheme">
+          <i class="fa-solid fa-square-envelope font125em"></i>
+        </p-button>
+        <p-divider layout="vertical" styleClass="flex py-1 justify-self-center text-center" [align]="'center'"
+          id="dividerHeader"></p-divider>
+        <p-inputSwitch [(ngModel)]="flagIconsSwitch" (onChange)="toggleIconSwitch()"
+          styleClass="px-2  justify-self-center" class="px-2 pt-1  small" />
+        <p-divider layout="vertical" styleClass="flex py-1 justify-self-center text-center" [align]="'center'"
+          id="dividerHeader"></p-divider>
+        <p-button [raised]="false" styleClass="px-2 py-1" class=" px-2 py-1 small" [text]="true" pButton
+          severity="contrast" (click)="logOut()" [rounded]="false" id="btnLogout">
+          <i class="fa-solid fa-power-off font125em"></i> </p-button>
+      </div>
+    </ng-template>
+  </p-menubar>
+</header>

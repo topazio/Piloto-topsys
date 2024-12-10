@@ -1,0 +1,11 @@
+<div [class]="size">
+  <label [for]="inputNome" class="w-full mb-1 gap-1 flex flex-nowrap" [ngClass]="hasError(formControlAbstrato)">
+    {{label}}
+    @if(required){
+      <span class="text-danger">*</span>
+    }
+  </label>
+  <ng-content>
+  </ng-content>
+  <app-input-error-msg [control]="formControlAbstrato" [fieldName]="label"></app-input-error-msg>
+</div>

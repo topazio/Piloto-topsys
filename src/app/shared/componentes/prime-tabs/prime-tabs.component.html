@@ -1,0 +1,12 @@
+<p-scrollPanel id="homeScrollPanel" styleClass="customBarColor">
+  <p-tabView [(activeIndex)]="activeTabIndex" (onChange)="onTabChange($event)" [tabindex]="activeTabIndex">
+    @for(tab of tabsFor; track tab.tabCstIndex){
+    <p-tabPanel pStyleClass="h-full min-h-100 px-1" [header]="tab.label" [selected]="tab.tabCstIndex == activeTabIndex"
+      [disabled]="tab.disabledTab" [cache]="tab.tabPanelCache">
+      <ng-template pTemplate="content">
+        <ng-container *ngComponentOutlet="tab.contentTab"></ng-container>
+      </ng-template>
+    </p-tabPanel>
+    }
+  </p-tabView>
+</p-scrollPanel>

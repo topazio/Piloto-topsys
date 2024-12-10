@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class ClienteService extends TSCrudService<ICliente> {
 
   override getUrl(): string {
-    return 'http://localhost:3000/cliente';
+    return 'http://localhost:3000/clientes';
   }
 
 

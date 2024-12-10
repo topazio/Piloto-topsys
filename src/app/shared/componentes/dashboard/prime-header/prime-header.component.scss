@@ -1,0 +1,65 @@
+::ng-deep .p-menubar {
+  padding: unset;
+  margin-top: -1px;
+}
+
+::ng-deep #btnLogout,
+#btnTheme {
+  i {
+    font-size: 1.5em !important;
+  }
+}
+
+::ng-deep #dividerHeader {
+  .p-divider.p-divider-vertical {
+    padding: 0px 0.25rem;
+    margin: unset;
+  }
+
+  max-height: 10px !important;
+  margin-bottom: 0.5em !important;
+}
+
+::ng-deep .p-menubar-start {
+  height: 100%;
+  padding: 3px !important;
+  margin-left: -1px;
+  margin-top: -1px;
+  padding-left: 6px;
+}
+
+::ng-deep .bgPrimary600 {
+  background-color: var(--primary-600) !important;
+}
+
+::ng-deep #buttonMenuCollapse {
+  position: absolute;
+  padding: 0.25em;
+  left: calc(202px - 0.8rem);
+  background-color: #ffff;
+}
+
+::ng-deep header .p-menubar-start {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+
+}
+
+::ng-deep #menuHeaderStart {
+  display: inline-flex;
+  align-items: center;
+  background: var(--primary-900);
+  gap: 2rem;
+  min-width: 202px;
+  margin-bottom: -3px;
+  margin-left: -3px;
+  margin-top: -3px;
+  height: 100%;
+  padding: 5px;
+}
+
+::ng-deep #menuHeader .p-menubar,
+::ng-deep #menuHeader {
+  border-radius: 0px !important;
+}

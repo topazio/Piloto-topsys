@@ -1,4 +1,222 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');
+@import "primeng/resources/themes/lara-light-teal/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeflex/primeflex.css";
+html {
+  font-size: 12px;
+}
+
+body {
+  margin: 0px !important;
+
+  background-color: #546e7a !important;
+}
+
+::ng-deep * {
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--primary-color) var(--surface-ground) !important;
+}
+
+::ng-deep .p-scrollpanel-bar {
+  background: var(--primary-color) !important;
+}
+
+.bg-primary-900 {
+  background: var(--primary-900);
+}
+
+.text-danger {
+  color: var(--red-400);
+}
+
+.flex-inline {
+  display: inline-flex;
+}
+
+.w200px {
+  width: 200px;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.fontAll {
+  font-family: 'Roboto Condensed', sans-serif !important;
+}
+
+.font080em {
+  font-size: 0.8em !important;
+}
+
+.font085em {
+  font-size: 0.85em !important;
+}
+
+.font09em {
+  font-size: 0.9em !important;
+}
+
+.font095em {
+  font-size: 0.95em !important;
+}
+
+.font1em {
+  font-size: 1em !important;
+}
+
+.font125em {
+  font-size: 1.25em !important
+}
+
+.font11em {
+  font-size: 1.1em !important
+}
+
+.font1rem {
+  font-size: 1rem !important;
+}
+
+.font11rem {
+  font-size: 1.1rem !important;
+}
+
+.font125rem {
+  font-size: 1.25rem !important;
+}
+
+.font2rem {
+  font-size: 2rem !important;
+}
+
+.fontBaseColor {
+  color: #013351 !important;
+}
+
+.fontBaseColorUnimportant {
+  color: #013351;
+  text-decoration: none !important
+}
+
+.font200 {
+  font-weight: 200 !important;
+}
+
+.font300 {
+  font-weight: 300 !important;
+}
+
+.font400 {
+  font-weight: 400 !important;
+}
+
+.font500 {
+  font-weight: 500 !important;
+}
+
+.font600 {
+  font-weight: 600 !important;
+}
+
+/* -----------------------------------------------------MARGINS---------------------------------------------------------------- */
+.mL025 {
+  margin-left: .25em !important;
+}
+
+.mt05em {
+  margin-top: 0.5em !important;
+}
+
+/* -----------------------------------------------------PADDINGS---------------------------------------------------------------- */
+.pmRL0 {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.p05rem {
+  padding: 0.5rem !important;
+}
+
+.p0All {
+  padding: 0px 0px !important
+}
+
+.pRL0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.p05em {
+  padding-left: 0.5em !important;
+  padding-right: 0.5em !important;
+}
+
+.p025em {
+  padding-left: 0.25em !important;
+  padding-right: 0.25em !important;
+}
+
+.px1em {
+  padding-left: 1em !important;
+  padding-right: 1em !important;
+}
+
+.px01em {
+  padding-left: 0.1em !important;
+  padding-right: 0.1em !important;
+}
+
+.px02em {
+  padding-left: 0.2em !important;
+  padding-right: 0.2em !important;
+}
+
+.p01em {
+  padding: 0.1em !important;
+}
+
+.pl05 {
+  padding-left: 0.5em !important;
+}
+
+.pl1 {
+  padding-left: 1em !important;
+}
+
+.pr025 {
+  padding-right: 0.25em !important;
+}
+
+.pr05 {
+  padding-right: 0.5em !important;
+}
+
+.pr1 {
+  padding-right: 1em !important;
+}
+
+.pr1em {
+  padding-right: 1em !important;
+}
+
+.pr2em {
+  padding-right: 2em !important;
+}
+
+
+/* custom hidden responsives */
+
+.hidden744 {}
+
+@media screen and (max-width: 744px) {
+  .hidden744 {
+    display: none !important;
+  }
+}
+
+
+
+/*
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -35,3 +253,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 
+ */

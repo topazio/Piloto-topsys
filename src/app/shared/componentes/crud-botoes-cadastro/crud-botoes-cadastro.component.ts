@@ -3,18 +3,20 @@ import { FormGroup } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-crud-botoes-cadastro',
   standalone: true,
-  imports: [MatInputModule, MatButtonModule, MatCardModule],
+  imports: [MatInputModule,
+    ButtonModule,
+    MatButtonModule, MatCardModule],
   templateUrl: './crud-botoes-cadastro.component.html',
   styleUrl: './crud-botoes-cadastro.component.scss',
 })
 export class CrudBotoesCadastroComponent {
   @Output() methodSave = new EventEmitter<any>();
   @Output() methodResetForm = new EventEmitter<any>();
-  @Input() formGroup!: FormGroup;
 
 
   executeMethodSave(): void {

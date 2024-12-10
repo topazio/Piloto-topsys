@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -14,47 +14,53 @@ import { ICliente } from '../../model/cliente';
 import { ClienteService } from '../../services/cliente.service';
 import { TSCrudService } from '../../../shared/topsys/tscrud-service';
 import { CrudBotoesPesquisaComponent } from "../../../shared/componentes/crud-botoes-pesquisa/crud-botoes-pesquisa.component";
-import { CrudTabComponent } from "../../../shared/componentes/crud-tab/crud-tab.component";
+import { TableModule } from 'primeng/table';
+import { CommonModule, AsyncPipe, TitleCasePipe } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
 
-
+import { FieldsetModule } from 'primeng/fieldset';
+import { InputWrapperComponent } from '../../../shared/componentes/input-wrapper/input-wrapper.component';
+import { InputMaskModule } from 'primeng/inputmask';
+import { validationError } from '../../../shared/util/validationErrorFn';
+import { CrudTableComponent } from '../../../shared/componentes/prime-tabs/crud-table/crud-table.component';
 @Component({
   selector: 'app-cliente-pesquisa',
   standalone: true,
   imports: [
-    MatInputModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatCardModule,
+    CommonModule,
     ReactiveFormsModule,
     NgxMaskDirective,
-    MatTabsModule,
-    MatDivider,
-    MatTableModule,
+    InputWrapperComponent,
+    InputMaskModule,
     MatIcon,
+    TableModule,
+    FieldsetModule,
+    ButtonModule,
     CrudBotoesPesquisaComponent,
-    CrudTabComponent
-
-],
+    CrudTableComponent
+  ],
   templateUrl: './cliente-pesquisa.component.html',
   styleUrl: './cliente-pesquisa.component.scss',
+  providers: [AsyncPipe, TitleCasePipe]
 })
 export class ClientePesquisaComponent extends TSCrudComponent<ICliente> {
 
   displayedColumns: string[] = [];
-
+  resultadoSelecionado!: ICliente;
+  hasError: Function = validationError;
   override init(): void {
     this.displayedColumns = [
-      'nomeFantasia',
-      'razaoSocial',
-      'cnpj',
-      'email',
-      'telefone',
-      'editar',
-      'excluir',
+      'Nome Fantasia',
+      'Razão Social',
+      'CNPJ',
+      'E-mail',
+      'Telefone',
+      'Editar',
+      'Excluir',
     ];
   }
 
-  constructor(private service: ClienteService){
+  constructor(private service: ClienteService) {
     super();
   }
 
@@ -69,10 +75,10 @@ export class ClientePesquisaComponent extends TSCrudComponent<ICliente> {
   }
 
 
-  pesquisar(){
-    let list = this.getServiceMain().findDBJson("cnpj",this.model.cnpj);
+  pesquisar() {
+    let list = this.getServiceMain().findDBJson("cnpj", this.model.cnpj);
 
-    this.dataSource = list;
+    this.items = list;
   }
 
 

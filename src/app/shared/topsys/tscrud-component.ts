@@ -6,17 +6,11 @@ import { PrimeToastService } from '../util/prime-toast.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TSCrudModel } from './tscrud-model';
 import { DialogService } from '../util/dialog.service';
-import { firstValueFrom, Observable, Subject } from 'rxjs';
-import { ICliente } from '../../contratos/model/cliente';
+import { firstValueFrom, Observable } from 'rxjs';
 
-
-
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
-  items: T[] = [];
+
   model: T = {} as T;
   id = 0;
 
@@ -28,7 +22,7 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
   router = inject(Router);
   dialogService = inject(DialogService);
 
-  dataSource: Observable<T[]> = new Observable<T[]>();
+  items: Observable<T[]> = new Observable<T[]>();
 
   constructor() {
     this.formGroup = this.createForm();
@@ -43,11 +37,13 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
   ngOnInit(): void {
     this.init();
 
+    this.resetForm();
+
     let id;
 
-    this.route.paramMap.subscribe(params => {id = params.get('id')})
+    this.route.paramMap.subscribe(params => { id = params.get('id') })
 
-    if(id){
+    if (id) {
       this.detail(id);
     }
 
@@ -55,19 +51,25 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
   }
 
   save(): void {
-    if (this.formGroup.value.id !== null) {
-      this.getServiceMain().update(this.formGroup.value).subscribe({
-        next: () => this.messageSaveSuccess(),
-      });
+    this.formGroup.markAllAsTouched();
+    if (this.formGroup.valid) {
+      if (this.formGroup.value.id !== null) {
+        this.getServiceMain().update(this.formGroup.value).subscribe({
+          next: () => this.messageSaveSuccess(),
+        });
+      } else {
+        this.getServiceMain().insert(this.formGroup.value).subscribe({
+          next: () => this.messageSaveSuccess(),
+        });
+      }
     } else {
-      this.getServiceMain().insert(this.formGroup.value).subscribe({
-        next: () => this.messageSaveSuccess(),
-      });
+
+      this.snackBarService.error('Preencha os campos inválidos/obrigatórios');
     }
   }
 
-  edit(path: string, id: number) {
-    this.router.navigateByUrl(`${path}/edit/${id}`, {
+  edit(path: string, id: number | string) {
+    this.router.navigateByUrl(`${path}/cadastro/${id}`, {
       skipLocationChange: true,
     });
   }
@@ -84,19 +86,21 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
       });
   }
 
-  find(modelParam?: T){
-    this.model = modelParam ? modelParam : this.formGroup.value;
+  find(modelParam?: T) {
+    this.model = modelParam ?? this.formGroup.value;
 
-    let list = this.getServiceMain().find(this.model);
+    this.items = this.getServiceMain().find(this.model);
 
-    this.dataSource = list;
 
-    return list;
+
+    return this.items;
 
   }
 
 
   async detail(id: any): Promise<void> {
+
+
     this.formGroup.value.id = id;
 
     this.model = await firstValueFrom(this.getServiceMain().getById(id)); //.subscribe((data) => this.modelSubject.next(data));
@@ -109,7 +113,6 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
 
   messageSaveSuccess(): void {
     this.snackBarService.success('Salvo com sucesso!');
-    this.resetForm();
   }
 
   messageDeleteSuccess(): void {

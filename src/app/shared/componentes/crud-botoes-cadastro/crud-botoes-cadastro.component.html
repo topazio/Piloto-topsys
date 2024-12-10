@@ -1,7 +1,15 @@
-<mat-card-actions align="end">
-  <button  mat-raised-button color="primary" type="button" (click)="formGroup.valid && executeMethodSave()" [disabled]="!formGroup.valid">Salvar</button>
+<div class="w-full flex justify-content-end h-min mb-0 flex-inline spacerNovoCadastro">
+  <button severity="primary" pButton pRipple pRounded size="small" (click)="executeMethodResetForm()" [outlined]="true"
+    [raised]="true" class="justify-self-end p-2  px-3  gap-2" label="Novo Cadastro">
+    <i class="fa-solid fa-square-plus"></i>
+  </button>
+</div>
 
-  <span style="padding: 5px;"></span>
-
-  <button  mat-raised-button color="warn" type="button" (click)="executeMethodResetForm()" >Limpar</button>
-</mat-card-actions>
+<div class="" id="formCadastroButtonsDiv">
+  <div class="w-full flex justify-content-end gap-2 px-2" style="padding-right: 1.5rem;">
+    <button pButton pRipple pRounded [raised]="true" type="submit" severity="info" size="small" label="Gravar"
+      class="gap-2 p-2  px-3 " (click)="executeMethodSave()">
+      <i class="fa-solid fa-floppy-disk"></i>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+::ng-deep .p-tabview .p-tabview-panels {
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  padding-bottom: 0em;
+  padding-top: 0.25rem;
+  height: calc(100vh - 158px);
+  overflow: auto;
+}
+
+
+
+@media screen and (max-width: 626px) {
+  #homeScrollPanel .p-scrollpanel-content {
+    width: calc(100% + -3.5rem) !important;
+  }
+}
+
+::ng-deep #formCadastroButtonsDiv .p-divider {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+::ng-deep #formCadastroButtonsDiv {
+  z-index: 9;
+  position: absolute;
+  bottom: calc(0vh + 0.5rem);
+  right: 0rem;
+  left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  margin: 0rem 2rem 0rem 0rem;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #4b5563;
+  border-radius: 6px;
+}
+
+::ng-deep #homeScrollPanel {
+  .p-scrollpanel-content {
+    width: calc(100% + 2.5rem) !important;
+  }
+}
+
+::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  border-color: #14b8a630 #14b8a630 var(--primary-color) #14b8a630;
+}
+
+::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  border-width: 0.15em 0.15em 2px 0.15em;
+  border-color: transparent transparent #14b8a630 transparent;
+  padding: 1rem;
+}
+
+::ng-deep #formCadastro:first-child legend,
+::ng-deep #formCadastro:first-of-type .p-fieldset-legend {
+  display: none;
+}
