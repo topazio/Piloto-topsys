@@ -2,7 +2,7 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TSCrudService } from './tscrud-service';
 import { inject, Injectable, OnInit } from '@angular/core';
-import { SnackBarService } from '../util/snack-bar.service';
+import { PrimeToastService } from '../util/prime-toast.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TSCrudModel } from './tscrud-model';
 import { DialogService } from '../util/dialog.service';
@@ -23,7 +23,7 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
   formGroup: FormGroup;
 
   formBuilder = inject(FormBuilder);
-  snackBarService = inject(SnackBarService);
+  snackBarService = inject(PrimeToastService);
   route = inject(ActivatedRoute);
   router = inject(Router);
   dialogService = inject(DialogService);
