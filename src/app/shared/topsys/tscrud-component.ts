@@ -5,8 +5,8 @@ import { inject, Injectable, OnInit } from '@angular/core';
 import { PrimeToastService } from '../util/prime-toast.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TSCrudModel } from './tscrud-model';
-import { DialogService } from '../util/dialog.service';
 import { firstValueFrom, Observable } from 'rxjs';
+import { ConfirmacaoService } from '../util/confirmacao.service';
 
 @Injectable()
 export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
@@ -16,11 +16,12 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
 
   formGroup: FormGroup;
 
+  confirmationService = inject(ConfirmacaoService);
   formBuilder = inject(FormBuilder);
   snackBarService = inject(PrimeToastService);
   route = inject(ActivatedRoute);
-  router = inject(Router);
-  dialogService = inject(DialogService);
+  router = inject(Router);/*
+  dialogService = inject(DialogService); */
 
   items: Observable<T[]> = new Observable<T[]>();
 
@@ -39,9 +40,7 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
 
     this.resetForm();
 
-    let id;
-
-    this.route.paramMap.subscribe(params => { id = params.get('id') })
+    let id = this.route.snapshot.paramMap.get('id');
 
     if (id) {
       this.detail(id);
@@ -75,23 +74,22 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
   }
 
   delete(id: number): void {
-    this.dialogService
-      .openDialogConfirmacaoExcluir()
-      .subscribe((resposta: boolean) => {
-        if (resposta) {
+    this.confirmationService.openDialogConfirmacaoExcluir().subscribe({
+      next: (value) => {
+
+        if(value){
           this.getServiceMain().delete(id).subscribe({
             next: () => this.messageDeleteSuccess(),
           });
         }
-      });
+      },
+    })
   }
 
   find(modelParam?: T) {
     this.model = modelParam ?? this.formGroup.value;
 
     this.items = this.getServiceMain().find(this.model);
-
-
 
     return this.items;
 

@@ -8,9 +8,10 @@ import { TabViewModule } from 'primeng/tabview';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @Component({
-  selector: 'app-prime-tabs',
+  selector: 'app-crud-tabs',
   standalone: true,
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     RouterModule,
     TabMenuModule,
     ScrollPanelModule,
@@ -18,25 +19,28 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     TabViewModule,
     ButtonModule
   ],
-  templateUrl: './prime-tabs.component.html',
-  styleUrl: './prime-tabs.component.scss'
+  templateUrl: './crud-tabs.component.html',
+  styleUrl: './crud-tabs.component.scss'
 })
-export class PrimeTabsComponent {
+export class CrudTabsComponent {
+
   @Output() activeTabIndexChanged = new EventEmitter<number>();
+
   @Input() activeTabIndex = 0;
+
   @Input() tabsFor: any[] = [];
+
   @Input() buttonNovoCadastroFlag: boolean = false;
+
   @Input() telaRota!: string;
 
   constructor(public route: ActivatedRoute, public router: Router) { };
   onTabChange(event: any) {
+
     this.activeTabIndex = event.index;
+console.log(this.route.params);
     this.activeTabIndexChanged.emit(this.activeTabIndex);
-  }
-  redirecionarParaNovoCadastro() {
-    this.router.navigate([`/${this.telaRota}/cadastro`], {
-      replaceUrl: true,
-    });
-    this.activeTabIndex = 0;
-  }
+
+  };
+
 }

@@ -2,7 +2,7 @@
   <p-menubar styleClass="shadow-2 bgPrimary600" class="align-content-center p-0 " id="menuHeader" [model]="items">
     <ng-template pTemplate="start">
       <div id="menuHeaderStart" styleClass="bg-primary-900">
-        <img src="/logoColored.png" alt="Logo" height="50" class="mb-0" [routerLink]="['/dash/home']" id="logoMenuHeader"
+        <img [src]="'../../../../../assets/logoColored.png'" alt="Logo" height="50" class="mb-0" [routerLink]="['/dash/home']" id="logoMenuHeader"
           pTooltip="HomePage" tooltipPosition="bottom" style="height: 2.75rem;" />
         <span class="h-full fontAll font2rem  font600"><span class="text-white">SM</span><span
             class="text-primary-400">PEP</span></span>

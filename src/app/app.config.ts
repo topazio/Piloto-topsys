@@ -8,10 +8,11 @@ import { ErrorInterceptor } from './shared/util/error.interceptor';
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),
-     provideAnimationsAsync(),
-     provideHttpClient(withFetch(),
-      withInterceptors([ErrorInterceptor])),
-      MessageService, ]
+  providers: [
+    provideRouter(routes),
+    provideAnimationsAsync(),
+    provideHttpClient(withFetch(), withInterceptors([ErrorInterceptor])),
+    MessageService,
+  ]
 };
 

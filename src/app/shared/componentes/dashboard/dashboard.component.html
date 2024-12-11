@@ -1,27 +1,3 @@
-<!-- <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item routerLink="cliente/cadastro" routerLinkActive="router-link-active">Cliente</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      @if (isHandset$ | async) {
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      }
-      <span>Sistema Piloto - Angular / TopSys</span>
-    </mat-toolbar>
-
-    <router-outlet />
-
-  </mat-sidenav-content>
-</mat-sidenav-container> -->
 <div class="grid-container">
   <app-prime-header (sidebarToggle)="toggleSidebar()" (sideBarIconToggle)="toggleSideIconBar()"
     [textHeaderPrimary]="'ED'" (logUserOut)="deslogar($event)"></app-prime-header>
@@ -31,6 +7,7 @@
       <app-prime-sidebar [items]="menus" [sideBarIconOnly]="sideBarIconFlag" />
     </aside>
     <div class="content" id="content">
+      <app-dialog-confirmacao></app-dialog-confirmacao>
       <router-outlet />
     </div>
   </main>

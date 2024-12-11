@@ -1,17 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { PrimeTabsComponent } from '../../shared/componentes/prime-tabs/prime-tabs.component';
 import { ClienteCadastroComponent } from './cadastro/cliente-cadastro.component';
 import { ClientePesquisaComponent } from "./pesquisa/cliente-pesquisa.component";
+import { ButtonModule } from 'primeng/button';
+import { DividerModule } from 'primeng/divider';
+import { CrudTabsComponent } from '../../shared/componentes/crud-tabs/crud-tabs.component';
 @Component({
   selector: 'app-cliente',
   standalone: true,
   imports: [
     CommonModule,
-    PrimeTabsComponent
+    ButtonModule,
+    DividerModule,
+    CrudTabsComponent
   ],
   templateUrl: './cliente.component.html',
-  styleUrl: './cliente.component.scss'
+  styleUrl: './cliente.component.scss',
 })
 export class ClienteComponent implements OnInit {
   tabsFor: any[] = [];

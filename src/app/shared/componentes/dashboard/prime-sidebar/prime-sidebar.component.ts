@@ -17,10 +17,12 @@ import { MenuItem } from 'primeng/api';
   templateUrl: './prime-sidebar.component.html',
   styleUrl: './prime-sidebar.component.scss'
 })
-export class PrimeSidebarComponent  implements OnInit{
+export class PrimeSidebarComponent implements OnInit {
+
   @Input() sideBarIconOnly = false;
+
   @Input() items: MenuItem[] = [];
-ngOnInit(): void {
+  ngOnInit(): void {
     console.log(this.items);
-}
+  }
 }

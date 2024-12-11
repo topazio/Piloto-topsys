@@ -1,11 +1,16 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { defaultErrorInputMessages } from './IErrors.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-input-error-msg',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   templateUrl: './input-error-msg.component.html',
   styleUrl: './input-error-msg.component.scss',
   encapsulation: ViewEncapsulation.None,
@@ -13,11 +18,13 @@ import { defaultErrorInputMessages } from './IErrors.interface';
 export class InputErrorMsgComponent {
 
   @Input() control?: AbstractControl | null = null;
+
   @Input() minLengthValidator: AbstractControl | null = null;
+
   @Input() fieldName = "";
 
   get errorInputMessage(): string | null {
-    if(!this.control?.errors || !this.control?.touched) {
+    if (!this.control?.errors || !this.control?.touched) {
       return null;
     }
     const firstErrorInputKey = Object.keys(this.control.errors)[0];

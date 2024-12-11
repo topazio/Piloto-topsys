@@ -1,3 +1,12 @@
-<p-toast key="toastSimples" />
-<app-dashboard/>
-
+<p-toast [baseZIndex]="9999" styleClass="mt-5" key="toastSimples" [style]="{ opacity: '1.0'}">
+  <ng-template let-message pTemplate="message">
+    <div class="flex flex-column align-items-start" style="flex: 1">
+      <div class="flex align-items-center gap-2">
+      </div>
+      <div class="font500 fontAll text-lg my-3 text-900">
+        {{ message.detail }}
+      </div>
+    </div>
+  </ng-template>
+</p-toast>
+<app-dashboard />

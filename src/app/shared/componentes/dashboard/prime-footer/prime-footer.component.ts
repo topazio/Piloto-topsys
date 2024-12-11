@@ -6,13 +6,18 @@ import { DividerModule } from 'primeng/divider';
   selector: 'app-prime-footer',
   standalone: true,
   imports: [
-    CommonModule,DividerModule
+    CommonModule,
+    DividerModule
   ],
   templateUrl: './prime-footer.component.html',
   styleUrl: './prime-footer.component.scss'
 })
 export class PrimeFooterComponent {
+
   @Input() public version = '';
+
   @Input() public title = '';
+
   @Input() public userNome = '';
+
 }

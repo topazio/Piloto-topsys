@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');
 @import "primeng/resources/themes/lara-light-teal/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeflex/primeflex.css";
@@ -215,42 +215,3 @@ body {
 }
 
 
-
-/*
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.success-snackbar {
-  --mdc-snackbar-container-color: rgb(117, 207, 75);
-  --mat-mdc-snack-bar-button-color: black;
-  --mdc-snackbar-supporting-text-color: black;
-}
-
-
-.info-snackbar {
-    --mdc-snackbar-container-color: cornflowerblue;
-    --mat-mdc-snack-bar-button-color: black;
-    --mdc-snackbar-supporting-text-color: black;
-}
-
-.error-snackbar {
-  --mdc-snackbar-container-color: rgb(241, 78, 193);
-  --mat-mdc-snack-bar-button-color: black;
-  --mdc-snackbar-supporting-text-color: black;
-
-}
-
-.mat-mdc-snack-bar-action{
-  .mdc-button__label{
-    color: black!important;
-  }
-}
-
-
-
-
-
-
-
- */

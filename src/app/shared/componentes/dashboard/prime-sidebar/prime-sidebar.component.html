@@ -1,87 +1,68 @@
 <p-panelMenu [model]="items" styleClass="mt-1">
   <ng-template pTemplate="item" let-item>
-    @if (item.menuSmedItemModel){
-    <a [routerLink]="[item.menuSmedItemModel?.route, item?.menuSmedItemModel ?? null]"
-      class="flex align-items-center cursor-pointer text-color px-1 py-2 justify-content-between ml-0 w-100">
-      @if(item.items && item.items.length > 0){
-      <span class="flex align-items-center gap-2 ">
-        <i [class]="item.icon" ngClass="text-primary"
-          [ngClass]="sideBarIconOnly ? 'font125em text-primary ' : 'text-primary'" [pTooltip]="item.label"
-          tooltipPosition="right"></i>
-        @if(!sideBarIconOnly){ <span class="text-color fontAll font500 ">{{ item.label }}</span>}
-      </span>
-      <i class="fa-solid fa-angle-right text-primary mr-0 float-end "></i>
-      }@else {
-      <span class="flex align-items-center gap-2 ">
-        <i [class]="item.icon" ngClass="text-primary"
-          [ngClass]="sideBarIconOnly ? 'font125em text-primary' : 'text-primary'" [pTooltip]="item.label"
-          tooltipPosition="right"></i>
-        @if(!sideBarIconOnly){
-        <span class="text-color fontAll font1em font500 ">{{
-          item.label
-          }}</span>
-        }
-      </span>
-      <i class="fa-solid fa-angle-right text-primary mr-0 ml-1 float-end "></i>
-      }
-    </a>
-    }
-    @else{
     @if (item.route || !item.items) {
-    <a [routerLink]="item.route"
-      class="flex align-items-center cursor-pointer text-color px-1 py-2 justify-content-between ml-0 w-100">
-      @if(item.items && item.items.length > 0){
-      <span class="flex align-items-center gap-2 ">
-        <i [class]="item.icon" ngClass="text-primary"
-          [ngClass]="sideBarIconOnly ? 'font125em text-primary ' : 'text-primary'" [pTooltip]="item.label"
-          tooltipPosition="right"></i>
-        @if(!sideBarIconOnly){ <span class="text-color fontAll font500 ">{{ item.label }}</span>}
-      </span>
-      <i class="fa-solid fa-angle-right text-primary mr-0 float-end "></i>
-      }@else {
-      <span class="flex align-items-center gap-2 ">
-        <i [class]="item.icon" ngClass="text-primary"
-          [ngClass]="sideBarIconOnly ? 'font125em text-primary' : 'text-primary'" [pTooltip]="item.label"
-          tooltipPosition="right"></i>
-        @if(!sideBarIconOnly){
-        <span class="text-color fontAll font1em font500 ">{{
-          item.label
-          }}</span>
+      <a [routerLink]="item.route"
+        class="flex align-items-center cursor-pointer text-color px-1 py-2 justify-content-between ml-0 w-100">
+        @if(item.items && item.items.length > 0){
+          <span class="flex align-items-center gap-2 ">
+            <i [class]="item.icon" ngClass="text-primary"
+              [ngClass]="sideBarIconOnly ? 'font125em text-primary ' : 'text-primary'" [pTooltip]="item.label"
+              tooltipPosition="right"></i>
+            @if(!sideBarIconOnly){
+              <span class="text-color fontAll font500 ">
+                {{ item.label }}
+              </span>
+            }
+          </span>
+          <i class="fa-solid fa-angle-right text-primary mr-0 float-end "></i>
+        }@else {
+          <span class="flex align-items-center gap-2 ">
+            <i [class]="item.icon" ngClass="text-primary"
+              [ngClass]="sideBarIconOnly ? 'font125em text-primary' : 'text-primary'" [pTooltip]="item.label"
+              tooltipPosition="right"></i>
+            @if(!sideBarIconOnly){
+              <span class="text-color fontAll font1em font500 ">
+                {{item.label}}
+              </span>
+            }
+          </span>
+          <i class="fa-solid fa-angle-right text-primary mr-0 ml-1 float-end "></i>
         }
-      </span>
-      <i class="fa-solid fa-angle-right text-primary mr-0 ml-1 float-end "></i>
-      }
-    </a>
+      </a>
     }
     @else {
-    @if (item.url) {
-    <a [href]="item.url" class="flex align-items-center cursor-pointer text-color px-1 py-2 justify-content-between ">
-      <span class="flex align-items-center gap-2 bg-white">
-        <i [class]="item.icon" ngClass="text-primary"
-          [ngClass]="sideBarIconOnly ? 'font125em text-primary' : 'text-primary'" [pTooltip]="item.label"
-          tooltipPosition="right"></i>
-        @if(!sideBarIconOnly){ <span class="text-color fontAll font500">{{ item.label }}</span> }
-      </span>
-      <i class="fa-solid fa-angle-right text-primary mr-0 ml-1 float-end"></i>
-    </a>
-    }
-    @else {
-    <span class="flex align-items-center cursor-pointer text-color px-1 py-2 justify-content-between ">
-      <span class="flex align-items-center gap-2 ">
-        <i [class]="item.icon" ngClass="text-primary"
-          [ngClass]="sideBarIconOnly ? 'font125em text-primary' : 'text-primary'" [pTooltip]="item.label"
-          tooltipPosition="right"></i>
-        @if(!sideBarIconOnly){ <span class="text-color fontAll font1em font500 ">{{
-          item.label
-          }}</span>
-        }
-      </span>
-      @if (item.items) {
-      <i class="fa-solid fa-angle-down text-primary ml-auto mr-0 float-end"></i>
+      @if (item.url) {
+        <a [href]="item.url" class="flex align-items-center cursor-pointer text-color px-1 py-2 justify-content-between ">
+          <span class="flex align-items-center gap-2 bg-white">
+            <i [class]="item.icon" ngClass="text-primary"
+              [ngClass]="sideBarIconOnly ? 'font125em text-primary' : 'text-primary'" [pTooltip]="item.label"
+              tooltipPosition="right"></i>
+            @if(!sideBarIconOnly){
+               <span class="text-color fontAll font500">
+                {{ item.label }}
+              </span>
+            }
+          </span>
+          <i class="fa-solid fa-angle-right text-primary mr-0 ml-1 float-end"></i>
+        </a>
       }
-    </span>
-    }
-    }
+      @else {
+        <span class="flex align-items-center cursor-pointer text-color px-1 py-2 justify-content-between ">
+          <span class="flex align-items-center gap-2 ">
+            <i [class]="item.icon" ngClass="text-primary"
+              [ngClass]="sideBarIconOnly ? 'font125em text-primary' : 'text-primary'" [pTooltip]="item.label"
+              tooltipPosition="right"></i>
+            @if(!sideBarIconOnly){
+              <span class="text-color fontAll font1em font500 ">
+                {{item.label}}
+              </span>
+            }
+          </span>
+          @if (item.items) {
+          <i class="fa-solid fa-angle-down text-primary ml-auto mr-0 float-end"></i>
+          }
+        </span>
+      }
     }
   </ng-template>
 </p-panelMenu>

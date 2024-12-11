@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, Validators, FormGroup, FormsModule } from '@angular/forms';
-
 import { TSCrudComponent } from '../../../shared/topsys/tscrud-component';
 import { ICliente } from '../../model/cliente';
 import { EstadoService } from '../../services/estado.service';
@@ -28,7 +27,7 @@ import { DropdownModule } from 'primeng/dropdown';
   standalone: true,
   imports: [
     CommonModule,
-      ReactiveFormsModule,
+    ReactiveFormsModule,
     FormsModule,
     InputTextModule,
     InputTextareaModule,

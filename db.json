@@ -1,6 +1,7 @@
 {
   "clientes": [
     {
+      "id": "e354",
       "nomeFantasia": "wewewe",
       "razaoSocial": "wwewe",
       "cnpj": "42.342.343/2432-43",
@@ -8,8 +9,7 @@
       "cidadeId": "2",
       "estadoId": "11",
       "telefone": "(23) 4 2342-3423",
-      "email": "34324432",
-      "id": "e354"
+      "email": "34324432"
     },
     {
       "id": "0",
@@ -45,17 +45,6 @@
       "email": "213213"
     },
     {
-      "id": "4234",
-      "nomeFantasia": "ZZZZZZZZZZZZA",
-      "razaoSocial": "ZZZZZZZZZZZZZ",
-      "cnpj": "21.321.323/2321-32",
-      "endereco": "SSSSSSSSSSSSS",
-      "cidadeId": "2",
-      "estadoId": "11",
-      "telefone": "(53) 4 3454-5345",
-      "email": "d@gmail.com"
-    },
-    {
       "id": "14049846739417093",
       "nomeFantasia": "tttttttttttttt",
       "razaoSocial": "tttttttttttttttt",
@@ -89,12 +78,6 @@
       "email": "34324234"
     },
     {
-      "id": "ad24"
-    },
-    {
-      "id": "bd73"
-    },
-    {
       "id": null,
       "nomeFantasia": null,
       "razaoSocial": null,
@@ -115,6 +98,53 @@
       "estadoId": 0,
       "telefone": null,
       "email": null
+    },
+    {
+      "id": "fa6f",
+      "nomeFantasia": "tttttttttttttt",
+      "razaoSocial": "tttttttttttttttt",
+      "cnpj": "14.312.343/5345-34",
+      "endereco": "12312312321312",
+      "cidadeId": "2",
+      "estadoId": "11",
+      "telefone": "(12) 3 1231-2132",
+      "email": "testeEdit@gmail.com"
+    },
+    {
+      "id": "4efa",
+      "nomeFantasia": "Colorativas",
+      "razaoSocial": "Colorativas S/A",
+      "cnpj": "12.312.312/3123-12",
+      "endereco": "12312313123131",
+      "cidadeId": "3",
+      "estadoId": "10",
+      "telefone": "(12) 3 1231-2313",
+      "email": "rustlang@gmail.com"
+    },
+    {
+      "id": null,
+      "nomeFantasia": "Telhas Firmino",
+      "razaoSocial": "Firmino Telhas ME",
+      "cnpj": "99.999.999/9999-99",
+      "endereco": "Al Teste de Ubaruba",
+      "cidadeId": "3",
+      "estadoId": "10",
+      "telefone": "(12) 3 1231-3131",
+      "email": "testeEdit@gmail.com"
+    },
+    {
+      "id": null,
+      "nomeFantasia": "Colorativas",
+      "razaoSocial": "Colorativas S/A",
+      "cnpj": "99.999.999/9999-99",
+      "endereco": "AAAA",
+      "cidadeId": "2",
+      "estadoId": "11",
+      "telefone": "(99) 9 9999-9999",
+      "email": "flexPrimeCSS@terra.com.br"
+    },
+    {
+      "id": "f095"
     }
   ],
   "cidades": [

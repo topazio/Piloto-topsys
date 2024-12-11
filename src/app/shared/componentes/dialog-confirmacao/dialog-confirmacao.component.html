@@ -1,0 +1,60 @@
+
+    <p-confirmDialog key="confirmacaoDialog" #confirmacaoDialog>
+      <ng-template pTemplate="headless" let-message>
+        <div class="flex flex-column align-items-start py-5 surface-overlay border-round" style="min-width: 35rem;">
+          <div class="py-2 px-2 my-2 w-full">
+            <span class="text-left font-bold text-2xl block  px-2  w-full">
+              {{ message.header ? message.header : 'Confirmação Necessária' }}
+            </span>
+          </div>
+          <p-divider class="mb-0 mt-0 w-full py-0" [styleClass]="'my-0'" />
+          <div class="py-2 px-2 my-2 w-full">
+            @if(message.data){
+            <p class="my-0 text-left px-2">{{ message.data }}</p>
+            }
+            <p class="my-0 text-left px-2">{{ message.message ? message.message : 'Por favor confirme a ação.'}}</p>
+          </div>
+          <p-divider class="mb-0 mt-0 w-full py-0" [styleClass]="'my-0'" />
+          <div class="flex justify-content-end align-items-end gap-2 mt-4 w-full px-2">
+            <button pButton [label]="message?.acceptLabel ? message.acceptLabel : 'Confirmar'" severity="primary"
+              (click)="confirmacaoDialog.accept()" class=" gap-1 px-4 py-2">
+              <i class="fa-solid fa-check-double"></i>
+            </button>
+            <button pButton [label]="message?.rejectLabel ? message.rejectLabel : 'Cancelar'" severity="danger"
+              (click)="confirmacaoDialog.reject()" class="p-button-outlined   gap-1 px-4 py-2">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+      </ng-template>
+    </p-confirmDialog>
+<!--
+<p-confirmDialog #cd>
+  <ng-template pTemplate="headless" let-message>
+    <div class="flex flex-column align-items-start py-5 surface-overlay border-round" style="min-width: 35rem;">
+      <div class="py-2 px-2 my-2 w-full">
+        <span class="text-left font-bold text-2xl block  px-2  w-full">
+          {{ message.header ? message.header : 'Confirmação Necessária' }}
+        </span>
+      </div>
+      <p-divider class="mb-0 mt-0 w-full py-0" [styleClass]="'my-0'" />
+      <div class="py-2 px-2 my-2 w-full">
+        @if(message.data){
+        <p class="my-0 text-left px-2">{{ message.data }}</p>
+        }
+        <p class="my-0 text-left px-2">{{ message.message ? message.message : 'Por favor confirme a ação.'}}</p>
+      </div>
+      <p-divider class="mb-0 mt-0 w-full py-0" [styleClass]="'my-0'" />
+      <div class="flex justify-content-end align-items-end gap-2 mt-4 w-full px-2">
+        <button pButton [label]="message?.acceptLabel ? message.acceptLabel : 'Confirmar'" severity="primary"
+          (click)="cd.accept()" class=" gap-1 px-4 py-2">
+          <i class="fa-solid fa-check-double"></i>
+        </button>
+        <button pButton [label]="message?.rejectLabel ? message.rejectLabel : 'Cancelar'" severity="danger"
+          (click)="cd.reject()" class="p-button-outlined   gap-1 px-4 py-2">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</p-confirmDialog> -->

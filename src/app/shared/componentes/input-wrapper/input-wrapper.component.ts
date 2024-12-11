@@ -17,14 +17,22 @@ import { InputErrorMsgComponent } from './input-error-msg/input-error-msg.compon
   styleUrl: './input-wrapper.component.scss'
 })
 export class InputWrapperComponent {
+
   @Input() label!: string;
+
   @Input() formControle: FormControl | null = null;
+
   @Input() formControlAbstrato: AbstractControl | null = null;
+
   @Input() required: boolean = false;
+
   @Input() placeholder: string = 'Digite';
+
   @Input() inputNome!: string;
-  @Input() size: string = 'lg:col-1 md:col-1 sm:col-1';
+
+  @Input() size: string = 'w-full';
 
 
-  hasError: Function = validationError
+  hasError: Function = validationError;
+
 }
