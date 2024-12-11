@@ -1,6 +1,7 @@
 {
   "clientes": [
     {
+      "id": "e354",
       "nomeFantasia": "wewewe",
       "razaoSocial": "wwewe",
       "cnpj": "42.342.343/2432-43",
@@ -8,19 +9,7 @@
       "cidadeId": "2",
       "estadoId": "11",
       "telefone": "(23) 4 2342-3423",
-      "email": "34324432",
-      "id": "e354"
-    },
-    {
-      "id": "0",
-      "nomeFantasia": "TopSys IT R",
-      "razaoSocial": "TopSys IT Solutions",
-      "cnpj": "12.416.542/0001-29",
-      "endereco": "Rua sucupio",
-      "cidadeId": "3",
-      "estadoId": "10",
-      "telefone": "(71) 9 9930-9314",
-      "email": "andre.topazio@gmail.com"
+      "email": "34324432"
     },
     {
       "id": "0",
@@ -56,28 +45,6 @@
       "email": "213213"
     },
     {
-      "id": "4234",
-      "nomeFantasia": "ZZZZZZZZZZZZA",
-      "razaoSocial": "ZZZZZZZZZZZZZ",
-      "cnpj": "21.321.323/2321-32",
-      "endereco": "SSSSSSSSSSSSS",
-      "cidadeId": "2",
-      "estadoId": "11",
-      "telefone": "(53) 4 3454-5345",
-      "email": "d@gmail.com"
-    },
-    {
-      "id": "5656",
-      "nomeFantasia": "XXXXXXXXXXQ",
-      "razaoSocial": "XXXXXXXXXXXX",
-      "cnpj": "23.557.667/5867-96",
-      "endereco": "ewtergrtert",
-      "cidadeId": "3",
-      "estadoId": "10",
-      "telefone": "(43) 6 4564-7475",
-      "email": "52435@gmail.com"
-    },
-    {
       "id": "14049846739417093",
       "nomeFantasia": "tttttttttttttt",
       "razaoSocial": "tttttttttttttttt",
@@ -90,16 +57,15 @@
     },
     {
       "id": "2641137152233064",
-      "nomeFantasia": "VVVVVVVVVVV",
-      "razaoSocial": "VVVVVVVVVVVVVV",
+      "nomeFantasia": "Editado 12",
+      "razaoSocial": "Editado VVVV",
       "cnpj": "24.324.324/3243-24",
-      "endereco": "dfsdfdfds",
-      "cidadeId": "1",
+      "endereco": "dfsdfdfds Editado 3 12",
+      "cidadeId": "3",
       "estadoId": "10",
       "telefone": "(32) 4 3243-4234",
       "email": "4324234@gmail.com"
     },
-
     {
       "id": null,
       "nomeFantasia": "34324",
@@ -110,8 +76,76 @@
       "estadoId": "11",
       "telefone": "(34) 3 2432-4324",
       "email": "34324234"
+    },
+    {
+      "id": null,
+      "nomeFantasia": null,
+      "razaoSocial": null,
+      "cnpj": null,
+      "endereco": null,
+      "cidadeId": null,
+      "estadoId": null,
+      "telefone": null,
+      "email": null
+    },
+    {
+      "id": null,
+      "nomeFantasia": null,
+      "razaoSocial": null,
+      "cnpj": null,
+      "endereco": null,
+      "cidadeId": null,
+      "estadoId": 0,
+      "telefone": null,
+      "email": null
+    },
+    {
+      "id": "fa6f",
+      "nomeFantasia": "tttttttttttttt",
+      "razaoSocial": "tttttttttttttttt",
+      "cnpj": "14.312.343/5345-34",
+      "endereco": "12312312321312",
+      "cidadeId": "2",
+      "estadoId": "11",
+      "telefone": "(12) 3 1231-2132",
+      "email": "testeEdit@gmail.com"
+    },
+    {
+      "id": "4efa",
+      "nomeFantasia": "Colorativas",
+      "razaoSocial": "Colorativas S/A",
+      "cnpj": "12.312.312/3123-12",
+      "endereco": "12312313123131",
+      "cidadeId": "3",
+      "estadoId": "10",
+      "telefone": "(12) 3 1231-2313",
+      "email": "rustlang@gmail.com"
+    },
+    {
+      "id": null,
+      "nomeFantasia": "Telhas Firmino",
+      "razaoSocial": "Firmino Telhas ME",
+      "cnpj": "99.999.999/9999-99",
+      "endereco": "Al Teste de Ubaruba",
+      "cidadeId": "3",
+      "estadoId": "10",
+      "telefone": "(12) 3 1231-3131",
+      "email": "testeEdit@gmail.com"
+    },
+    {
+      "id": null,
+      "nomeFantasia": "Colorativas",
+      "razaoSocial": "Colorativas S/A",
+      "cnpj": "99.999.999/9999-99",
+      "endereco": "AAAA",
+      "cidadeId": "2",
+      "estadoId": "11",
+      "telefone": "(99) 9 9999-9999",
+      "email": "flexPrimeCSS@terra.com.br"
+    },
+    {
+      "id": "f095"
     }
-
   ],
   "cidades": [
     {

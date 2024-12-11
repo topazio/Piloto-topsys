@@ -1,15 +1,5 @@
 import { Component, inject } from '@angular/core';
-
-import { ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
-
-import { MatCardModule } from '@angular/material/card';
-import { NgxMaskDirective } from 'ngx-mask';
-
-import { MatTabsModule } from '@angular/material/tabs';
-import { RouterLink } from '@angular/router';
+import { ReactiveFormsModule, Validators, FormGroup, FormsModule } from '@angular/forms';
 import { TSCrudComponent } from '../../../shared/topsys/tscrud-component';
 import { ICliente } from '../../model/cliente';
 import { EstadoService } from '../../services/estado.service';
@@ -19,30 +9,41 @@ import { ICidade } from '../../model/cidade';
 import { ClienteService } from '../../services/cliente.service';
 import { TSCrudService } from '../../../shared/topsys/tscrud-service';
 import { CrudBotoesCadastroComponent } from "../../../shared/componentes/crud-botoes-cadastro/crud-botoes-cadastro.component";
-import { CrudTabComponent } from '../../../shared/componentes/crud-tab/crud-tab.component';
 import { firstValueFrom } from 'rxjs';
-
-
+import { ButtonModule } from 'primeng/button';
+import { DividerModule } from 'primeng/divider';
+import { FieldsetModule } from 'primeng/fieldset';
+import { InputTextModule } from 'primeng/inputtext';
+import { validationError } from '../../../shared/util/validationErrorFn';
+import { CommonModule } from '@angular/common';
+import { InputWrapperComponent } from '../../../shared/componentes/input-wrapper/input-wrapper.component';
+import { InputMaskModule } from 'primeng/inputmask';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DropdownModule } from 'primeng/dropdown';
 @Component({
-    selector: 'app-cliente-cadastro',
-    templateUrl: './cliente-cadastro.component.html',
-    styleUrl: './cliente-cadastro.component.scss',
-    imports: [
-        MatInputModule,
-        MatButtonModule,
-        MatSelectModule,
-        MatCardModule,
-        ReactiveFormsModule,
-        NgxMaskDirective,
-        MatTabsModule,
-        CrudTabComponent,
-        CrudBotoesCadastroComponent
-    ]
+  selector: 'app-cliente-cadastro',
+  templateUrl: './cliente-cadastro.component.html',
+  styleUrl: './cliente-cadastro.component.scss',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    InputTextModule,
+    InputTextareaModule,
+    DropdownModule,
+    InputMaskModule,
+    InputWrapperComponent,
+    DividerModule,
+    ButtonModule,
+    FieldsetModule,
+    CrudBotoesCadastroComponent
+  ],
 })
 export class ClienteCadastroComponent extends TSCrudComponent<ICliente> {
   private estadoService = inject(EstadoService);
   private cidadeService = inject(CidadeService);
-
+  hasError: Function = validationError;
   estados = [] as IEstado[];
   cidades = [] as ICidade[];
 
@@ -85,7 +86,6 @@ export class ClienteCadastroComponent extends TSCrudComponent<ICliente> {
       email: [form?.email, Validators.required],
     });
   }
-
   popularCidade(estadoId?: number) {
     if (estadoId) {
       this.formGroup.patchValue({ estadoId: estadoId });

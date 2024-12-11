@@ -1,6 +1,6 @@
-import { Injectable, inject } from '@angular/core';
+/* import { Injectable, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogConfirmacaoExcluirComponent } from '../componentes/dialog-confirmacao-excluir/dialog-confirmacao-excluir.component';
+import { DialogConfirmacaoExcluirComponent } from '../componentes/dialog-confirmacao/dialog-confirmacao.component';
 
 
 @Injectable({
@@ -15,3 +15,4 @@ export class DialogService {
   }
 
 }
+ */

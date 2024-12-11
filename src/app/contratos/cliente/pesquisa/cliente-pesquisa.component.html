@@ -1,84 +1,16 @@
-<form [formGroup]="formGroup">
-  <mat-card class="shipping-card">
-    <mat-card-header>
-
-      <mat-card-title>Cliente - Pesquisa</mat-card-title>
-
-    </mat-card-header>
-
-
-    <mat-card-content>
-
-      <app-crud-tab [activePesquisa]="true" routerLinkCadastro="/cliente/cadastro" routerLinkPesquisa="/cliente/pesquisa"/>
-
-      <div class="row">
-        <div class="col">
-          <mat-form-field >
-            <mat-label>CNPJ</mat-label>
-            <input matInput size="22" placeholder="CNPJ" formControlName="cnpj" [dropSpecialCharacters]="false" mask="00.000.000/0000-00">
-            <mat-error/>
-          </mat-form-field>
-        </div>
-
-      </div>
-
-    </mat-card-content>
-
+<p-fieldset id="formPesquisaTabPanel" class="h-full px-0 py-1">
+  <form [formGroup]="formGroup" id="formPesq" class="flex flex-column p-1  w-full  flex-wrap justify-content-start">
+    <app-input-wrapper label="CNPJ" inputNome="cnpj" [required]="true" [class]="'lg:col-2 md:col-3 sm:col-3'"
+      [formControlAbstrato]="formGroup.get('cnpj')" [size]="'w-full'">
+      <p-inputMask id="cnpj" formControlName="cnpj" [mask]="'99.999.999/9999-99'" [autoClear]="false" [unmask]="false"
+        [slotChar]="'99.999.999/9999-99'" [style]="{'text-transform': 'uppercase'}"
+        (onBlur)="formGroup.get('cnpj')?.value.toUpperCase()" inputStyleClass="fontAll w-full"
+        [styleClass]="'fontAll w-full'" [ngClass]="hasError(formGroup.get('cnpj'))" class="fontAll w-full" />
+    </app-input-wrapper>
     <app-crud-botoes-pesquisa (methodFind)="pesquisar()" (methodResetForm)="resetForm()" />
-
-
-  </mat-card>
-</form>
-
-<mat-divider></mat-divider>
-
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-  <ng-container matColumnDef="nomeFantasia">
-    <th mat-header-cell *matHeaderCellDef> Nome Fantasia </th>
-    <td mat-cell *matCellDef="let element"> {{element.nomeFantasia}} </td>
-  </ng-container>
-
-
-  <ng-container matColumnDef="razaoSocial">
-    <th mat-header-cell *matHeaderCellDef> Razão Social </th>
-    <td mat-cell *matCellDef="let element"> {{element.razaoSocial}} </td>
-  </ng-container>
-
-
-  <ng-container matColumnDef="cnpj">
-    <th mat-header-cell *matHeaderCellDef> CNPJ </th>
-    <td mat-cell *matCellDef="let element"> {{element.cnpj}} </td>
-  </ng-container>
-
-
-  <ng-container matColumnDef="telefone">
-    <th mat-header-cell *matHeaderCellDef> Telefone </th>
-    <td mat-cell *matCellDef="let element"> {{element.telefone}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef> E-mail </th>
-    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="editar">
-    <th mat-header-cell *matHeaderCellDef> Editar</th>
-    <td mat-cell *matCellDef="let element" (click)="edit('cliente',element.id)" >
-      <mat-icon fontIcon="edit_square" >Editar</mat-icon>
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="excluir">
-    <th mat-header-cell *matHeaderCellDef> Excluir</th>
-    <td mat-cell *matCellDef="let element">
-      <mat-icon fontIcon="cancel" (click)="delete(element.id);" color="warn">Excluir</mat-icon>
-
-    </td>
-  </ng-container>
-
-
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+  </form>
+  <div class="w-full" id="pesquisaDiv">
+    <app-crud-table [items]="items" [displayedColumns]="displayedColumns" (editClick)="edit('cliente', $event)"
+      (deleteClick)="delete($event)" />
+  </div>
+</p-fieldset>

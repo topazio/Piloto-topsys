@@ -1,107 +1,66 @@
-<form [formGroup]="formGroup">
-  <mat-card class="shipping-card">
-    <mat-card-header>
+<div class="divSpacerCadastro">
+  <p-fieldset id="formCadastro" legend="''" class="w-full px-0 h-full">
+    <form [formGroup]="formGroup" class="flex flex-auto p-1 w-full flex-wrap justify-content-start ">
 
-      <mat-card-title>Cliente - Cadastro</mat-card-title>
-
-    </mat-card-header>
-
-
-    <mat-card-content>
-
-      <app-crud-tab [activeCadastro]="true" routerLinkPesquisa="/cliente/pesquisa"/>
-
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label>Nome Fantasia</mat-label>
-            <input matInput placeholder="Nome Fantasia" formControlName="nomeFantasia">
-            <mat-error/>
-          </mat-form-field>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label>Razão Social</mat-label>
-            <input matInput placeholder="Razão Social" formControlName="razaoSocial">
-            <mat-error/>
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label>CNPJ</mat-label>
-            <input matInput placeholder="CNPJ" formControlName="cnpj" [dropSpecialCharacters]="false" mask="00.000.000/0000-00">
-            <mat-error />
-          </mat-form-field>
-        </div>
-
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label>E-mail</mat-label>
-            <input matInput placeholder="E-mail" formControlName="email">
-            <mat-error/>
-          </mat-form-field>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label>Endereço</mat-label>
-            <textarea matInput placeholder="Endereço" formControlName="endereco"></textarea>
-            <mat-error/>
-          </mat-form-field>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-label>Estado</mat-label>
-            <mat-select placeholder="Estado" (selectionChange)="popularCidade()" formControlName="estadoId">
-              <mat-option [value]="">Selecione...</mat-option>
-              @for (estado of estados; track estado.id) {
-                <mat-option [value]="estado.id">{{ estado.nome }}</mat-option>
-              }
-            </mat-select>
-            <mat-error/>
-          </mat-form-field>
-        </div>
+      <app-input-wrapper label="Nome Fantasia" inputNome="nomeFantasia" [required]="true"
+        [class]="'lg:col-2 md:col-3 sm:col-3'" [formControlAbstrato]="formGroup.get('nomeFantasia')" size="w-full">
+        <input pInputText id="nomeFantasia" type="text" formControlName="nomeFantasia"
+          [ngClass]="hasError(formGroup.get('nomeFantasia'))" [readOnly]="false" class="fontAll w-full" />
+      </app-input-wrapper>
 
 
-          <div class="col">
-            <mat-form-field class="full-width">
-              <mat-label>Cidade</mat-label>
-              <mat-select placeholder="Cidade" formControlName="cidadeId">
-                <mat-option [value]="">Selecione...</mat-option>
-                @for (cidade of cidades; track cidade.id) {
-                  <mat-option [value]="cidade.id">{{ cidade.nome }}</mat-option>
-                }
-              </mat-select>
-              <mat-error/>
-            </mat-form-field>
-          </div>
+      <app-input-wrapper label="Razão Social" inputNome="razaoSocial" [required]="true"
+        [class]="'lg:col-2 md:col-3 sm:col-3'" [formControlAbstrato]="formGroup.get('razaoSocial')" [size]="'w-full'">
+        <input pInputText id="razaoSocial" type="text" formControlName="razaoSocial"
+          [ngClass]="hasError(formGroup.get('razaoSocial'))" [readOnly]="false" class="fontAll w-full" />
+      </app-input-wrapper>
+
+      <app-input-wrapper label="CNPJ" inputNome="cnpj" [required]="true" [class]="'lg:col-2 md:col-3 sm:col-3'"
+        [formControlAbstrato]="formGroup.get('cnpj')" [size]="'w-full'">
+        <p-inputMask id="cnpj" formControlName="cnpj" [mask]="'99.999.999/9999-99'" [autoClear]="false" [unmask]="false"
+          [slotChar]="'99.999.999/9999-99'" [style]="{'text-transform': 'uppercase'}"
+          (onBlur)="formGroup.get('cnpj')?.value.toUpperCase()" inputStyleClass="fontAll w-full"
+          [styleClass]="'fontAll w-full'" [ngClass]="hasError(formGroup.get('cnpj'))" class="fontAll w-full" />
+      </app-input-wrapper>
+
+      <app-input-wrapper label="E-mail" inputNome="email" [required]="true" [class]="'lg:col-2 md:col-3 sm:col-3'"
+        [formControlAbstrato]="formGroup.get('email')" [size]="'w-full'">
+        <input id="email" type="text" pInputText placeholder="" formControlName="email"
+          [ngClass]="hasError(formGroup.get('email'))" class="fontAll w-full" />
+      </app-input-wrapper>
+
+      <app-input-wrapper label="Endereço" inputNome="endereco" [required]="true"
+        [class]="'lg:col-12 md:col-12 sm:col-12'" [formControlAbstrato]="formGroup.get('endereco')" [size]="'w-full'">
+        <textarea id="endereco" rows="5" cols="30" pInputTextarea placeholder="Descreva o endereco..."
+          formControlName="endereco" [ngClass]="hasError(formGroup.get('endereco'))" class="fontAll w-full"></textarea>
+      </app-input-wrapper>
+
+      <app-input-wrapper label="Estado" inputNome="estadoId" [required]="true" [class]="'lg:col-4 md:col-4 sm:col-4'"
+        [formControlAbstrato]="formGroup.get('estadoId')" [size]="'w-full'">
+        <p-dropdown [options]="estados" [showClear]="false" class="fontAll w-full" styleClass="w-full fontAll"
+          formControlName="estadoId" placeholder="Selecione um Estado" dataKey="id" name="estadoId" optionValue="id"
+          optionLabel="nome" inputId="estadoId" [ngClass]="hasError(formGroup.get('estadoId'))"
+          (onChange)="popularCidade()" />
+      </app-input-wrapper>
+
+      <app-input-wrapper label="Cidade" inputNome="cidadeId" [required]="true" [class]="'lg:col-4 md:col-4 sm:col-4'"
+        [formControlAbstrato]="formGroup.get('cidadeId')" [size]="'w-full'">
+        <p-dropdown [options]="cidades" [showClear]="false" class="fontAll w-full" styleClass="w-full fontAll"
+          formControlName="cidadeId" placeholder="Selecione uma cidade" dataKey="id" name="cidadeId" optionValue="id"
+          optionLabel="nome" inputId="cidadeId" optionLabel="nome" [ngClass]="hasError(formGroup.get('cidadeId'))"
+          inputId="cidadeId" />
+      </app-input-wrapper>
+
+      <app-input-wrapper label="Telefone" inputNome="telefone" [required]="true" [class]="'lg:col-3 md:col-4 sm:col-4'"
+        [formControlAbstrato]="formGroup.get('telefone')" [size]="'w-full'">
+        <p-inputMask id="telefone" formControlName="telefone" [mask]="'(99) 9 9999-9999'" [autoClear]="false"
+          [unmask]="false" [slotChar]="'(99) 9 9999-9999'" [style]="{'text-transform': 'uppercase'}"
+          (onBlur)="formGroup.get('telefone')?.value.toUpperCase()" inputStyleClass="fontAll w-full"
+          [styleClass]="'fontAll w-full'" [ngClass]="hasError(formGroup.get('telefone'))" class="fontAll w-full" />
+      </app-input-wrapper>
 
 
-
-          <div class="col">
-            <mat-form-field class="full-width">
-              <mat-label>Telefone</mat-label>
-              <input matInput #telefone placeholder="Telefone" formControlName="telefone" [dropSpecialCharacters]="false" mask="(00) 0 0000-0000">
-              <!--mat-hint align="end">{{telefone.value.length}} / 5</!--mat-hint-->
-              <mat-error/>
-            </mat-form-field>
-          </div>
-
-
-      </div>
-
-
-    </mat-card-content>
-
-    <app-crud-botoes-cadastro (methodSave)="save()" (methodResetForm)="resetForm()" [formGroup]="formGroup" />
-
-  </mat-card>
-</form>
+      <app-crud-botoes-cadastro (methodSave)="save()" (methodResetForm)="resetForm()" telaRota="cliente" [formGroup]="formGroup" />
+    </form>
+  </p-fieldset>
+</div>

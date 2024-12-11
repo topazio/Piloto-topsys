@@ -1,26 +1,22 @@
 import { Routes } from '@angular/router';
-import { ClienteCadastroComponent } from './contratos/cliente/cadastro/cliente-cadastro.component';
-import { ClientePesquisaComponent } from './contratos/cliente/pesquisa/cliente-pesquisa.component';
+
 
 
 export const routes: Routes = [
-
-
   {
     path: "cliente/cadastro",
     title: "Cliente - Cadastro",
-    component: ClienteCadastroComponent
+    async loadComponent() {
+      const m = await import('./contratos/cliente/cliente.component');
+      return m.ClienteComponent;
+    }
   },
-
   {
-    path: "cliente/edit/:id",
+    path: "cliente/cadastro/:id",
     title: "Cliente - Editar",
-    component: ClienteCadastroComponent
+    async loadComponent() {
+      const m = await import('./contratos/cliente/cliente.component');
+      return m.ClienteComponent;
+    }
   },
-
-  {
-    path: "cliente/pesquisa",
-    title: "Cliente - Pesquisa",
-    component: ClientePesquisaComponent
-  }
 ];

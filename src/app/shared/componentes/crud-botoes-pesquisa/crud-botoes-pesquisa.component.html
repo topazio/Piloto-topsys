@@ -1,7 +1,10 @@
-<mat-card-actions align="end">
-  <button  mat-raised-button color="primary" type="button" (click)="executeMethodFind()" >Pesquisar</button>
-
-  <span style="padding: 5px;"></span>
-
-  <button  mat-raised-button color="warn" type="button" (click)="executeMethodResetForm()" >Limpar</button>
-</mat-card-actions>
+<div class="w-full flex justify-content-end gap-2 mt-2 px-2 gap-2">
+  <button pButton pRipple pRounded [raised]="true" type="submit" severity="primary" size="small"
+    (click)="executeMethodFind()" label="Pesquisar" class="gap-2 p-2 px-3">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+  <button pButton pRipple pRounded [raised]="true" type="reset" severity="secondary" size="small"
+    (click)="executeMethodResetForm()" label="Limpar" class="gap-2 p-2 px-3">
+    <i class="fa-solid fa-trash-can"></i>
+  </button>
+</div>

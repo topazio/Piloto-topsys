@@ -1,0 +1,20 @@
+::ng-deep footer {
+  grid-area: footerBottom;
+  position: fixed;
+  width: 100%;
+  height: min-content;
+  bottom: 0;
+  /*   background-color: #F9FAFB; */
+  background: var(--primary-900);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding-bottom: 0.5rem !important;
+  border-top: 1px solid var(--surface-border);
+
+}
+
+::ng-deep #dividerFooter {
+  max-height: 4px !important;
+  margin-bottom: 0.25em !important;
+}
