@@ -1,16 +1,19 @@
-<p-fieldset id="formPesquisaTabPanel" class="h-full px-0 py-1">
-  <form [formGroup]="formGroup" id="formPesq" class="flex flex-column p-1  w-full  flex-wrap justify-content-start">
-    <app-input-wrapper label="CNPJ" inputNome="cnpj" [required]="true" [class]="'lg:col-2 md:col-3 sm:col-3'"
-      [formControlAbstrato]="formGroup.get('cnpj')" [size]="'w-full'">
-      <p-inputMask id="cnpj" formControlName="cnpj" [mask]="'99.999.999/9999-99'" [autoClear]="false" [unmask]="false"
-        [slotChar]="'99.999.999/9999-99'" [style]="{'text-transform': 'uppercase'}"
-        (onBlur)="formGroup.get('cnpj')?.value.toUpperCase()" inputStyleClass="fontAll w-full"
-        [styleClass]="'fontAll w-full'" [ngClass]="hasError(formGroup.get('cnpj'))" class="fontAll w-full" />
-    </app-input-wrapper>
-    <app-crud-botoes-pesquisa (methodFind)="pesquisar()" (methodResetForm)="resetForm()" />
-  </form>
-  <div class="w-full" id="pesquisaDiv">
-    <app-crud-table [items]="items" [displayedColumns]="displayedColumns" (editClick)="edit('cliente', $event)"
-      (deleteClick)="delete($event)" />
-  </div>
-</p-fieldset>
+<p-scrollPanel id="homeScrollPanel" styleClass="customBarColor">
+  <app-crud-tabs   routerLinkRelativo="cliente"/>
+    <p-fieldset id="formPesquisaTabPanel" class="h-full px-0 py-1">
+      <form [formGroup]="formGroup" id="formPesq" class="flex flex-column p-1  w-full  flex-wrap justify-content-start">
+        <app-input-wrapper label="CNPJ" inputNome="cnpj" [required]="true" [class]="'lg:col-2 md:col-3 sm:col-3'"
+          [formControlAbstrato]="formGroup.get('cnpj')" [size]="'w-full'">
+          <p-inputMask id="cnpj" formControlName="cnpj" [mask]="'99.999.999/9999-99'" [autoClear]="false"
+            [unmask]="false" [slotChar]="'99.999.999/9999-99'" [style]="{'text-transform': 'uppercase'}"
+            (onBlur)="formGroup.get('cnpj')?.value.toUpperCase()" inputStyleClass="fontAll w-full"
+            [styleClass]="'fontAll w-full'" [ngClass]="hasError(formGroup.get('cnpj'))" class="fontAll w-full" />
+        </app-input-wrapper>
+        <app-crud-botoes-pesquisa (methodFind)="pesquisar()" (methodResetForm)="resetForm()" />
+      </form>
+      <div class="w-full" id="pesquisaDiv">
+        <app-crud-table [items]="items" [displayedColumns]="displayedColumns" (editClick)="edit('cliente', $event)"
+          (deleteClick)="delete($event)" />
+      </div>
+    </p-fieldset>
+</p-scrollPanel>

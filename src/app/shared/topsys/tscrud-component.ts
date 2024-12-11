@@ -7,21 +7,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TSCrudModel } from './tscrud-model';
 import { firstValueFrom, Observable } from 'rxjs';
 import { ConfirmacaoService } from '../util/confirmacao.service';
+import { validationError } from '../util/validationErrorFn';
 
 @Injectable()
 export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
 
   model: T = {} as T;
+
   id = 0;
 
   formGroup: FormGroup;
 
+
+
+
+  hasError: Function = validationError;
   confirmationService = inject(ConfirmacaoService);
   formBuilder = inject(FormBuilder);
   snackBarService = inject(PrimeToastService);
   route = inject(ActivatedRoute);
-  router = inject(Router);/*
-  dialogService = inject(DialogService); */
+  router = inject(Router);
 
   items: Observable<T[]> = new Observable<T[]>();
 

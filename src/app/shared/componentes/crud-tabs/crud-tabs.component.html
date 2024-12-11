@@ -1,5 +1,18 @@
-<p-scrollPanel id="homeScrollPanel" styleClass="customBarColor">
-  <p-tabView [(activeIndex)]="activeTabIndex" (onChange)="onTabChange($event)" [tabindex]="activeTabIndex">
+<!--<p-scrollPanel id="homeScrollPanel" styleClass="customBarColor">
+
+  <p-tabMenu [model]="menuItems">
+    <ng-template pTemplate="item" let-item>
+      <a [routerLink]="item.route" class="p-menuitem-link">
+        <span [class]="item.icon"></span>
+        <span class="ml-2">
+          {{ item.label }}
+        </span>
+      </a>
+    </ng-template>
+  </p-tabMenu>
+  <ng-content select="['tabContent']"></ng-content>
+ -->
+<!-- <p-tabView [(activeIndex)]="activeTabIndex" (onChange)="onTabChange($event)" [tabindex]="activeTabIndex">
     @for(tab of tabsFor; track tab.tabCstIndex){
     <p-tabPanel pStyleClass="h-full min-h-100 px-1" [header]="tab.label" [selected]="tab.tabCstIndex == activeTabIndex"
       [disabled]="tab.disabledTab" [cache]="tab.tabPanelCache">
@@ -9,4 +22,24 @@
     </p-tabPanel>
     }
   </p-tabView>
-</p-scrollPanel>
+</p-scrollPanel> -->
+
+<p-tabMenu [model]="itemsMenus">
+  <ng-template pTemplate="item" pTemplate="item" let-item>
+    <a [routerLink]="[item.routerLink]" class="p-menuitem-link">
+      <span class="ml-2">
+        {{item.label}}
+      </span>
+    </a>
+  </ng-template>
+</p-tabMenu>
+
+  <!-- <ng-template pTemplate="item" let-item>
+    <a [routerLink]="item.routerLink" class="p-menuitem-link">
+      <span [class]="item.icon"></span>
+      <span class="ml-2">
+        {{ item.label }}
+      </span>
+    </a>
+  </ng-template> -->
+

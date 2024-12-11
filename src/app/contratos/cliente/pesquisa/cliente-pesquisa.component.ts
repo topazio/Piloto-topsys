@@ -1,3 +1,4 @@
+import { CrudTabsComponent } from '../../../shared/componentes/crud-tabs/crud-tabs.component'
 import { Component } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TSCrudComponent } from '../../../shared/topsys/tscrud-component';
@@ -12,18 +13,25 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { InputWrapperComponent } from '../../../shared/componentes/input-wrapper/input-wrapper.component';
 import { InputMaskModule } from 'primeng/inputmask';
 import { validationError } from '../../../shared/util/validationErrorFn';
-import { CrudTableComponent } from '../../../shared/componentes/crud-tabs/crud-table/crud-table.component';
+import { CrudTableComponent } from '../../../shared/componentes/crud-table/crud-table.component';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { MenuItem } from 'primeng/api';
 @Component({
   selector: 'app-cliente-pesquisa',
   standalone: true,
   imports: [
+    CrudTabsComponent,
     CommonModule,
     ReactiveFormsModule,
     InputWrapperComponent,
+    TabMenuModule,
     InputMaskModule,
+    ScrollPanelModule,
     TableModule,
     FieldsetModule,
     ButtonModule,
+    CrudTabsComponent,
     CrudBotoesPesquisaComponent,
     CrudTableComponent
   ],
@@ -34,11 +42,6 @@ import { CrudTableComponent } from '../../../shared/componentes/crud-tabs/crud-t
 export class ClientePesquisaComponent extends TSCrudComponent<ICliente> {
 
   displayedColumns: any[] = [];
-
-  resultadoSelecionado!: ICliente;
-
-  hasError: Function = validationError;
-
 
   override init(): void {
     this.displayedColumns = [
@@ -98,7 +101,7 @@ export class ClientePesquisaComponent extends TSCrudComponent<ICliente> {
 
   override createForm(form?: ICliente): FormGroup {
     return this.formBuilder.group({
-      cnpj: [null],
+      cnpj: [form?.cnpj ?? null],
     });
   }
 

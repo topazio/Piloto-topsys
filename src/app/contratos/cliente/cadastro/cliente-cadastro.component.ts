@@ -20,6 +20,10 @@ import { InputWrapperComponent } from '../../../shared/componentes/input-wrapper
 import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
+import { CrudTabsComponent } from '../../../shared/componentes/crud-tabs/crud-tabs.component';
+import { MenuItem } from 'primeng/api';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 @Component({
   selector: 'app-cliente-cadastro',
   templateUrl: './cliente-cadastro.component.html',
@@ -34,16 +38,19 @@ import { DropdownModule } from 'primeng/dropdown';
     DropdownModule,
     InputMaskModule,
     InputWrapperComponent,
+    ScrollPanelModule,
+    TabMenuModule,
     DividerModule,
     ButtonModule,
     FieldsetModule,
+    CrudTabsComponent,
     CrudBotoesCadastroComponent
   ],
 })
 export class ClienteCadastroComponent extends TSCrudComponent<ICliente> {
   private estadoService = inject(EstadoService);
   private cidadeService = inject(CidadeService);
-  hasError: Function = validationError;
+
   estados = [] as IEstado[];
   cidades = [] as ICidade[];
 

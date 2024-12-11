@@ -2,19 +2,13 @@ import { Routes } from '@angular/router';
 
 
 
-export const routes: Routes = [
-/* {path: 'cliente',
-  title: 'Cliente',
-  async loadChildren(){
-    const ch = await import('./contratos/cliente/clientes.route');
-    return ch.CLIENTE_ROUTES
-  }
-} */
-   {
+export const CLIENTE_ROUTES: Routes = [
+
+  {
     path: "cliente/pesquisa",
     title: "Cliente - Pesquisa",
     async loadComponent() {
-      const m = await import('./contratos/cliente/pesquisa/cliente-pesquisa.component');
+      const m = await import('./pesquisa/cliente-pesquisa.component');
       return m.ClientePesquisaComponent;
     }
   },
@@ -22,7 +16,7 @@ export const routes: Routes = [
     path: "cliente/cadastro",
     title: "Cliente - Cadastro",
     async loadComponent() {
-      const m = await import('./contratos/cliente/cadastro/cliente-cadastro.component');
+      const m = await import('./cadastro/cliente-cadastro.component');
       return m.ClienteCadastroComponent;
     }
   },
@@ -31,8 +25,8 @@ export const routes: Routes = [
     path: "cliente/cadastro/:id",
     title: "Cliente - Editar",
     async loadComponent() {
-      const m = await import('./contratos/cliente/cadastro/cliente-cadastro.component');
+      const m = await import('./cadastro/cliente-cadastro.component');
       return m.ClienteCadastroComponent;
     }
   },
-];
+]
