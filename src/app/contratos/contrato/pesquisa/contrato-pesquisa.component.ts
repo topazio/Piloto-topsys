@@ -1,5 +1,5 @@
 import { CommonModule, AsyncPipe, TitleCasePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { FieldsetModule } from 'primeng/fieldset';
@@ -9,7 +9,6 @@ import { TableModule } from 'primeng/table';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { CrudBotoesPesquisaComponent } from '../../../shared/componentes/crud-botoes-pesquisa/crud-botoes-pesquisa.component';
 import { CrudTableComponent } from '../../../shared/componentes/crud-table/crud-table.component';
-import { CrudTabsComponent } from '../../../shared/componentes/crud-tabs/crud-tabs.component';
 import { InputWrapperComponent } from '../../../shared/componentes/input-wrapper/input-wrapper.component';
 import { TSCrudComponent } from '../../../shared/topsys/tscrud-component';
 import { TSCrudService } from '../../../shared/topsys/tscrud-service';
@@ -22,7 +21,6 @@ import { CrudTabsDinamicoComponent } from '../../../shared/componentes/crud-tabs
   selector: 'app-contrato-pesquisa',
   standalone: true,
   imports: [
-    CrudTabsComponent,
     CommonModule,
     ReactiveFormsModule,
     InputWrapperComponent,
@@ -32,7 +30,6 @@ import { CrudTabsDinamicoComponent } from '../../../shared/componentes/crud-tabs
     TableModule,
     FieldsetModule,
     ButtonModule,
-    CrudTabsComponent,
     CrudTabsDinamicoComponent,
     CrudBotoesPesquisaComponent,
     CrudTableComponent
@@ -41,12 +38,12 @@ import { CrudTabsDinamicoComponent } from '../../../shared/componentes/crud-tabs
   styleUrl: './contrato-pesquisa.component.scss',
   providers: [AsyncPipe, TitleCasePipe]
 })
-export class ContratoPesquisaComponent extends TSCrudComponent<ICliente> {
+export class ContratoPesquisaComponent extends TSCrudComponent<ICliente> implements OnDestroy {
 
   displayedColumns: any[] = [];
   itemMenusTabs: MenuItem[] = [
-    { label: 'Cadastro', routerLink: `/contrato/cadastro`, skipLocationChange: false,  cnpj: '88888888888' },
-    { label: 'Pesquisa', routerLink: `/contrato/pesquisa`, skipLocationChange: false,  }
+    { label: 'Cadastro', routerLink: `/contrato/cadastro`, skipLocationChange: false },
+    { label: 'Pesquisa', routerLink: `/contrato/pesquisa`, skipLocationChange: false }
   ];
   override init(): void {
     this.displayedColumns = [
@@ -93,7 +90,7 @@ export class ContratoPesquisaComponent extends TSCrudComponent<ICliente> {
         flagButtonExcluir: true
       },
     ];
-    console.log(this.route.data);
+    this.cachePage = true;
 
   }
 
@@ -117,6 +114,11 @@ export class ContratoPesquisaComponent extends TSCrudComponent<ICliente> {
 
     this.items = list;
   }
+  ngOnDestroy(): void {
+    if (this.formGroup.value) {
+      sessionStorage.setItem('filtros', JSON.stringify(this.formGroup.value))
+    }
 
+  }
 
 }

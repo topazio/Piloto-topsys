@@ -88,7 +88,6 @@ export class ClientePesquisaComponent extends TSCrudComponent<ICliente> {
         flagButtonExcluir: true
       },
     ];
-
   }
 
   constructor(private service: ClienteService) {

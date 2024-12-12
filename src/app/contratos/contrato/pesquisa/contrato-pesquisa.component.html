@@ -7,7 +7,7 @@
           [formControlAbstrato]="formGroup.get('cnpj')" [size]="'w-full'">
           <p-inputMask id="cnpj" formControlName="cnpj" [mask]="'99.999.999/9999-99'" [autoClear]="false"
             [unmask]="false" [slotChar]="'99.999.999/9999-99'" [style]="{'text-transform': 'uppercase'}"
-            (onBlur)="formGroup.get('cnpj')?.value.toUpperCase()" inputStyleClass="fontAll w-full"
+            (onBlur)="formGroup.get('cnpj')?.value" inputStyleClass="fontAll w-full"
             [styleClass]="'fontAll w-full'" [ngClass]="hasError(formGroup.get('cnpj'))" class="fontAll w-full" />
         </app-input-wrapper>
         <app-crud-botoes-pesquisa (methodFind)="pesquisar()" (methodResetForm)="resetForm()" />

@@ -3,11 +3,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { TSCrudService } from './tscrud-service';
 import { inject, Injectable, OnInit } from '@angular/core';
 import { PrimeToastService } from '../util/prime-toast.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { TSCrudModel } from './tscrud-model';
-import { firstValueFrom, Observable } from 'rxjs';
+import { filter, firstValueFrom, Observable } from 'rxjs';
 import { ConfirmacaoService } from '../util/confirmacao.service';
 import { validationError } from '../util/validationErrorFn';
+import { RouterNavigatorService } from '../util/router-navigator.service';
 
 @Injectable()
 export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
@@ -27,7 +28,7 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
   snackBarService = inject(PrimeToastService);
   route = inject(ActivatedRoute);
   router = inject(Router);
-
+  routerHistoryService = inject(RouterNavigatorService);
   items: Observable<T[]> = new Observable<T[]>();
 
   cachePage: boolean = false;
@@ -45,13 +46,37 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
   ngOnInit(): void {
     this.init();
 
-    if(this.cachePage){
-      let form;
-     form = sessionStorage.getItem('filtros');
-   /*  this.formGroup = form */
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationStart)
+    ).subscribe(() => {
+      if (this.route.snapshot?.parent?.url[0].path) {
+  /*       console.log('Antes', this.route.snapshot?.parent?.url[0].path) */
+        this.routerHistoryService.setLastRoute(this.route.snapshot?.parent?.url[0].path);
+      }
+    });
+
+   /*  console.log(this.routerHistoryService.getLastRoute());
+    console.log(this.route.snapshot?.parent?.url[0]?.path); */
+
+    if (this.routerHistoryService.getLastRoute() !== this.route.snapshot?.parent?.url[0]?.path) {
+
+      sessionStorage.removeItem('filtros');
+
     }
 
     this.resetForm();
+
+    if (this.cachePage) {
+
+      let form = sessionStorage.getItem('filtros');
+
+      if (form) {
+
+        this.formGroup.patchValue(JSON.parse(form));
+
+      }
+
+    }
 
     let id = this.route.snapshot.paramMap.get('id');
 
@@ -90,7 +115,7 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
     this.confirmationService.openDialogConfirmacaoExcluir().subscribe({
       next: (value) => {
 
-        if(value){
+        if (value) {
           this.getServiceMain().delete(id).subscribe({
             next: () => this.messageDeleteSuccess(),
           });

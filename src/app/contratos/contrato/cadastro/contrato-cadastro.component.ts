@@ -20,7 +20,6 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { CrudBotoesCadastroComponent } from '../../../shared/componentes/crud-botoes-cadastro/crud-botoes-cadastro.component';
-import { CrudTabsComponent } from '../../../shared/componentes/crud-tabs/crud-tabs.component';
 import { InputWrapperComponent } from '../../../shared/componentes/input-wrapper/input-wrapper.component';
 import { CrudTabsDinamicoComponent } from '../../../shared/componentes/crud-tabs-dinamico/crud-tabs-dinamico.component';
 import { MenuItem } from 'primeng/api';
@@ -43,7 +42,6 @@ import { MenuItem } from 'primeng/api';
     ButtonModule,
     FieldsetModule,
     CrudTabsDinamicoComponent,
-    CrudTabsComponent,
     CrudBotoesCadastroComponent
   ],
   templateUrl: './contrato-cadastro.component.html',
@@ -56,7 +54,7 @@ export class ContratoCadastroComponent extends TSCrudComponent<ICliente> {
   estados = [] as IEstado[];
   cidades = [] as ICidade[];
   itemMenusTabs: MenuItem[] = [
-    { label: 'Cadastro', routerLink: `/contrato/cadastro`, skipLocationChange: false,  cnpj: '88888888888' },
+    { label: 'Cadastro', routerLink: `/contrato/cadastro`, skipLocationChange: false },
     { label: 'Pesquisa', routerLink: `/contrato/pesquisa`, skipLocationChange: false }
   ];
   constructor(private service: ClienteService) {
@@ -69,7 +67,7 @@ export class ContratoCadastroComponent extends TSCrudComponent<ICliente> {
 
   override init(): void {
     this.popularEstado();
-    console.log(this.route.data);
+
   }
 
   override async detail(id: any): Promise<void> {
