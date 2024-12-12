@@ -1,0 +1,17 @@
+<p-tabMenu [model]="itemsMenus" [class]="'pr-2'">
+  <ng-template pTemplate="item" pTemplate="item" let-item>
+    @if(item.cnpj){
+    <a  pRipple [routerLink]="[item.routerLink, item.cnpj]" [skipLocationChange]="item.skipLocationChange"  class="p-menuitem-link">
+      <span class="ml-2">
+        {{item.label}}
+      </span>
+    </a>
+  }@else {
+    <a  pRipple [routerLink]="[item.routerLink]" [skipLocationChange]="item.skipLocationChange" class="p-menuitem-link">
+      <span class="ml-2">
+        {{item.label}}
+      </span>
+    </a>
+  }
+  </ng-template>
+</p-tabMenu>

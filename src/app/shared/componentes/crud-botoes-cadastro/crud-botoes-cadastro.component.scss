@@ -2,7 +2,8 @@
   padding-right: 0.5rem;
   position: fixed;
   top: 4.5rem;
-  right: 0.5rem;
+  right: 1.5rem;
+  left: 17.5rem;
 }
 ::ng-deep #formCadastroButtonsDiv .p-divider {
   margin-top: 0px;
@@ -13,7 +14,7 @@
   z-index: 9;
   position: absolute;
   bottom: calc(0vh + 0.5rem);
-  right: 0rem;
+  right: 0.5rem;
   left: 0.5rem;
   display: flex;
   flex-direction: column;

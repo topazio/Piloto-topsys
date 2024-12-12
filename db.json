@@ -23,7 +23,7 @@
       "email": "andre.topazio@gmail.com"
     },
     {
-      "id": null,
+      "id": "1",
       "nomeFantasia": "Maria",
       "razaoSocial": "4234234324324",
       "cnpj": "32.423.423/4324-32",
@@ -67,7 +67,7 @@
       "email": "4324234@gmail.com"
     },
     {
-      "id": null,
+      "id": "9123132",
       "nomeFantasia": "34324",
       "razaoSocial": "324324",
       "cnpj": "43.243.242/3432-43",
@@ -76,28 +76,6 @@
       "estadoId": "11",
       "telefone": "(34) 3 2432-4324",
       "email": "34324234"
-    },
-    {
-      "id": null,
-      "nomeFantasia": null,
-      "razaoSocial": null,
-      "cnpj": null,
-      "endereco": null,
-      "cidadeId": null,
-      "estadoId": null,
-      "telefone": null,
-      "email": null
-    },
-    {
-      "id": null,
-      "nomeFantasia": null,
-      "razaoSocial": null,
-      "cnpj": null,
-      "endereco": null,
-      "cidadeId": null,
-      "estadoId": 0,
-      "telefone": null,
-      "email": null
     },
     {
       "id": "fa6f",
@@ -111,7 +89,7 @@
       "email": "testeEdit@gmail.com"
     },
     {
-      "id": "4efa",
+      "id": "4efa123",
       "nomeFantasia": "Colorativas",
       "razaoSocial": "Colorativas S/A",
       "cnpj": "12.312.312/3123-12",
@@ -122,7 +100,7 @@
       "email": "rustlang@gmail.com"
     },
     {
-      "id": null,
+      "id": "77asd7ads",
       "nomeFantasia": "Telhas Firmino",
       "razaoSocial": "Firmino Telhas ME",
       "cnpj": "99.999.999/9999-99",
@@ -133,7 +111,7 @@
       "email": "testeEdit@gmail.com"
     },
     {
-      "id": null,
+      "id": "9asd0a9asdf",
       "nomeFantasia": "Colorativas",
       "razaoSocial": "Colorativas S/A",
       "cnpj": "99.999.999/9999-99",
@@ -144,7 +122,114 @@
       "email": "flexPrimeCSS@terra.com.br"
     },
     {
-      "id": "f095"
+      "id": "f095",
+      "nomeFantasia": "Teste Edit",
+      "razaoSocial": "Teste Edit",
+      "cnpj": "99.999.999/9999-99",
+      "endereco": "Teste Edit",
+      "cidadeId": "2",
+      "estadoId": "11",
+      "telefone": "(99) 9 9999-9999",
+      "email": "rustlang@gmail.com"
+    },
+    {
+      "id": "asdasd54",
+      "nomeFantasia": "AAA",
+      "razaoSocial": "AAA",
+      "cnpj": "12.312.313/1312-31",
+      "endereco": "AAA",
+      "cidadeId": "3",
+      "estadoId": "10",
+      "telefone": "(99) 9 9999-9999",
+      "email": "rustlang@gmail.com"
+    },
+    {
+      "id": "alsdlasdl123",
+      "nomeFantasia": "4444",
+      "razaoSocial": "4444",
+      "cnpj": "13.212.311/2312-12",
+      "endereco": "4444",
+      "cidadeId": "2",
+      "estadoId": "11",
+      "telefone": "(44) 4 4444-4444",
+      "email": "rustlang@gmail.com"
+    },
+    {
+      "id": "3123asd",
+      "nomeFantasia": "cccccc",
+      "razaoSocial": "cccccc",
+      "cnpj": "88.888.888/8888-88",
+      "endereco": "8888",
+      "cidadeId": "1",
+      "estadoId": "10",
+      "telefone": "(88) 8 8888-8888",
+      "email": "angularCore@gmail.com"
+    },
+    {
+      "id": "5663314214fd",
+      "nomeFantasia": "dddddddddddddd",
+      "razaoSocial": "dddddddddddddd",
+      "cnpj": "77.777.777/7777-77",
+      "endereco": "asdasdas",
+      "cidadeId": "1",
+      "estadoId": "10",
+      "telefone": "(45) 4 4444-4444",
+      "email": "angularMaterialSolo@hotmail.com"
+    },
+    {
+      "id": "asdasda1231231",
+      "nomeFantasia": "eeeeeeeeee",
+      "razaoSocial": "eeeeeeeeee",
+      "cnpj": "33.333.333/3333-33",
+      "endereco": "33333",
+      "cidadeId": "3",
+      "estadoId": "10",
+      "telefone": "(33) 3 3333-3333",
+      "email": "3@3gmai..clom"
+    },
+    {
+      "id": "papapaalapsld",
+      "nomeFantasia": "dddddddddddddddd",
+      "razaoSocial": "ddddddd",
+      "cnpj": "55.555.555/5555-55",
+      "endereco": "4444444444444555",
+      "cidadeId": "1",
+      "estadoId": "10",
+      "telefone": "(55) 5 5555-5555",
+      "email": "testeEdit@gmail.com"
+    },
+    {
+      "id": "643451qasdasd",
+      "nomeFantasia": "fffffffffffffffffff",
+      "razaoSocial": "fffffffffffffffffff",
+      "cnpj": "66.666.666/6666-66",
+      "endereco": "ffffff",
+      "cidadeId": "1",
+      "estadoId": "10",
+      "telefone": "(66) 6 6666-6666",
+      "email": "reactLang@gmail.com"
+    },
+    {
+      "id": "asdasd12531",
+      "nomeFantasia": "ggggggggggggggggg",
+      "razaoSocial": "ggggggggggggggggg",
+      "cnpj": "77.777.777/7777-77",
+      "endereco": "asdasd",
+      "cidadeId": "1",
+      "estadoId": "10",
+      "telefone": "(77) 7 7777-7777",
+      "email": "rustlang@gmail.com"
+    },
+    {
+      "id": "asdal10923891fg",
+      "nomeFantasia": "hhhhhhhhhhhhhh",
+      "razaoSocial": "hhhhhhhhhhhhhh",
+      "cnpj": "88.888.985/6734-21",
+      "endereco": "asdadsad",
+      "cidadeId": "1",
+      "estadoId": "10",
+      "telefone": "(88) 8 8888-8888",
+      "email": "sadasdas@gmail.com"
     }
   ],
   "cidades": [

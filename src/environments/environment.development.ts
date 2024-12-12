@@ -7,7 +7,7 @@ export const environment = {
             {
               label: 'Contratos', icon: 'fa-solid fa-boxes-packing', items: [
                 { label: 'Propostas', icon: 'fa-solid fa-kit-medical', route: '/contratos/proposta/cadastro' },
-                { label: 'Contratos', icon: 'fa-solid fa-boxes-stacked', route: '/contratos/contratos/cadastro' },
+                { label: 'Contratos', icon: 'fa-solid fa-boxes-stacked', route: 'contrato/cadastro' },
                 { label: 'Aditivos', icon: 'fa-solid fa-dolly', route: '/contratos/aditivos/cadastro' },
               ]
             },

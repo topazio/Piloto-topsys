@@ -5,6 +5,7 @@
 }
 
 ::ng-deep #formPesquisaTabPanel>fieldset {
+  margin-top: -1rem;
   max-height: calc(100vh - 125px);
   min-height: calc(100vh - 162px);
 }

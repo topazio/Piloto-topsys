@@ -10,6 +10,33 @@ export const routes: Routes = [
     return ch.CLIENTE_ROUTES
   }
 } */
+
+  {
+    path: "contrato/pesquisa",
+    title: "Contrato - Pesquisa",
+    async loadComponent() {
+      const m = await import('./contratos/contrato/pesquisa/contrato-pesquisa.component');
+      return m.ContratoPesquisaComponent;
+    }
+
+  },
+  {
+    path: "contrato/cadastro",
+    title: "Contrato - Cadastro",
+    async loadComponent() {
+      const m = await import('./contratos/contrato/cadastro/contrato-cadastro.component');
+      return m.ContratoCadastroComponent;
+    }
+  },
+
+  {
+    path: "contrato/cadastro/:id",
+    title: "Contrato - Editar",
+    async loadComponent() {
+      const m = await import('./contratos/contrato/cadastro/contrato-cadastro.component');
+      return m.ContratoCadastroComponent;
+    }
+  },
    {
     path: "cliente/pesquisa",
     title: "Cliente - Pesquisa",

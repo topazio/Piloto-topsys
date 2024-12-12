@@ -30,6 +30,8 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
 
   items: Observable<T[]> = new Observable<T[]>();
 
+  cachePage: boolean = false;
+
   constructor() {
     this.formGroup = this.createForm();
   }
@@ -42,6 +44,12 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
 
   ngOnInit(): void {
     this.init();
+
+    if(this.cachePage){
+      let form;
+     form = sessionStorage.getItem('filtros');
+   /*  this.formGroup = form */
+    }
 
     this.resetForm();
 

@@ -1,5 +1,5 @@
 <p-scrollPanel id="homeScrollPanel" styleClass="customBarColor">
-  <app-crud-tabs  routerLinkRelativo="cliente"/>
+  <app-crud-tabs-dinamico [tabsDinamicas]="itemMenusTabs" />
 
   <div class="divSpacerCadastro">
     <p-fieldset id="formCadastro" legend="''" class="w-full px-0 h-full">
@@ -63,7 +63,7 @@
         </app-input-wrapper>
 
 
-        <app-crud-botoes-cadastro (methodSave)="save()" (methodResetForm)="resetForm()" telaRota="cliente" [formGroup]="formGroup" />
+        <app-crud-botoes-cadastro (methodSave)="save()" (methodResetForm)="resetForm()" telaRota="contrato" [formGroup]="formGroup" />
       </form>
     </p-fieldset>
   </div>

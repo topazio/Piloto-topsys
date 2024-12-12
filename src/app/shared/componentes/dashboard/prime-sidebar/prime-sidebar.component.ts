@@ -23,6 +23,6 @@ export class PrimeSidebarComponent implements OnInit {
 
   @Input() items: MenuItem[] = [];
   ngOnInit(): void {
-    console.log(this.items);
+  //notvoid
   }
 }
