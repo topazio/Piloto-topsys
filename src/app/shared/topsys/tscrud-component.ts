@@ -1,7 +1,7 @@
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TSCrudService } from './tscrud-service';
-import { inject, Injectable, OnInit } from '@angular/core';
+import { inject, Injectable, OnDestroy, OnInit } from '@angular/core';
 import { PrimeToastService } from '../util/prime-toast.service';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { TSCrudModel } from './tscrud-model';
@@ -9,9 +9,10 @@ import { filter, firstValueFrom, Observable } from 'rxjs';
 import { ConfirmacaoService } from '../util/confirmacao.service';
 import { validationError } from '../util/validationErrorFn';
 import { RouterNavigatorService } from '../util/router-navigator.service';
+import { SessionManagerService } from '../util/session-manager.service';
 
 @Injectable()
-export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
+export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit, OnDestroy {
 
   model: T = {} as T;
 
@@ -19,16 +20,16 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
 
   formGroup: FormGroup;
 
-
-
-
   hasError: Function = validationError;
+
   confirmationService = inject(ConfirmacaoService);
   formBuilder = inject(FormBuilder);
   snackBarService = inject(PrimeToastService);
   route = inject(ActivatedRoute);
   router = inject(Router);
   routerHistoryService = inject(RouterNavigatorService);
+  sessionManagerService = inject(SessionManagerService);
+
   items: Observable<T[]> = new Observable<T[]>();
 
   cachePage: boolean = false;
@@ -46,46 +47,22 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
   ngOnInit(): void {
     this.init();
 
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationStart)
-    ).subscribe(() => {
-      if (this.route.snapshot?.parent?.url[0].path) {
-  /*       console.log('Antes', this.route.snapshot?.parent?.url[0].path) */
-        this.routerHistoryService.setLastRoute(this.route.snapshot?.parent?.url[0].path);
-      }
-    });
+    this.historicNavigation();
 
-   /*  console.log(this.routerHistoryService.getLastRoute());
-    console.log(this.route.snapshot?.parent?.url[0]?.path); */
-
-    if (this.routerHistoryService.getLastRoute() !== this.route.snapshot?.parent?.url[0]?.path) {
-
-      sessionStorage.removeItem('filtros');
-
-    }
+    this.sessionManagerService.removerFiltros(this.route);
 
     this.resetForm();
 
+    this.checkCacheFlag();
+
+    this.checkIdParam();
+
+  };
+  ngOnDestroy(): void {
     if (this.cachePage) {
-
-      let form = sessionStorage.getItem('filtros');
-
-      if (form) {
-
-        this.formGroup.patchValue(JSON.parse(form));
-
-      }
-
+      this.sessionManagerService.incluirFiltros(this.formGroup);
     }
-
-    let id = this.route.snapshot.paramMap.get('id');
-
-    if (id) {
-      this.detail(id);
-    }
-
-
-  }
+  };
 
   save(): void {
     this.formGroup.markAllAsTouched();
@@ -100,21 +77,19 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
         });
       }
     } else {
-
       this.snackBarService.error('Preencha os campos inválidos/obrigatórios');
     }
-  }
+  };
 
   edit(path: string, id: number | string) {
     this.router.navigateByUrl(`${path}/cadastro/${id}`, {
       skipLocationChange: true,
     });
-  }
+  };
 
   delete(id: number): void {
     this.confirmationService.openDialogConfirmacaoExcluir().subscribe({
       next: (value) => {
-
         if (value) {
           this.getServiceMain().delete(id).subscribe({
             next: () => this.messageDeleteSuccess(),
@@ -122,7 +97,7 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
         }
       },
     })
-  }
+  };
 
   find(modelParam?: T) {
     this.model = modelParam ?? this.formGroup.value;
@@ -158,5 +133,35 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit {
 
   resetForm(): void {
     this.formGroup.reset();
+  }
+
+  private checkIdParam() {
+    let id = this.route.snapshot.paramMap.get('id');
+
+    if (id) {
+      this.detail(id);
+    }
+  };
+  private checkCacheFlag() {
+    if (this.cachePage) {
+
+      let form = this.sessionManagerService.getFiltros();
+
+      if (form) {
+
+        this.formGroup.patchValue(JSON.parse(form));
+
+      }
+
+    }
+  }
+  private historicNavigation() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationStart)
+    ).subscribe(() => {
+      if (this.route.snapshot?.parent?.url[0].path) {
+        this.routerHistoryService.setLastRoute(this.route.snapshot?.parent?.url[0].path);
+      }
+    });
   }
 }

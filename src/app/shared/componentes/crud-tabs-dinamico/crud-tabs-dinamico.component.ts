@@ -25,6 +25,7 @@ export class CrudTabsDinamicoComponent implements OnInit {
   route = inject(ActivatedRoute);
 
   itemsMenus: MenuItem[] = [];
+
   ngOnInit(): void {
 
     this.itemsMenus = this.tabsDinamicas;

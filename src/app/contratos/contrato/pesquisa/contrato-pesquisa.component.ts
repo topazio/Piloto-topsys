@@ -38,7 +38,7 @@ import { CrudTabsDinamicoComponent } from '../../../shared/componentes/crud-tabs
   styleUrl: './contrato-pesquisa.component.scss',
   providers: [AsyncPipe, TitleCasePipe]
 })
-export class ContratoPesquisaComponent extends TSCrudComponent<ICliente> implements OnDestroy {
+export class ContratoPesquisaComponent extends TSCrudComponent<ICliente>  {
 
   displayedColumns: any[] = [];
   itemMenusTabs: MenuItem[] = [
@@ -114,11 +114,6 @@ export class ContratoPesquisaComponent extends TSCrudComponent<ICliente> impleme
 
     this.items = list;
   }
-  ngOnDestroy(): void {
-    if (this.formGroup.value) {
-      sessionStorage.setItem('filtros', JSON.stringify(this.formGroup.value))
-    }
 
-  }
 
 }

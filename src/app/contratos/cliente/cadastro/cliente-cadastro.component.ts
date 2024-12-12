@@ -24,6 +24,7 @@ import { CrudTabsComponent } from '../../../shared/componentes/crud-tabs/crud-ta
 import { MenuItem } from 'primeng/api';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { CrudTabsDinamicoComponent } from '../../../shared/componentes/crud-tabs-dinamico/crud-tabs-dinamico.component';
 @Component({
   selector: 'app-cliente-cadastro',
   templateUrl: './cliente-cadastro.component.html',
@@ -43,14 +44,18 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     DividerModule,
     ButtonModule,
     FieldsetModule,
-    CrudTabsComponent,
+
+    CrudTabsDinamicoComponent,
     CrudBotoesCadastroComponent
   ],
 })
 export class ClienteCadastroComponent extends TSCrudComponent<ICliente> {
   private estadoService = inject(EstadoService);
   private cidadeService = inject(CidadeService);
-
+  itemMenusTabs: MenuItem[] = [
+    { label: 'Cadastro', routerLink: `/cliente/cadastro`, skipLocationChange: false },
+    { label: 'Pesquisa', routerLink: `/cliente/pesquisa`, skipLocationChange: false }
+  ];
   estados = [] as IEstado[];
   cidades = [] as ICidade[];
 

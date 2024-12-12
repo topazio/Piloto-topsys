@@ -1,5 +1,5 @@
 <p-scrollPanel id="homeScrollPanel" styleClass="customBarColor">
-  <app-crud-tabs   routerLinkRelativo="cliente"/>
+  <app-crud-tabs-dinamico [tabsDinamicas]="itemMenusTabs" />
     <p-fieldset id="formPesquisaTabPanel" class="h-full px-0 py-1">
       <form [formGroup]="formGroup" id="formPesq" class="flex flex-column p-1  w-full  flex-wrap justify-content-start">
         <app-input-wrapper label="CNPJ" inputNome="cnpj" [required]="true" [class]="'lg:col-2 md:col-3 sm:col-3'"

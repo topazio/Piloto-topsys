@@ -17,11 +17,11 @@ import { CrudTableComponent } from '../../../shared/componentes/crud-table/crud-
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { MenuItem } from 'primeng/api';
+import { CrudTabsDinamicoComponent } from '../../../shared/componentes/crud-tabs-dinamico/crud-tabs-dinamico.component';
 @Component({
   selector: 'app-cliente-pesquisa',
   standalone: true,
   imports: [
-    CrudTabsComponent,
     CommonModule,
     ReactiveFormsModule,
     InputWrapperComponent,
@@ -31,7 +31,7 @@ import { MenuItem } from 'primeng/api';
     TableModule,
     FieldsetModule,
     ButtonModule,
-    CrudTabsComponent,
+    CrudTabsDinamicoComponent,
     CrudBotoesPesquisaComponent,
     CrudTableComponent
   ],
@@ -42,7 +42,10 @@ import { MenuItem } from 'primeng/api';
 export class ClientePesquisaComponent extends TSCrudComponent<ICliente> {
 
   displayedColumns: any[] = [];
-
+  itemMenusTabs: MenuItem[] = [
+    { label: 'Cadastro', routerLink: `/cliente/cadastro`, skipLocationChange: false },
+    { label: 'Pesquisa', routerLink: `/cliente/pesquisa`, skipLocationChange: false }
+  ];
   override init(): void {
     this.displayedColumns = [
       {
@@ -88,6 +91,7 @@ export class ClientePesquisaComponent extends TSCrudComponent<ICliente> {
         flagButtonExcluir: true
       },
     ];
+    this.cachePage = true;
   }
 
   constructor(private service: ClienteService) {

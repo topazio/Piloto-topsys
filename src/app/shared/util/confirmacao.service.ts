@@ -10,12 +10,12 @@ export class ConfirmacaoService {
   confirmationServices = inject(ConfirmationService);
 
 
-  openGenerico(messagem?: string, header: string = 'Confirmação'): Observable<boolean | null> {
+  openGenerico(messagem?: string, header?: string): Observable<boolean | null> {
     return new Observable<boolean | null>(observerDialog => {
       this.confirmationServices.confirm({
         key: 'confirmacaoDialog',
         message: messagem ?? 'Confirme a ação',
-        header: 'Confirmação',
+        header: header ?? 'Confirmação',
         accept: () => {
           observerDialog.next(true);
           observerDialog.complete();
