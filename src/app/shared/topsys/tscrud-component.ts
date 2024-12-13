@@ -13,8 +13,9 @@ import { SessionManagerService } from '../util/session-manager.service';
 import {
   DialogService
 } from 'primeng/dynamicdialog';
+import { ITSPage } from './tspage.interface';
 @Injectable()
-export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit, OnDestroy {
+export abstract class TSCrudComponent<T extends TSCrudModel, Y = undefined> implements OnInit, OnDestroy {
 
   model: T = {} as T;
 
@@ -34,7 +35,8 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit, 
   dialogDinamicoService = inject(DialogService);
 
   items: Observable<T[]> = new Observable<T[]>();
-/*   items: BehaviorSubject<T[]> = new BehaviorSubject<T[]>([]); */
+
+
   cachePage: boolean = false;
 
   constructor() {
@@ -90,7 +92,7 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit, 
     });
   };
 
-  openDialogEdit(id: number | string, component: Type<unknown>, headerDialog?: string){
+  openDialogEdit(id: number | string, component: Type<unknown>, headerDialog?: string) {
     return this.dialogDinamicoService.open(
       component,
       {
@@ -117,18 +119,22 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit, 
     })
   };
 
-  find(modelParam?: T) {
+  find(modelParam?: T, pageIndex?: number) {
+
     this.model = modelParam ?? this.formGroup.value;
-/*     this.getServiceMain().find(this.model).subscribe(data => {
-      this.items.next(data.items);
-      this.totalRecords = data.totalRecords;
-    }); */
+
+    this.model.pageIndex = pageIndex ?? 0;
+
     this.items = this.getServiceMain().find(this.model);
 
     return this.items;
 
   }
+  changePage(eventPage: ITSPage) {
 
+    this.find(this.model, eventPage.page);
+
+  }
 
   async detail(id: any): Promise<void> {
 
@@ -141,6 +147,10 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit, 
 
     //this.modelSubject.subscribe((data) => {this.model = data; this.formGroup = this.createForm(data)});
 
+  }
+  findChildrenDetail(id: number): Observable<Y[]>{
+
+    throw new Error('Method not implemented.');
   }
 
   messageSaveSuccess(): void {

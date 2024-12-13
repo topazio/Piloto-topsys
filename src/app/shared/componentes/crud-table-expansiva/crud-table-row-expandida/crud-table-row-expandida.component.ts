@@ -1,5 +1,5 @@
 import { CommonModule, AsyncPipe } from '@angular/common';
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { TableModule, Table, TableLazyLoadEvent } from 'primeng/table';
@@ -17,7 +17,7 @@ import { TableModule, Table, TableLazyLoadEvent } from 'primeng/table';
   styleUrl: './crud-table-row-expandida.component.scss',
   providers: [AsyncPipe]
 })
-export class CrudTableRowExpandidaComponent {
+export class CrudTableRowExpandidaComponent implements OnInit {
   @Input() items: any[] = [];
   @Input() displayedColumnsExpandidas: any[] = [];
   @Input() elementExpanded!: any;
@@ -38,5 +38,7 @@ export class CrudTableRowExpandidaComponent {
   records: any[] = [];
   expandedRows: Record<string, boolean> = {};
 
-
+  ngOnInit(): void {
+    this.elementExpanded = this.items;
+  }
 }

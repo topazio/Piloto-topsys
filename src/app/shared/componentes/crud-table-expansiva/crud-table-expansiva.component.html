@@ -30,6 +30,7 @@
           <td [style.width.%]="column.size" [class]="column.tdClass">
             @if(element[column.tdExpandKey]){
               <button pButton severity="primary" size="small" id="btnExpandirRowPesquisa" pRounded
+                (click)="elementDetail(element.id)"
                 [pRowToggler]="element">
                 <i class="fa-solid fa-plus"></i>
               </button>
@@ -53,7 +54,7 @@
       <td colspan="4">
         <div class="py-0 px-1">
           <app-crud-table-row-expandida [displayedColumnsExpandidas]="displayedColumnsExpandidas"
-            [captionHeader]="elementRowKeyExpand" [elementExpanded]="element[elementRowKeyExpand]" />
+            [captionHeader]="elementRowKeyExpand" [items]="elementExpanded" />
         </div>
       </td>
     </tr>

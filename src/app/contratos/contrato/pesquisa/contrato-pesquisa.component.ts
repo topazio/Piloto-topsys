@@ -38,7 +38,7 @@ import { CrudTabsDinamicoComponent } from '../../../shared/componentes/crud-tabs
   styleUrl: './contrato-pesquisa.component.scss',
   providers: [AsyncPipe, TitleCasePipe]
 })
-export class ContratoPesquisaComponent extends TSCrudComponent<ICliente>  {
+export class ContratoPesquisaComponent extends TSCrudComponent<ICliente> {
 
   displayedColumns: any[] = [];
   itemMenusTabs: MenuItem[] = [

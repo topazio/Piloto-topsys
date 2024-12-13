@@ -1,5 +1,5 @@
 <p-table [value]="records" (onPage)="loadLazy($event)" (onLazyLoad)="loadLazy($event)" [lazy]="lazyFlag"
-  [totalRecords]="totalRecords" [first]="first" [showCurrentPageReport]="(showResultSummary && records.length > 0)"
+  [totalRecords]="totalRecords" [showCurrentPageReport]="(showResultSummary && records.length > 0)"
   [currentPageReportTemplate]="resultSummaryMsg" selectionMode="single" id="tablePesquisaDiv" [rows]="rowsQtd"
   [scrollable]="scrollavelFlag" [alwaysShowPaginator]="paginatorSempreFlag" [paginator]="true"
   [paginatorPosition]="posicaoPaginator" [dataKey]="dataKeyTable" [scrollHeight]="scrollHeightString"
@@ -15,23 +15,24 @@
   <ng-template pTemplate="header">
     <tr>
       @for(column of displayedColumns; track column.label){
-      <th scope="col" [class]="column.tdClass" [style.width.%]="column.size">{{column.label}}</th>
+        <th scope="col" [class]="column.tdClass" [style.width.%]="column.size">{{column.label}}</th>
       }
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-element id="templateTableBody">
     <tr [pSelectableRow]="element" (dblclick)="edit(element.id)">
       @for(column of displayedColumns; track column.value){
-      @if(!column.flagButtonExcluir){
-      <td [style.width.%]="column.size" [class]="column.tdClass">{{element[column.value]}}</td>
-      }@else {
-      <td [class]="column.tdClass" [style.width.%]="column.size">
-        <button pButton size="small" id="buttonExclusaoTable" [text]="true" severity="danger"
-          (click)="delete(element.id);">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </td>
-      }
+        @if(!column.flagButtonExcluir){
+          <td [style.width.%]="column.size" [class]="column.tdClass">{{element[column.value]}}</td>
+        }
+        @else {
+        <td [class]="column.tdClass" [style.width.%]="column.size">
+          <button pButton size="small" id="buttonExclusaoTable" [text]="true" severity="danger"
+            (click)="delete(element.id);">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </td>
+        }
       }
     </tr>
   </ng-template>

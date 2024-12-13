@@ -26,6 +26,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PanelModule } from 'primeng/panel';
 import { CrudTableComponent } from '../../../shared/componentes/crud-table/crud-table.component';
 import { ContratoCadastroComponent } from '../../contrato/cadastro/contrato-cadastro.component';
+import { IContrato } from '../../model/contrato';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-acompanhamento-contratos',
@@ -56,7 +58,7 @@ import { ContratoCadastroComponent } from '../../contrato/cadastro/contrato-cada
   styleUrl: './acompanhamento-contratos.component.scss',
   providers: [AsyncPipe, TitleCasePipe]
 })
-export class AcompanhamentoContratosComponent extends TSCrudComponent<ICliente> {
+export class AcompanhamentoContratosComponent extends TSCrudComponent<ICliente, IContrato> {
   displayedColumns: any[] = [];
   ref: DynamicDialogRef | undefined;
   override init(): void {
@@ -152,7 +154,7 @@ export class AcompanhamentoContratosComponent extends TSCrudComponent<ICliente> 
   override getServiceMain(): TSCrudService<ICliente> {
     return this.service;
   }
-  openDialog(id: string | number){
+  openDialog(id: string | number) {
     this.ref = this.openDialogEdit(id, ContratoCadastroComponent);
 
     this.ref.onClose.subscribe((data: any) => {
@@ -168,7 +170,20 @@ export class AcompanhamentoContratosComponent extends TSCrudComponent<ICliente> 
       cnpj: [form?.cnpj ?? null],
     });
   }
+  cliqueDevolver() {
+    return this.findChildrenDetail();
+  }
+  requestedClique(event: any) {
+    if (event) {
+      this.cliqueDevolver();
+    }
+  }
+  override findChildrenDetail() {
 
+    const mock: IContrato[] = [{ id: 0, clienteId: "e354", dataInicio: "2021-07-01", dataFim: "2021-07-31", valor: "1000.00", status: "1" }];
+    console.log('Clicou');
+    return of(mock);
+  }
 
   pesquisar() {
     let list = this.getServiceMain().findDBJson("cnpj", this.model.cnpj);

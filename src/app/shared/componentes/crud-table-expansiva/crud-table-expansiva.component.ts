@@ -4,6 +4,8 @@ import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { Table, TableLazyLoadEvent, TableModule } from 'primeng/table';
 import { CrudTableRowExpandidaComponent } from './crud-table-row-expandida/crud-table-row-expandida.component';
+import { IContrato } from '../../../contratos/model/contrato';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-crud-table-expansiva',
@@ -41,7 +43,9 @@ export class CrudTableExpansivaComponent implements OnInit, OnChanges {
   @Input() elementRowKeyExpand: string = '';
   @Output() editClick: EventEmitter<any> = new EventEmitter();
   @Output() deleteClick: EventEmitter<any> = new EventEmitter();
-
+  @Output() pageChange: EventEmitter<any> = new EventEmitter();
+  @Input() detailRequestMethod: Observable<IContrato[]> = new Observable<IContrato[]>();
+  @Output() detailRequestEmitter: EventEmitter<any> = new EventEmitter();
   resultadoSelecionado!: any;
   selectedResultadosList: any[] = [];
   records: any[] = [];
@@ -49,27 +53,28 @@ export class CrudTableExpansivaComponent implements OnInit, OnChanges {
   elementExpanded: any;
 
   ngOnInit(): void {
-    /* console.log(this.displayedColumns);
-    console.log('Expancivas:', this.displayedColumnsExpandidas); */
+
 
   }
-  setElementExpand(element: any) {
-    console.log('Settou', element);
-  }
   ngOnChanges(changes: SimpleChanges): void {
-    this.checkTableItems(changes);
-   /*  console.log('valorTalbe:', this.items);
-    console.log('RowExpand', this.expandedRows);
-    console.log('SelectedRwos', this.selectedResultadosList); */
+    this.lazyInitLoad(changes);
   }
 
   edit(id: number) {
     this.editClick.emit(id);
   }
-
   delete(id: number) {
     this.deleteClick.emit(id);
   }
+  elementDetail(id: number) {
+    console.log('Clickou interno');
+   this.detailRequestMethod.subscribe((val) =>{
+      console.log(val);
+    this.elementExpanded = val;
+    })
+    }
+
+
 
   onRowExpand(event: any) {
     this.expandedRows[event.data.id] = true;
@@ -79,45 +84,18 @@ export class CrudTableExpansivaComponent implements OnInit, OnChanges {
     delete this.expandedRows[event.data.id];
   }
 
-  protected async loadLazy(event: TableLazyLoadEvent) {
-/*     console.log("event: ", event); */
-
+  protected loadLazy(event: TableLazyLoadEvent) {
     const parameters = {
       page: event.first! / event.rows!,
-      size: this.totalRecords,
-      sortField: event.sortField,
-      sortOrder: event.sortOrder,
-      filters: event.filters
+      size: this.totalRecords
     };
+    this.pageChange.emit(parameters);
 
- /*    console.log("parameters: ", parameters); */
-    await this.simulacaoSlice(event);
-  }
-
-  private async lazyInitLoad() {
-    setTimeout(() => {
-      this.records = this.items.slice(0, this.rowsQtd);
-      this.totalRecords = this.items.length;
-    }, 600);
-  }
-
-  private async checkTableItems(changes: SimpleChanges) {
-    if (changes['items']) {
-      await this.lazyInitLoad();
+  };
+  private lazyInitLoad(changes: SimpleChanges) {
+    if (changes['items'] && this.items.length > 0) {
+      this.records = this.items;
     }
-  }
+  };
 
-  private async simulacaoSlice(event: TableLazyLoadEvent) {
-    if (this.items.length > 0) {
-      setTimeout(() => {
-        const dataFromBackend = this.items.slice(
-          event.first,
-          event.first! + event.rows!
-        );
-
-        this.records = dataFromBackend;
-    /*     console.log("records: ", this.records); */
-      }, 600);
-    }
-  }
 }

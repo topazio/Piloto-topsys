@@ -18,11 +18,9 @@ import { TableLazyLoadEvent, TableModule } from 'primeng/table';
   providers: [AsyncPipe]
 })
 export class CrudTableComponent implements OnChanges {
-  // Valores da tablea inputados;
+
   @Input() items: any[] = [];
   @Input() displayedColumns: any[] = [];
-
-  //Controles nativos da Table:
   @Input() captionHeader: string = 'Resultados';
   @Input() mensagemDeEmpty: string = 'Não há registros encontrados';
   @Input() rowsQtd: number = 15;
@@ -31,21 +29,20 @@ export class CrudTableComponent implements OnChanges {
   @Input() scrollavelFlag: boolean = true;
   @Input() posicaoPaginator: 'bottom' | 'top' | 'both' = 'bottom';
   @Input() scrollHeightString: string = 'calc(100vh - 285px)';
-  @Input() totalRecords: number = 0;
-  @Input() first: number = 0;
+  @Input() totalRecords: number = 22;
   @Input() showResultSummary: boolean = false;
   @Input() resultSummaryMsg: string = 'Exibindo de {first} à {last}, de {totalRecords} resultados';
   @Input() lazyFlag: boolean = true;
 
-  // Eventos de clicks, editClick para ir para edições e deleteClick no button de delete da table;
   @Output() editClick: EventEmitter<any> = new EventEmitter();
   @Output() deleteClick: EventEmitter<any> = new EventEmitter();
+  @Output() pageChange: EventEmitter<any> = new EventEmitter();
 
   resultadoSelecionado!: any;
   records: any[] = [];
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.checkTableItems(changes);
+    this.lazyInitLoad(changes);
   };
 
   edit(id: number) {
@@ -54,48 +51,17 @@ export class CrudTableComponent implements OnChanges {
   delete(id: number) {
     this.deleteClick.emit(id);
   };
-  protected async loadLazy(event: TableLazyLoadEvent) {
-    console.log("event: ", event);
-
+  protected loadLazy(event: TableLazyLoadEvent) {
     const parameters = {
       page: event.first! / event.rows!,
-      size: this.totalRecords,
-      sortField: event.sortField,
-      sortOrder: event.sortOrder,
-      filters: event.filters
+      size: this.totalRecords
     };
+    this.pageChange.emit(parameters);
 
-    console.log("parameters: ", parameters);
-    await this.simulacaoSlice(event);
   };
-  private async lazyInitLoad() {
-
-    setTimeout(() => {
-      this.records = this.items.slice(0, this.rowsQtd);
-      this.totalRecords = this.items.length;
-
-    }, 600);
-  };
-  private async checkTableItems(changes: SimpleChanges) {
-    if (changes['items']) {
-      await this.lazyInitLoad();
-    }
-  };
-  private async simulacaoSlice(event: TableLazyLoadEvent) {
-
-    if (this.items.length > 0) {
-      // Simular uma conexão com o backend
-      setTimeout(() => {
-        const dataFromBackend = this.items.slice(
-          event.first!,
-          event.first! + event.rows!
-        );
-
-        this.records = dataFromBackend;
-
-        console.log("records: ", this.records);
-
-      }, 600);
+  private lazyInitLoad(changes: SimpleChanges) {
+    if (changes['items'] && this.items.length > 0) {
+      this.records = this.items;
     }
   };
 

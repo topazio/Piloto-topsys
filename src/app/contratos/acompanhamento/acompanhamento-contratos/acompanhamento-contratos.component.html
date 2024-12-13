@@ -23,6 +23,7 @@
       </p-panel>
       <div class="w-full" id="pesquisaDiv">
         <app-crud-table-expansiva elementRowKeyExpand="contratos"
+           [detailRequestMethod]="this.cliqueDevolver()" (detailRequestEmitter)="requestedClique($event)"
           [displayedColumnsExpandidas]="displayedColumnsExpandidas" [items]="(items | async) ?? []"
           [displayedColumns]="displayedColumns" (editClick)="openDialog($event)" (deleteClick)="delete($event)" />
       </div>
