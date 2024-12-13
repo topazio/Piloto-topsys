@@ -1,3 +1,12 @@
+@if(buttonNovoCadastroFlag){
+<div class=" flex justify-content-end h-min mb-0 flex-inline spacerNovoCadastro">
+  <button pButton pRipple pRounded [raised]="true" severity="info" size="small" [label]="buttonNovoCadastroLabel"
+    class="gap-2 p-2  px-3" (click)="executeMethodOpenDialog()">
+    <i class="fa-solid fa-square-plus"></i>
+  </button>
+</div>
+}
+
 <div class="w-full flex justify-content-end gap-2 mt-2 px-2 gap-2">
   <button pButton pRipple pRounded [raised]="true" type="submit" severity="primary" size="small"
     (click)="executeMethodFind()" label="Pesquisar" class="gap-2 p-2 px-3">

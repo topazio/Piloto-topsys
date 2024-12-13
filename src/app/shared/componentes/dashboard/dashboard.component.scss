@@ -147,7 +147,7 @@
   width: 100%;
   border: 1px solid var(--surface-border);
   overflow: auto;
-  height: calc(100vh - 5.25rem);
+/*   height: calc(100vh - 5.25rem); */
 }
 
 ::ng-deep .layout {
@@ -196,7 +196,7 @@
   font-weight: 600;
   text-align: center !important;
   color: var(--primary-color-text);
-  background: var(--primary-500);
+  background: var(--primary-400);
   border-top-left-radius: 6px !important;
   border-top-right-radius: 6px !important;
 }

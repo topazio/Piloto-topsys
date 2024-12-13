@@ -1,0 +1,127 @@
+::ng-deep #btnExcluirRowPesquisa {
+  height: 1rem !important;
+  padding: 0.1rem;
+}
+
+::ng-deep #formPesqPaneled {
+  margin-bottom: 1rem;
+}
+
+::ng-deep #formPesquisaTabPanel>fieldset {
+  margin-top: -1rem;
+  max-height: calc(100vh - 125px);
+  min-height: calc(100vh - 162px);
+}
+
+::ng-deep #formPesquisaTabPanel:first-child legend,
+::ng-deep #formPesquisaTabPanel:first-of-type .p-fieldset-legend {
+  display: none;
+}
+
+::ng-deep #formPesquisaTabPanel:first-of-type .p-fieldset-content {
+  padding: 0.25rem;
+  padding-top: 0.2rem;
+  margin-top: 0.25rem;
+}
+
+::ng-deep #panelSinglePage>.p-panel>.p-panel-header {
+  display: none !important;
+}
+
+::ng-deep #dividerFiltrosPesquisa {
+  .p-divider.p-divider-horizontal {
+    margin: 0.85rem 0;
+    padding: 0 1rem;
+  }
+}
+
+::ng-deep #panelSinglePage>.p-panel .p-panel-content {
+  padding-left: 0.25rem;
+  padding-right: 1rem;
+  padding-bottom: 0rem;
+  padding-top: 0.5rem;
+  min-height: calc(100vh - 152px);
+  height: 100%;
+  overflow: auto;
+  margin-top: 1.5rem;
+  border-top: 0px solid #e5e7eb;
+}
+
+
+::ng-deep #panelSimplesToggleParaForms {
+  .p-panel .p-panel-header {
+    background: var(--primary-400);
+    border-color: #e5e7eb;
+    color: rgba(255, 255, 255, 1);
+    font-weight: 600;
+    padding: 0.25rem 1rem;
+  }
+
+  .p-panel .p-panel-header .p-panel-header-icon:enabled:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .p-panel .p-panel-header .p-panel-header-icon {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .p-panel .p-panel-content {
+    min-height: unset;
+    margin-top: unset;
+  }
+}
+
+::ng-deep #panelSimplesToggleParaFormsSemToggle {
+  .p-panel .p-panel-header {
+    background: var(--primary-400);
+    border-color: #e5e7eb;
+    color: rgba(255, 255, 255, 1);
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+  }
+
+  .p-panel .p-panel-header .p-panel-header-icon:enabled:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .p-panel .p-panel-header .p-panel-header-icon {
+    color: rgba(255, 255, 255, 1);
+  }
+}
+
+::ng-deep .spacerNovoCadastro {
+  padding-right: 0.5rem;
+  position: fixed;
+  top: 4.5rem;
+  right: 0.5rem;
+}
+
+@media screen and (max-width: 626px) {
+  #panelSinglePage .p-panel .p-panel-content {
+    padding-left: 0rem;
+    padding-right: 7rem;
+    padding-bottom: 0rem;
+    padding-top: 0.25rem;
+    margin-bottom: 4rem;
+    height: calc(100vh - 142px);
+    overflow: auto;
+  }
+}
+
+
+::ng-deep #homeScrollPanel {
+  .p-scrollpanel-content {
+    width: calc(100% + 2.5rem);
+  }
+}
+
+::ng-deep #singleTablePage .p-datatable-header {
+  text-align: center !important;
+  color: var(--primary-color-text);
+  border-top-left-radius: 6px !important;
+  border-top-right-radius: 6px !important;
+}
+
+::ng-deep #singleTablePage td {
+  padding: 0.15rem 0.5rem;
+}

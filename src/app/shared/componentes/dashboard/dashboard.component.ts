@@ -17,6 +17,7 @@ import { PrimeHeaderComponent } from './prime-header/prime-header.component';
 import { PrimeSidebarComponent } from './prime-sidebar/prime-sidebar.component';
 import { DialogConfirmacaoComponent } from '../dialog-confirmacao/dialog-confirmacao.component';
 import { ConfirmacaoService } from '../../util/confirmacao.service';
+import { DialogService } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-dashboard',
@@ -41,7 +42,8 @@ import { ConfirmacaoService } from '../../util/confirmacao.service';
     DatePipe,
     AsyncPipe,
     ConfirmationService,
-    ConfirmacaoService
+    ConfirmacaoService,
+    DialogService
   ],
 })
 export class DashBoardComponent implements OnInit {

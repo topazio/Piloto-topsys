@@ -12,7 +12,7 @@
         <app-crud-botoes-pesquisa (methodFind)="pesquisar()" (methodResetForm)="resetForm()" />
       </form>
       <div class="w-full" id="pesquisaDiv">
-        <app-crud-table [items]="(items | async) ?? []" [displayedColumns]="displayedColumns" (editClick)="edit('contrato', $event)"
+        <app-crud-table [items]="(items | async) ?? []" [displayedColumns]="displayedColumns" (editClick)="edit('proposta', $event)"
           (deleteClick)="delete($event)" />
       </div>
     </p-fieldset>

@@ -9,7 +9,17 @@
       "cidadeId": "2",
       "estadoId": "11",
       "telefone": "(23) 4 2342-3423",
-      "email": "34324432"
+      "email": "34324432",
+      "contratos": [
+        {
+          "id": "0",
+          "clienteId": "e354",
+          "dataInicio": "2021-07-01",
+          "dataFim": "2021-07-31",
+          "valor": "1000.00",
+          "status": "1"
+        }
+      ]
     },
     {
       "id": "0",
@@ -20,7 +30,17 @@
       "cidadeId": "3",
       "estadoId": "10",
       "telefone": "(71) 9 9930-9314",
-      "email": "andre.topazio@gmail.com"
+      "email": "andre.topazio@gmail.com",
+      "contratos": [
+        {
+          "id": "55",
+          "clienteId": "0",
+          "dataInicio": "2021-07-01",
+          "dataFim": "2021-07-31",
+          "valor": "3000.00",
+          "status": "1"
+        }
+      ]
     },
     {
       "id": "1",

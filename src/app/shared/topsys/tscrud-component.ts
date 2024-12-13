@@ -1,7 +1,7 @@
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TSCrudService } from './tscrud-service';
-import { inject, Injectable, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, Injectable, OnDestroy, OnInit, Type } from '@angular/core';
 import { PrimeToastService } from '../util/prime-toast.service';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { TSCrudModel } from './tscrud-model';
@@ -10,7 +10,9 @@ import { ConfirmacaoService } from '../util/confirmacao.service';
 import { validationError } from '../util/validationErrorFn';
 import { RouterNavigatorService } from '../util/router-navigator.service';
 import { SessionManagerService } from '../util/session-manager.service';
-
+import {
+  DialogService
+} from 'primeng/dynamicdialog';
 @Injectable()
 export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit, OnDestroy {
 
@@ -29,9 +31,10 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit, 
   router = inject(Router);
   routerHistoryService = inject(RouterNavigatorService);
   sessionManagerService = inject(SessionManagerService);
+  dialogDinamicoService = inject(DialogService);
 
   items: Observable<T[]> = new Observable<T[]>();
-
+/*   items: BehaviorSubject<T[]> = new BehaviorSubject<T[]>([]); */
   cachePage: boolean = false;
 
   constructor() {
@@ -87,6 +90,21 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit, 
     });
   };
 
+  openDialogEdit(id: number | string, component: Type<unknown>, headerDialog?: string){
+    return this.dialogDinamicoService.open(
+      component,
+      {
+        header: headerDialog ?? 'Edição',
+        width: '70vw',
+        maximizable: true,
+        modal: true,
+        focusOnShow: false,
+        contentStyle: { overflow: 'auto', minHeight: '40vh', height: '100%' },
+        data: { id }, // Passar o id para o componente
+      }
+    );
+  }
+
   delete(id: number): void {
     this.confirmationService.openDialogConfirmacaoExcluir().subscribe({
       next: (value) => {
@@ -101,7 +119,10 @@ export abstract class TSCrudComponent<T extends TSCrudModel> implements OnInit, 
 
   find(modelParam?: T) {
     this.model = modelParam ?? this.formGroup.value;
-
+/*     this.getServiceMain().find(this.model).subscribe(data => {
+      this.items.next(data.items);
+      this.totalRecords = data.totalRecords;
+    }); */
     this.items = this.getServiceMain().find(this.model);
 
     return this.items;

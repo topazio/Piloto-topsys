@@ -1,0 +1,27 @@
+::ng-deep .spacerNovoCadastro {
+  padding-right: 0.5rem;
+  position: fixed;
+  top: 4.5rem;
+  right: 1.5rem;
+  left: 17.5rem;
+}
+::ng-deep #formCadastroButtonsDiv .p-divider {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+::ng-deep #formCadastroButtonsDiv {
+  z-index: 9;
+  position: absolute;
+  bottom: calc(0vh + 0.5rem);
+  right: 0.5rem;
+  left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  margin: 0rem 2rem 0rem 0rem;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #4b5563;
+  border-radius: 6px;
+}

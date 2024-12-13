@@ -1,0 +1,36 @@
+::ng-deep #btnExcluirRowPesquisa {
+    height: 1rem !important;
+    padding: 0.1rem;
+  }
+
+  ::ng-deep #formPesquisaTabPanel>fieldset {
+    margin-top: -1rem;
+    max-height: calc(100vh - 125px);
+    min-height: calc(100vh - 162px);
+  }
+
+  ::ng-deep #formPesquisaTabPanel:first-child legend,
+  ::ng-deep #formPesquisaTabPanel:first-of-type .p-fieldset-legend {
+    display: none;
+  }
+
+  ::ng-deep #formPesquisaTabPanel:first-of-type .p-fieldset-content {
+    padding: 0.25rem;
+    padding-top: 0.2rem;
+    margin-top: 0.25rem;
+  }
+
+  ::ng-deep #tablePesquisaDiv {
+    .p-paginator {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      align-content: center;
+    }
+
+    .p-paginator .p-paginator-current {
+      width: 100%
+    }
+  }

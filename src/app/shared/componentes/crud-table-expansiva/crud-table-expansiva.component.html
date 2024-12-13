@@ -1,0 +1,61 @@
+<p-table #tableExpansiva [expandedRowKeys]="expandedRows" (onRowExpand)="onRowExpand($event)"
+  [(selection)]="selectedResultadosList" id="tablePesquisaDiv" [alwaysShowPaginator]="false" (onPage)="loadLazy($event)"
+  (onLazyLoad)="loadLazy($event)" [lazy]="lazyFlag" [totalRecords]="totalRecords" [first]="first"
+  [showCurrentPageReport]="(showResultSummary && records.length > 0)" [currentPageReportTemplate]="resultSummaryMsg"
+  [rows]="rowsQtd" [scrollable]="scrollavelFlag" [alwaysShowPaginator]="paginatorSempreFlag" [paginator]="true"
+  [paginatorPosition]="posicaoPaginator" [dataKey]="dataKeyTable" [scrollHeight]="scrollHeightString"
+  (onRowCollapse)="onRowCollapse($event)" [value]="records"
+  styleClass="p-datatable-sm p-datatable-gridlines mt-0 w-full" class="w-full">
+  <ng-template pTemplate="caption" class="flex justify-content-between">
+    {{captionHeader}}
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="12" class="text-center">{{mensagemDeEmpty}}</td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      @for(column of displayedColumns; track column.label){
+        <th scope="col" [class]="column.tdClass" [style.width.%]="column.size">
+          {{column.label}}
+        </th>
+      }
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-element let-expanded="expanded">
+    <tr  (dblclick)="edit(element.id)">
+      @for(column of displayedColumns; track column.value){
+        @if(!column.flagButtonExcluir){
+          <td [style.width.%]="column.size" [class]="column.tdClass">
+            @if(element[column.tdExpandKey]){
+              <button pButton severity="primary" size="small" id="btnExpandirRowPesquisa" pRounded
+                [pRowToggler]="element">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            }
+            {{element[column.value]}}
+          </td>
+        }
+        @else {
+          <td [class]="column.tdClass" [style.width.%]="column.size">
+            <button pButton size="small" id="buttonExclusaoTable" [text]="true" severity="danger"
+              (click)="delete(element.id);">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </td>
+        }
+      }
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="rowexpansion" let-element>
+    <tr>
+      <td colspan="4">
+        <div class="py-0 px-1">
+          <app-crud-table-row-expandida [displayedColumnsExpandidas]="displayedColumnsExpandidas"
+            [captionHeader]="elementRowKeyExpand" [elementExpanded]="element[elementRowKeyExpand]" />
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

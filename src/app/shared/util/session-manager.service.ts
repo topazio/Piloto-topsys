@@ -11,19 +11,18 @@ export class SessionManagerService {
   routerNavigator = inject(RouterNavigatorService);
 
 
-  incluirFiltros(formGroup: FormGroup) {
+  incluirFiltros(formGroup: FormGroup, sessionKey?: string) {
     if (formGroup.value) {
-      sessionStorage.setItem('filtros', JSON.stringify(formGroup.value))
+      sessionStorage.setItem(sessionKey ?? 'filtros', JSON.stringify(formGroup.value))
     }
   }
-  getFiltros() {
-    return sessionStorage.getItem('filtros');
+  getFiltros(sessionKey?: string) {
+    return sessionStorage.getItem(sessionKey ?? 'filtros');
   }
 
-  removerFiltros(route: ActivatedRoute) {
-
+  removerFiltros(route: ActivatedRoute, sessionKey?: string) {
     if (this.routerNavigator.getLastRoute() !== route.snapshot?.parent?.url[0]?.path) {
-      sessionStorage.removeItem('filtros');
+      sessionStorage.removeItem(sessionKey ?? 'filtros');
     }
   }
 }

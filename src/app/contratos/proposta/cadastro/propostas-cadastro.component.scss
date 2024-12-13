@@ -1,0 +1,176 @@
+
+::ng-deep #formCadastro fieldset:first-child {
+    /* margin-bottom: 5rem; */
+
+  }
+
+  ::ng-deep #formCadastro>fieldset {
+    min-height: calc(100vh - 17rem);
+  }
+
+  ::ng-deep #fieldSetAninhado fieldset {
+    margin-bottom: unset;
+    width: 100%;
+  }
+
+  ::ng-deep #fieldSetAninhadoDesfocado legend {
+    display: block !important;
+    font-weight: 600;
+    color: var(--surface-400);
+    font-size: 1.1rem;
+  }
+
+  ::ng-deep #fieldSetAninhadoDesfocado fieldset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  ::ng-deep #fieldSetAninhadoDesfocado .p-fieldset-legend {
+    padding: 1rem;
+    border-color: transparent transparent !important;
+    background: white;
+    border-radius: 6px;
+    transition: box-shadow 0.2s;
+  }
+
+  ::ng-deep #fieldSetAninhadoDesfocado .p-fieldset-content {
+    height: 100%;
+    align-items: center;
+    display: inline-flex;
+    width: 100%;
+  }
+
+  ::ng-deep #fieldSetAninhadoDesfocado .p-toggleable-content {
+    min-height: 80px;
+    padding: 1rem;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  ::ng-deep .divSpacerCadastro {
+    margin-top: -0.85rem;
+    display: flex;
+    min-height: 79vh;
+    padding-right: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  ::ng-deep .min90Hpx>fieldset {
+    min-height: 101px;
+  }
+
+  ::ng-deep #buttonExclusaoTable {
+    height: 1rem !important;
+    padding: 0.1rem;
+  }
+
+  ::ng-deep #formCadastroButtonsDiv .p-divider {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  ::ng-deep #formCadastroButtonsDiv {
+    z-index: 9;
+    position: absolute;
+    bottom: calc(0vh + 0.5rem);
+    right: 0.5rem;
+    left: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    margin: 0rem 2rem 0rem 0rem;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    color: #4b5563;
+    border-radius: 6px;
+  }
+
+  ::ng-deep #formCadastro:first-of-type .p-fieldset-content {
+    padding: 0.25rem;
+    padding-top: 0.2rem;
+  }
+
+  ::ng-deep #formCadastro:first-child legend,
+  ::ng-deep #formCadastro:first-of-type .p-fieldset-legend {
+    display: none;
+  }
+
+  ::ng-deep .custom-smed-fieldset {
+    box-sizing: border-box;
+    font-family: var(--font-family);
+    font-feature-settings: var(--font-feature-settings, normal);
+    font-size: 1rem;
+    font-weight: normal;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    color: #4b5563;
+    border-radius: 6px;
+    padding-block: 0.35em 0.625em;
+    padding-inline: 0.75em;
+  }
+
+  ::ng-deep .custom-smed-fieldset legend {
+    display: block !important;
+    padding: 0.5rem;
+    border: 1px solid #e5e7eb;
+    line-height: 1;
+    background: var(--primary-500);
+    border-radius: 6px;
+    transition: box-shadow 0.2s;
+  }
+
+  ::ng-deep #fieldSetAninhado legend {
+    display: block !important;
+  }
+
+  ::ng-deep #fieldSetAninhado .p-fieldset-legend {
+    padding: 0.5rem;
+    color: var(--primary-color-text);
+    background: var(--primary-500);
+    border-radius: 6px;
+    transition: box-shadow 0.2s;
+  }
+
+  ::ng-deep #anexosAtaReuniao .p-fileupload-content {
+    display: none !important;
+  }
+
+  ::ng-deep #anexosAtaReuniao .p-fileupload-buttonbar {
+    padding: 0rem;
+  }
+
+  ::ng-deep #fieldSetAninhado .p-fieldset-content {
+    padding: 0.5rem !important;
+  }
+
+  ::ng-deep #fieldSetAninhado .p-fieldset-toggler {
+    display: none;
+  }
+
+  ::ng-deep #fieldSetAninhado legend {
+    display: block !important;
+  }
+
+  ::ng-deep #fieldSetAninhado .p-fieldset-legend a {
+    padding: 0.25rem;
+    color: var(--primary-color-text);
+    background: var(--primary-500);
+    border-radius: 6px;
+    transition: box-shadow 0.2s;
+  }
+
+  ::ng-deep #fieldSetAninhado .p-fieldset-content {
+    padding: 0.5rem;
+  }
+
+  ::ng-deep #fieldSetAninhado .p-fieldset-toggler {
+    display: none;
+  }
