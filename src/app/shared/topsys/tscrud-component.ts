@@ -11,9 +11,12 @@ import { validationError } from '../util/validationErrorFn';
 import { RouterNavigatorService } from '../util/router-navigator.service';
 import { SessionManagerService } from '../util/session-manager.service';
 import {
-  DialogService
+  DialogService,
+  DynamicDialogConfig,
+  DynamicDialogRef
 } from 'primeng/dynamicdialog';
 import { ITSPage } from './tspage.interface';
+import { CrudDialogsBotoesCadastroComponent } from '../componentes/crud-dialogs-botoes-cadastro/crud-dialogs-botoes-cadastro.component';
 @Injectable()
 export abstract class TSCrudComponent<T extends TSCrudModel, Y = undefined> implements OnInit, OnDestroy {
 
@@ -23,7 +26,7 @@ export abstract class TSCrudComponent<T extends TSCrudModel, Y = undefined> impl
   formGroup: FormGroup;
 
   hasError: Function = validationError;
-
+  ref?: DynamicDialogRef | undefined;
   confirmationService = inject(ConfirmacaoService);
   formBuilder = inject(FormBuilder);
   snackBarService = inject(PrimeToastService);
@@ -32,6 +35,7 @@ export abstract class TSCrudComponent<T extends TSCrudModel, Y = undefined> impl
   routerHistoryService = inject(RouterNavigatorService);
   sessionManagerService = inject(SessionManagerService);
   dialogDinamicoService = inject(DialogService);
+  configDialogService = inject(DynamicDialogConfig);
 
   items: Observable<T[]> = new Observable<T[]>();
 
@@ -60,11 +64,14 @@ export abstract class TSCrudComponent<T extends TSCrudModel, Y = undefined> impl
     this.checkCacheFlag();
 
     this.checkIdParam();
-
+    this.checkIdConfigDialog();
   };
   ngOnDestroy(): void {
     if (this.cachePage) {
       this.sessionManagerService.incluirFiltros(this.formGroup);
+    }
+    if (this.ref) {
+      this.ref.close();
     }
   };
 
@@ -91,9 +98,11 @@ export abstract class TSCrudComponent<T extends TSCrudModel, Y = undefined> impl
     });
   };
 
-  openDialogEdit(id: number | string, component: Type<unknown>, headerDialog?: string) {
-    return this.dialogDinamicoService.open(
-      component,
+  openDialogEdit(id: number | string | null,
+    component: Type<unknown>,
+    footerCompoonent?: Type<unknown>,
+    headerDialog?: string) {
+    return this.dialogDinamicoService.open(component,
       {
         header: headerDialog ?? 'Edição',
         width: '70vw',
@@ -101,10 +110,16 @@ export abstract class TSCrudComponent<T extends TSCrudModel, Y = undefined> impl
         modal: true,
         focusOnShow: false,
         contentStyle: { overflow: 'auto', minHeight: '40vh', height: '100%' },
-        data: { id }, // Passar o id para o componente
+        data: {
+          id,
+        },
+        templates: {
+          footer: footerCompoonent ?? undefined,
+        }
+
       }
-    );
-  }
+    )
+  };
 
   delete(id: number): void {
     this.confirmationService.openDialogConfirmacaoExcluir().subscribe({
@@ -138,12 +153,12 @@ export abstract class TSCrudComponent<T extends TSCrudModel, Y = undefined> impl
   //METODO LAZY LOAD PARA DB JSON SERVER:
   changePageDBJson(event: ITSPage) {
 
-      this.getServiceMain().changePageDBJson(undefined, undefined, event.page).subscribe(listaPagina => {
-        this.items = new Observable<T[]>(observer => {
-          observer.next(listaPagina.data as T[]);
-          observer.complete();
-        });
+    this.getServiceMain().changePageDBJson(undefined, undefined, event.page).subscribe(listaPagina => {
+      this.items = new Observable<T[]>(observer => {
+        observer.next(listaPagina.data as T[]);
+        observer.complete();
       });
+    });
 
   }
   async detail(id: any): Promise<void> {
@@ -175,7 +190,12 @@ export abstract class TSCrudComponent<T extends TSCrudModel, Y = undefined> impl
   resetForm(): void {
     this.formGroup.reset();
   }
-
+  private checkIdConfigDialog() {
+    let id = this.configDialogService?.data?.id ?? null;
+    if (id) {
+      this.detail(id);
+    }
+  }
   private checkIdParam() {
     let id = this.route.snapshot.paramMap.get('id');
 

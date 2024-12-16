@@ -29,8 +29,8 @@
       @if(!column.flagButtonExcluir){
       <td [style.width.%]="column.size" [class]="column.tdClass">
         @if(element[column.tdExpandKey]){
-        <button pButton severity="primary" size="small" id="btnExpandirRowPesquisa" pRounded [pRowToggler]="element">
-          <i class="fa-solid fa-plus"></i>
+        <button pButton [severity]="isRowExpanded(element) ? 'primary' : 'info'"  [outlined]="true"  size="small" id="btnExpandirRowPesquisa" pRounded [pRowToggler]="element">
+          <i [ngClass]="isRowExpanded(element) ? 'fa-solid fa-minus' : 'fa-solid fa-plus'"></i>
         </button>
         }
         {{element[column.value]}}

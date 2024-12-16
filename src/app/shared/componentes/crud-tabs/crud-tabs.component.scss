@@ -74,7 +74,7 @@
 }
 
 ::ng-deep #formCadastro>fieldset {
-  min-height: calc(100vh - 17rem);
+  min-height: calc(100vh - 15rem);
 }
 
 ::ng-deep #fieldSetAninhado fieldset {
@@ -125,12 +125,11 @@
   width: 100%;
 }
 
-::ng-deep .divSpacerCadastro {
+::ng-deep .divSpacerCadastro{
   margin-top: -0.85rem;
-  display: flex;
-  min-height: 79vh;
-  padding-right: 1rem;
-  margin-bottom: 2.5rem;
+    display: flex;
+    padding-right: 1rem;
+    margin-bottom: 3rem;
 }
 
 ::ng-deep .min90Hpx>fieldset {

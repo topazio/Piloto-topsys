@@ -28,7 +28,7 @@ export class CrudTableComponent implements OnChanges {
   @Input() paginatorSempreFlag: boolean = false;
   @Input() scrollavelFlag: boolean = true;
   @Input() posicaoPaginator: 'bottom' | 'top' | 'both' = 'bottom';
-  @Input() scrollHeightString: string = 'calc(100vh - 285px)';
+  @Input() scrollHeightString: string = 'calc(100vh - 306px)';
   @Input() totalRecords: number = 22;
   @Input() showResultSummary: boolean = false;
   @Input() resultSummaryMsg: string = 'Exibindo de {first} à {last}, de {totalRecords} resultados';

@@ -62,7 +62,9 @@ export class CrudTableExpansivaComponent implements OnChanges {
   delete(id: number) {
     this.deleteClick.emit(id);
   };
-
+isRowExpanded(element: any): boolean {
+  return this.expandedRows[element.id] === true;
+}
   onRowExpand(event: any) {
     if (event) {
       this.expandedRows[event.data.id] = true;

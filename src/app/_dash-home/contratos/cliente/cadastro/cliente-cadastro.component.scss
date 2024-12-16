@@ -20,13 +20,14 @@
 .col:last-child {
   margin-right: 0;
 }
+
 ::ng-deep #formCadastro fieldset:first-child {
   /* margin-bottom: 5rem; */
 
 }
 
 ::ng-deep #formCadastro>fieldset {
-  min-height: calc(100vh - 17rem);
+  min-height: calc(100vh - 15rem);
 }
 
 ::ng-deep #fieldSetAninhado fieldset {
@@ -80,10 +81,10 @@
 ::ng-deep .divSpacerCadastro {
   margin-top: -0.85rem;
   display: flex;
-  min-height: 79vh;
   padding-right: 1rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
+
 ::ng-deep .min90Hpx>fieldset {
   min-height: 101px;
 }
@@ -98,21 +99,7 @@
   margin-bottom: 0px;
 }
 
-::ng-deep #formCadastroButtonsDiv {
-  z-index: 9;
-  position: absolute;
-  bottom: calc(0vh + 0.5rem);
-  right: 0.5rem;
-  left: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem 2.5rem 0.5rem 1rem;
-  margin: 0rem 2rem 0rem 0rem;
-  border: 1px solid #e5e7eb;
-  background: #ffffff;
-  color: #4b5563;
-  border-radius: 6px;
-}
+
 
 ::ng-deep #formCadastro:first-of-type .p-fieldset-content {
   padding: 0.25rem;

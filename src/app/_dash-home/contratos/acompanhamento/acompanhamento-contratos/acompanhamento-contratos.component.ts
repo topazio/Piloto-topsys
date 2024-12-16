@@ -28,6 +28,7 @@ import { CrudTableComponent } from '../../../../shared/componentes/crud-table/cr
 import { ContratoCadastroComponent } from '../../contrato/cadastro/contrato-cadastro.component';
 import { IContrato } from '../../model/contrato';
 import { Observable, of, filter } from 'rxjs';
+import { FormularioNovoContratoComponent } from './formulario-novo-contrato/formulario-novo-contrato.component';
 
 @Component({
   selector: 'app-acompanhamento-contratos',
@@ -56,11 +57,12 @@ import { Observable, of, filter } from 'rxjs';
   ],
   templateUrl: './acompanhamento-contratos.component.html',
   styleUrl: './acompanhamento-contratos.component.scss',
-  providers: [AsyncPipe, TitleCasePipe]
+  providers: [AsyncPipe, TitleCasePipe, DialogService]
 })
 export class AcompanhamentoContratosComponent extends TSCrudComponent<ICliente, IContrato> {
   displayedColumns: any[] = [];
-  ref: DynamicDialogRef | undefined;
+
+  displayedColumnsExpandidas: any[] = [];
   detailRequestMethod: (id: number | string) => Observable<IContrato[]> = (id: number | string) => new Observable<IContrato[]>();
   elementExpanded: Record<number | string, any> = {};
   override init(): void {
@@ -149,7 +151,6 @@ export class AcompanhamentoContratosComponent extends TSCrudComponent<ICliente, 
     ];
 
   }
-  displayedColumnsExpandidas: any[] = [];
 
   constructor(private service: ClienteService) {
     super();
@@ -159,14 +160,16 @@ export class AcompanhamentoContratosComponent extends TSCrudComponent<ICliente, 
   override getServiceMain(): TSCrudService<ICliente> {
     return this.service;
   }
-  openDialog(id: string | number) {
-    this.ref = this.openDialogEdit(id, ContratoCadastroComponent);
 
-    this.ref.onClose.subscribe((data: any) => {
-      if (!data.error) {
+
+  openDialog(id?: string | number) {
+    this.ref = this.openDialogEdit(id ?? null, FormularioNovoContratoComponent);
+
+    this.ref?.onClose.subscribe((data: any) => {
+      if (!data) {
         console.log('Form data:', data);
       }
-      this.snackBarService.error(data.error);
+      this.snackBarService.error('Erro');
     });
   };
 
@@ -190,6 +193,9 @@ export class AcompanhamentoContratosComponent extends TSCrudComponent<ICliente, 
       this.cliqueDevolver(event);
     }
   };
+  override resetForm() {
+    super.resetForm();
+  }
 
   override findChildrenDetail(id: number | string): Observable<IContrato[]> {
     const mock = [

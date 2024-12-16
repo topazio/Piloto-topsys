@@ -13,7 +13,7 @@
             </app-input-wrapper>
             <p-divider class="w-full py-0" id="dividerFiltrosPesquisa"></p-divider>
             <div class="w-full flex flex-nowrap justify-content-end">
-              <app-crud-botoes-pesquisa (methodFind)="pesquisar()" (methodResetForm)="resetForm()"
+              <app-crud-botoes-pesquisa (methodFind)="pesquisar()" (methodResetForm)="resetForm()" (methodOpenDialog)="openDialog($event)"
                 [buttonNovoCadastroFlag]="true" />
             </div>
           </form>

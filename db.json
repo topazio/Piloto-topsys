@@ -25,19 +25,19 @@
       "nomeFantasia": "wewewe",
       "razaoSocial": "wwewe",
       "cnpj": "42.342.343/2432-43",
-      "endereco": "34234",
+      "endereco": "34234ADASDAS",
       "cidadeId": "2",
       "estadoId": "11",
       "telefone": "(23) 4 2342-3423",
       "email": "34324432",
       "contratos": [
         {
-          "id": "0",
+          "id": "33",
           "clienteId": "e354",
-          "dataInicio": "2021-07-01",
-          "dataFim": "2021-07-31",
-          "valor": "1000.00",
-          "status": "1"
+          "dataInicio": "2021-12-12",
+          "dataFim": "2021-12-31",
+          "valor": "1500.00",
+          "status": "3"
         }
       ]
     },
