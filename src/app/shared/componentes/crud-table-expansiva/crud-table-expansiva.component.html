@@ -17,35 +17,33 @@
   <ng-template pTemplate="header">
     <tr>
       @for(column of displayedColumns; track column.label){
-        <th scope="col" [class]="column.tdClass" [style.width.%]="column.size">
-          {{column.label}}
-        </th>
+      <th scope="col" [class]="column.tdClass" [style.width.%]="column.size">
+        {{column.label}}
+      </th>
       }
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-element let-expanded="expanded">
-    <tr  (dblclick)="edit(element.id)">
+    <tr (dblclick)="edit(element.id)">
       @for(column of displayedColumns; track column.value){
-        @if(!column.flagButtonExcluir){
-          <td [style.width.%]="column.size" [class]="column.tdClass">
-            @if(element[column.tdExpandKey]){
-              <button pButton severity="primary" size="small" id="btnExpandirRowPesquisa" pRounded
-                (click)="elementDetail(element.id)"
-                [pRowToggler]="element">
-                <i class="fa-solid fa-plus"></i>
-              </button>
-            }
-            {{element[column.value]}}
-          </td>
+      @if(!column.flagButtonExcluir){
+      <td [style.width.%]="column.size" [class]="column.tdClass">
+        @if(element[column.tdExpandKey]){
+        <button pButton severity="primary" size="small" id="btnExpandirRowPesquisa" pRounded [pRowToggler]="element">
+          <i class="fa-solid fa-plus"></i>
+        </button>
         }
-        @else {
-          <td [class]="column.tdClass" [style.width.%]="column.size">
-            <button pButton size="small" id="buttonExclusaoTable" [text]="true" severity="danger"
-              (click)="delete(element.id);">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </td>
-        }
+        {{element[column.value]}}
+      </td>
+      }
+      @else {
+      <td [class]="column.tdClass" [style.width.%]="column.size">
+        <button pButton size="small" id="buttonExclusaoTable" [text]="true" severity="danger"
+          (click)="delete(element.id);">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </td>
+      }
       }
     </tr>
   </ng-template>
@@ -53,8 +51,8 @@
     <tr>
       <td colspan="4">
         <div class="py-0 px-1">
-          <app-crud-table-row-expandida [displayedColumnsExpandidas]="displayedColumnsExpandidas"
-            [captionHeader]="elementRowKeyExpand" [items]="elementExpanded" />
+          <app-crud-table-row-expandida [items]="elementExpanded"
+            [displayedColumnsExpandidas]="displayedColumnsExpandidas" [captionHeader]="elementRowKeyExpand" />
         </div>
       </td>
     </tr>

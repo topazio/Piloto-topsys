@@ -4,7 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { Table, TableLazyLoadEvent, TableModule } from 'primeng/table';
 import { CrudTableRowExpandidaComponent } from './crud-table-row-expandida/crud-table-row-expandida.component';
-import { IContrato } from '../../../contratos/model/contrato';
+import { IContrato } from '../../../_dash-home/contratos/model/contrato';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -21,7 +21,7 @@ import { Observable } from 'rxjs';
   styleUrl: './crud-table-expansiva.component.scss',
   providers: [AsyncPipe]
 })
-export class CrudTableExpansivaComponent implements OnInit, OnChanges {
+export class CrudTableExpansivaComponent implements OnChanges {
   @Input() items: any[] = [];
   @Input() displayedColumns: any[] = [];
   @Input() displayedColumnsExpandidas: any[] = [];
@@ -44,45 +44,35 @@ export class CrudTableExpansivaComponent implements OnInit, OnChanges {
   @Output() editClick: EventEmitter<any> = new EventEmitter();
   @Output() deleteClick: EventEmitter<any> = new EventEmitter();
   @Output() pageChange: EventEmitter<any> = new EventEmitter();
-  @Input() detailRequestMethod: Observable<IContrato[]> = new Observable<IContrato[]>();
+  @Input() detailRequestMethod: (id: number | string) => Observable<IContrato[]> = () => new Observable<IContrato[]>();
   @Output() detailRequestEmitter: EventEmitter<any> = new EventEmitter();
   resultadoSelecionado!: any;
   selectedResultadosList: any[] = [];
   records: any[] = [];
-  expandedRows: Record<string, boolean> = {};
+  expandedRows: Record<number, boolean> = {};
   elementExpanded: any;
-
-  ngOnInit(): void {
-
-
-  }
   ngOnChanges(changes: SimpleChanges): void {
     this.lazyInitLoad(changes);
-  }
+  };
 
   edit(id: number) {
     this.editClick.emit(id);
-  }
+  };
+
   delete(id: number) {
     this.deleteClick.emit(id);
-  }
-  elementDetail(id: number) {
-    console.log('Clickou interno');
-   this.detailRequestMethod.subscribe((val) =>{
-      console.log(val);
-    this.elementExpanded = val;
-    })
-    }
-
-
+  };
 
   onRowExpand(event: any) {
-    this.expandedRows[event.data.id] = true;
-  }
+    if (event) {
+      this.expandedRows[event.data.id] = true;
+      this.elementDetail(event.data.id);
+    }
+  };
 
   onRowCollapse(event: any) {
     delete this.expandedRows[event.data.id];
-  }
+  };
 
   protected loadLazy(event: TableLazyLoadEvent) {
     const parameters = {
@@ -90,12 +80,19 @@ export class CrudTableExpansivaComponent implements OnInit, OnChanges {
       size: this.totalRecords
     };
     this.pageChange.emit(parameters);
-
   };
+
   private lazyInitLoad(changes: SimpleChanges) {
     if (changes['items'] && this.items.length > 0) {
       this.records = this.items;
     }
   };
-
+  private elementDetail(id: number) {
+    if (id) {
+      this.detailRequestMethod(id).subscribe((val) => {
+        this.elementExpanded = val;
+        this.detailRequestEmitter.emit(val);
+      });
+    }
+  };
 }

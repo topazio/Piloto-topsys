@@ -1,0 +1,10 @@
+<button pButton pRaised pRounded (click)="handleClick($event, funcao);" type="button" [id]="id" severity="secondary"
+  class="
+  text-decoration-none flex-1 w-full border-solid surface-border flex-nowrap justify-content-between p-3
+  border-round min380px">
+  <span class="fontAll font400 gap-1 flex-nowrap text-left flex align-items-center">
+    <i [ngClass]="iconClass"></i>
+    <span class="fontAll ml-2 nomeFuncaoLimitador
+">{{ funcao.descricao }}</span>
+  </span>
+</button>

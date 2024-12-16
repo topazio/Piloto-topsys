@@ -1,0 +1,59 @@
+<div class="w-12 flex-inline align-items-center mt-1 pb-2 mb-3 text-center justify-content-center">
+  <p-checkbox [(ngModel)]="certificadoDigitalFlag" inputId="certificadoDigitalFlag" [binary]="true"
+    [value]="certificadoDigitalFlag" />
+  <label for="certificadoDigitalFlag" class="fontAll ml-1 font500 ">Login com Certificado Digital?</label>
+</div>
+@if(certificadoDigitalFlag === false){
+<form [formGroup]="formGroup" class="w-full mt-2">
+  <div class="flex-auto flex flex-column align-items-center justify-content-center row-gap-5">
+    <div class="w-full ">
+      <p-floatLabel>
+        <input id="login" type="text" pInputText formControlName="login" aria-label="Login"
+          [ngClass]="hasErrorFn(formGroup.get('login'))" aria-labelledby="login" class="fontAll w-12" />
+        <label for="login">Usuário </label>
+      </p-floatLabel>
+      <app-input-error-msg [control]="formGroup.get('login')" [fieldName]="'Usuário'"></app-input-error-msg>
+    </div>
+    <div class="w-full ">
+      <p-floatLabel>
+        <input id="senha" type="password" formControlName="senha" pInputText
+          [ngClass]="hasErrorFn(formGroup.get('senha'))" aria-labelledby="senha" class="fontAll w-12" />
+        <label for="senha">Senha</label>
+      </p-floatLabel>
+      <app-input-error-msg [control]="formGroup.get('senha')" [fieldName]="'Senha'"></app-input-error-msg>
+    </div>
+    <div class="w-12 flex justify-content-end">
+      <button pButton pRipple pRaised type="submit" pRounded (click)="salvar()" label="Acessar" class="gap-2 w-14rem"
+        [disabled]="formGroup.invalid">
+        <i class="fa-solid fa-right-to-bracket"></i>
+      </button>
+    </div>
+  </div>
+</form>
+}
+@else {
+<form [formGroup]="formGroupCertificadoDigital" class="w-full mt-2">
+  <div class="flex-auto flex flex-column align-items-start justify-content-center row-gap-5">
+    <div class="w-full ">
+      <p-floatLabel>
+        <p-inputMask id="cpfCertificadoDigital" formControlName="cpfCertificadoDigital" [mask]="'999.999.999-99'" [autoClear]="false" [unmask]="false"
+            [slotChar]="'999.999.999-99'" [style]="{'text-transform': 'uppercase'}"
+            (onBlur)="formGroupCertificadoDigital.get('cpfCertificadoDigital')?.value" inputStyleClass="fontAll w-full"
+            [styleClass]="'fontAll w-full'" [ngClass]="hasErrorFn(formGroupCertificadoDigital.get('cpfCertificadoDigital'))" class="fontAll w-full" />
+     <!--    <input id="cpfCertificadoDigital" type="text" pInputNumber [maxlength]="11"
+          formControlName="cpfCertificadoDigital" aria-label="cpfCertificadoDigital"
+          [ngClass]="hasErrorFn(formGroupCertificadoDigital.get('cpfCertificadoDigital'))"
+          aria-labelledby="cpfCertificadoDigital" class="fontAll w-12" /> -->
+        <label for="cpfCertificadoDigital">CPF</label>
+      </p-floatLabel>
+      <app-input-error-msg [control]="formGroupCertificadoDigital.get('cpfCertificadoDigital')" [fieldName]="'CPF'"></app-input-error-msg>
+    </div>
+    <div class="w-12 flex justify-content-end">
+      <button pButton pRipple pRaised type="submit" pRounded (click)="salvar()" label="Acessar" class="gap-2 w-14rem"
+        [disabled]="formGroupCertificadoDigital.invalid">
+        <i class="fa-solid fa-right-to-bracket"></i>
+      </button>
+    </div>
+  </div>
+</form>
+}

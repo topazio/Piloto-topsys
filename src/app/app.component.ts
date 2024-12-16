@@ -4,13 +4,14 @@ import { DashBoardComponent } from './shared/componentes/dashboard/dashboard.com
 import { PrimeNGConfig } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    DashBoardComponent,
+    RouterModule,
     ToastModule,
     CommonModule,
   ],

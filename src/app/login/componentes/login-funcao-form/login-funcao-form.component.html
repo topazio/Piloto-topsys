@@ -1,0 +1,98 @@
+<p-fieldset id="formCadastroModal" legend="''">
+  @defer(on timer(900ms)){
+  <form [formGroup]="formGroupFuncao"
+    class="flex flex-auto p-1 w-full  flex-wrap md:justify-content-between sm:justify-content-between lg:justify-content-start">
+    <div class="w-full flex gap-2 flex-wrap align-content-center">
+      @if(!!!this.config.data.origemId){
+      <div class="max-w-3">
+        <div class="w-full">
+          <label for="origemModel" class="flex-inline justify-content-between w-full pb-0 ">
+            <span class="float-start" [ngClass]="hasErrorFn(formGroupFuncao.get('origemModel'))">Origem</span>
+          </label>
+          <p-dropdown [options]="userOrigems" [showClear]="true" class="fontAll w-full" styleClass="w-full fontAll"
+            formControlName="origemModel"
+            [placeholder]="formGroupFuncao.get('origemModel')?.value?.descricao ?? 'Selecione uma Origem'" dataKey="id"
+            optionLabel="descricao" [ngClass]="hasErrorFn(formGroupFuncao.get('origemModel'))" inputId="origemModel"
+            [ariaSelected]="formGroupFuncao.get('origemModel')?.value" />
+   <!--        <validation-messages [control]="formGroupFuncao.get('origemModel')"
+            [fieldName]="'Origem'"></validation-messages> -->
+        </div>
+      </div>}
+      <div class="max-w-3">
+        <div class="w-full">
+          <label for="organizacaoModel" class="flex-inline justify-content-between w-full pb-0 ">
+            <span class="float-start" [ngClass]="hasErrorFn(formGroupFuncao.get('organizacaoModel'))">Organização</span>
+          </label>
+          <p-dropdown [options]="userOrganizacoes" formControlName="organizacaoModel" styleClass="w-full fontAll"
+            [showClear]="true" class="fontAll w-full"
+            [placeholder]="formGroupFuncao.get('organizacaoModel')?.value?.descricao ?? 'Selecione a Organização'"
+            dataKey="id" [ariaSelected]="formGroupFuncao.get('organizacaoModel')?.value" optionLabel="descricao"
+            [ngClass]="hasErrorFn(formGroupFuncao.get('organizacaoModel'))" inputId="organizacaoModel" />
+        </div>
+   <!--      <validation-messages [control]="formGroupFuncao.get('organizacaoModel')"
+          [fieldName]="'Organização'"></validation-messages> -->
+      </div>
+      <div class="max-w-3">
+        <div class="w-full min-w-12rem">
+          <label for="setorModel" class="flex-inline justify-content-between w-full pb-0 ">
+            <span class="float-start" [ngClass]="hasErrorFn(formGroupFuncao.get('setorModel'))">Setor</span>
+          </label>
+          <p-dropdown [options]="userSetores" formControlName="setorModel" styleClass="w-full fontAll"
+            [showClear]="true" class="fontAll w-full"
+            [placeholder]="formGroupFuncao.get('setorModel')?.value?.descricao ?? 'Selecione um Setor'" dataKey="id"
+            [ariaSelected]="formGroupFuncao.get('setorModel')?.value" optionLabel="descricao"
+            [ngClass]="hasErrorFn(formGroupFuncao.get('setorModel'))" inputId="setorModel" />
+        </div>
+        <!-- <validation-messages [control]="formGroupFuncao.get('setorModel')"
+          [fieldName]="'O Setor'"></validation-messages> -->
+      </div>
+    </div>
+    @if(userFuncoes.length > 0){
+    <div class="w-full">
+      <p-divider pStyleClass="py-0" class="py-0"></p-divider>
+      <p-scrollPanel [style]="{ width: '100%', height: '346px' }">
+        <p-fieldset id="fieldSetAninhado" class="w-full px-0 h-full " legend="'Funções'">
+          <div
+            class="w-full px-1 flex flex-col flex-auto flex-wrap row-gap-3 gap-1 overflow-auto justify-content-center">
+            @for(funcao of userFuncoes; track funcao){
+            <app-funcao-form-button [id]="funcao.id" [funcao]="funcao" (onClickSetter)="handleClickSetter($event)" />
+            }
+          </div>
+        </p-fieldset>
+      </p-scrollPanel>
+    </div>
+    }@else {
+    <p-divider pStyleClass="py-0 w-full col-12" class="py-0 w-full col-12" [styleClass]="'w-full'"></p-divider>
+    <p-fieldset id="fieldSetAninhado" class="w-full px-0 h-full border-none" [styleClass]="'border-none'" legend="''">
+      <div class="w-full flex justify-content-center py-2 font125em">
+        <span class="fontAll font600 text-yellow-400 my-0 flex gap-2">
+          <i class="fa fa-solid fa-exclamation-triangle"></i>
+          <span>Não há funções registradas para o usuário</span>
+        </span>
+      </div>
+    </p-fieldset>
+    }
+    <div class="w-full" id="formCadastroButtonsDiv">
+      <p-divider pStyleClass="py-0 " class="py-0 "></p-divider>
+      <div class="w-full flex justify-content-end gap-2" style="padding-right: 1rem;">
+        <button pButton pRipple pRaised type="submit" pRounded label="Acessar" class="gap-2 w-14rem"
+          (click)="this.ref.close()" [routerLink]="['/smpep/cme/home']">
+          <i class="fa-solid fa-right-to-bracket"></i>
+        </button>
+        <button pButton pRipple pRaised severity="danger" label="Cancelar" class="gap-2 w-14rem"
+          (click)="this.ref.close({error: 'Você cancelou o login.'})">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+  }@placeholder {
+  <div class="flex justify-content-center w-full py-8">
+    <p-progressSpinner ariaLabel="loading" fill="var(--surface-ground)" />
+  </div>
+  }@loading{
+  <div class="flex justify-content-center w-full py-8">
+    <p-progressSpinner ariaLabel="loading" fill="var(--surface-ground)" />
+  </div>
+  }
+</p-fieldset>

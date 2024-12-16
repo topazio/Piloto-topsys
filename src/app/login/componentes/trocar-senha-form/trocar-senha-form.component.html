@@ -1,0 +1,70 @@
+<form [formGroup]="formGroup" class="w-full mt-2 pt-2">
+  <div class="flex-auto flex flex-column align-items-start justify-content-center row-gap-5">
+    <div class="w-full">
+      <p-floatLabel>
+        <input id="loginTrocar" type="text" pInputText formControlName="login" aria-label="Login"
+          [ngClass]="hasErrorFn(formGroup.get('login'))" aria-labelledby="login" class="fontAll w-12" />
+        <label for="loginTrocar">Usuário</label>
+      </p-floatLabel>
+      <app-input-error-msg [control]="formGroup.get('login')" [fieldName]="'Login'"></app-input-error-msg>
+    </div>
+    <div class="w-full">
+      <p-floatLabel>
+        <input id="senhaTrocar" type="password" formControlName="senha" pInputText
+          [ngClass]="hasErrorFn(formGroup.get('senha'))" aria-labelledby="senha" class="fontAll w-12" />
+        <label for="senhaTrocar">Senha</label>
+      </p-floatLabel>
+      <app-input-error-msg [control]="formGroup.get('senha')" [fieldName]="'Senha'"></app-input-error-msg>
+    </div>
+    <div class="w-full">
+      <p-floatLabel>
+        <p-password id="novasenha" type="password" [toggleMask]="true" [autofocus]="false" formControlName="novasenha"
+          [ngClass]="hasErrorFn(formGroup.get('novasenha'))" aria-labelledby="novasenha" class="fontAll w-12"
+          styleClass="fontAll w-12" [inputStyleClass]="'fontAll w-full'">
+          <ng-template pTemplate="header">
+            <h6>Digite a nova senha</h6>
+          </ng-template>
+          <ng-template pTemplate="footer">
+            <p-divider />
+            <p class="mt-2">Sugestões</p>
+            <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+              <li>Ao menos uma letra minúscula</li>
+              <li>Ao menos uma letra maiúscula</li>
+              <li>Ao menos um número</li>
+              <li>No mínimo 8 caractéres</li>
+            </ul>
+          </ng-template>
+        </p-password>
+        <label for="senha">Nova Senha</label>
+      </p-floatLabel>
+      <app-input-error-msg [control]="formGroup.get('novasenha')" [fieldName]="'Nova Senha'"></app-input-error-msg>
+    </div>
+    <div class="w-full">
+      <p-floatLabel>
+        <p-password id="novasenhaconfirm" type="password" [autofocus]="false" [toggleMask]="true"
+          formControlName="novasenhaconfirm" [ngClass]="hasErrorFn(formGroup.get('novasenhaconfirm'))"
+          aria-labelledby="novasenhaconfirm" class="fontAll w-12" styleClass="fontAll w-12"
+          [inputStyleClass]="'fontAll w-full'" [feedback]="false" />
+        <label for="novasenhaconfirm">Confirme a Nova Senha</label>
+      </p-floatLabel>
+      @if(formGroup.get('novasenhaconfirm')?.touched && (formGroup.get('novasenha')?.value !==
+      formGroup.get('novasenhaconfirm')?.value)){
+      <div class="w-fitcont">
+        <small
+          class="error ng-dirty ng-invalid fontAll font500 font11em mb-0 mt-2 text-end w-100 text-sm text-error-invalid">
+          As senhas não coincidem.
+        </small>
+      </div>
+      }@else {
+      <app-input-error-msg [control]="formGroup.get('novasenhaconfirm')"
+        [fieldName]="'Confirmar a Senha'"></app-input-error-msg>
+      }
+    </div>
+    <div class="w-12 flex justify-content-end">
+      <button pButton pRipple pRaised type="submit" pRounded (click)="salvar()" label="Alterar Senha"
+        class="gap-2 w-14rem" [disabled]="formGroup.invalid">
+        <i class="fa-solid fa-key"></i>
+      </button>
+    </div>
+  </div>
+</form>

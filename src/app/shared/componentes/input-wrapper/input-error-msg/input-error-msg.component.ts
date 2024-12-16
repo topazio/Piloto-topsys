@@ -45,6 +45,9 @@ export class InputErrorMsgComponent {
       case 'passwordUnmatched':
         errorMsgn.text = `As senhas não coincidem.`;
         return errorMsgn.text;
+        case 'invalidCPF':
+          errorMsgn.text = `CPF inválido.`;
+          return errorMsgn.text;
       default:
         return null;
     }

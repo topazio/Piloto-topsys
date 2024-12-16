@@ -1,0 +1,55 @@
+::ng-deep #fieldSetAninhado .p-fieldset .p-fieldset-content {
+  padding: 0px !important;
+}
+
+::ng-deep #formCadastroModal:first-of-type .p-fieldset-content {
+  padding: 0.25rem;
+  padding-top: 0.2rem;
+}
+
+::ng-deep #formCadastroModal:first-child legend,
+::ng-deep #formCadastroModal:first-of-type .p-fieldset-legend {
+  display: none;
+}
+
+::ng-deep #fieldSetAninhado legend {
+  display: none;
+}
+
+::ng-deep #fieldSetAninhado .p-fieldset-legend a {
+  padding: 0.5rem;
+  background: var(--primary-500);
+  border-radius: 6px;
+  transition: box-shadow 0.2s;
+}
+
+::ng-deep .p-scrollpanel-bar {
+  background: var(--primary-color) !important;
+}
+::ng-deep .p-scrollpanel-bar-y {
+  width: 4px;
+}
+
+::ng-deep #fieldSetAninhado .p-fieldset-content {
+  padding: 0.5rem;
+}
+
+::ng-deep #fieldSetAninhado .p-fieldset-toggler {
+  display: none;
+}
+
+
+::ng-deep #fieldSetAninhado fieldset {
+  margin-bottom: unset;
+}
+
+::ng-deep .divSpacerCadastro {
+  display: flex;
+      min-height: 79vh;
+        margin-bottom: 2.5rem;
+}
+
+::ng-deep #buttonExclusaoTable {
+  height: 1rem !important;
+  padding: 0.1rem;
+}

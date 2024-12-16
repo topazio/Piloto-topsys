@@ -1,0 +1,58 @@
+main {
+  height: 100vh;
+  width: 100vw;
+}
+
+#loginMain {
+  background-color: #9ca3af !important;
+}
+
+::ng-deep .p-splitter-panel {
+  margin-left: -1px;
+  margin-top: -1px;
+}
+
+::ng-deep .p-splitter-horizontal>.p-splitter-gutter>.p-splitter-gutter-handle {
+  height: 0px;
+
+}
+
+::ng-deep .max700px {
+  padding: 3rem 4.5rem;
+}
+
+::ng-deep .max798px {
+  padding: 4.5rem;
+}
+
+
+
+::ng-deep .p-splitter-vertical>.p-splitter-gutter>.p-splitter-gutter-handle {
+  width: 0px;
+
+}
+
+::ng-deep .p-splitter-vertical>.p-splitter-gutter {
+  cursor: default;
+}
+
+::ng-deep .p-splitter-horizontal>.p-splitter-gutter {
+  cursor: default;
+}
+
+::ng-deep .p-tabview .p-tabview-panels,
+::ng-deep .p-tabview .p-tabview-nav,
+::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  background: var(--surface-50);
+}
+
+::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  background: #ffffff;
+  border-color: #14b8a630 #14b8a630 var(--primary-color) #14b8a630;
+}
+
+::ng-deep .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  border-width: 0.15em 0.15em 2px 0.15em;
+  border-color: transparent transparent #14b8a630 transparent;
+  padding: 1rem;
+}

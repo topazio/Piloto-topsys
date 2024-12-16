@@ -1,0 +1,9 @@
+::ng-deep .min380px{
+  min-width: 380px;
+}
+::ng-deep .nomeFuncaoLimitador{
+white-space: nowrap;
+max-width: 44ch;
+overflow: hidden;
+text-overflow: ellipsis;
+}
