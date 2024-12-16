@@ -53,8 +53,8 @@ export class ClienteCadastroComponent extends TSCrudComponent<ICliente> {
   private estadoService = inject(EstadoService);
   private cidadeService = inject(CidadeService);
   itemMenusTabs: MenuItem[] = [
-    { label: 'Cadastro', routerLink: `../cadastro`, skipLocationChange: false },
-    { label: 'Pesquisa', routerLink: `../pesquisa`, skipLocationChange: false }
+    { label: 'Cadastro', routerLink: `/dash/cliente/cadastro`, skipLocationChange: false },
+    { label: 'Pesquisa', routerLink: `/dash/cliente/pesquisa`, skipLocationChange: false }
   ];
   estados = [] as IEstado[];
   cidades = [] as ICidade[];

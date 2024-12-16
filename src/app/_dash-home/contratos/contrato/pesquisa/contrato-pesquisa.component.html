@@ -12,8 +12,10 @@
       <app-crud-botoes-pesquisa (methodFind)="pesquisar()" (methodResetForm)="resetForm()" />
     </form>
     <div class="w-full" id="pesquisaDiv">
+
+<!--         //TODO: TROCAR O METODO DE LAZYLOAD PARA O MODO CORRETO DO LAZYLOAD DO TSCRUDCOMPONENT // TROCAR changePageDBJson para changePage(); -->
       <app-crud-table [items]="(items | async) ?? []" [displayedColumns]="displayedColumns" [showResultSummary]="true"
-        (pageChange)="changePage($event)" (editClick)="edit('contrato', $event)" (deleteClick)="delete($event)" />
+        (pageChange)="changePageDBJson($event)" (editClick)="edit('contrato', $event)" (deleteClick)="delete($event)" />
     </div>
   </p-fieldset>
 </p-scrollPanel>

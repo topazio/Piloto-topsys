@@ -55,8 +55,8 @@ export class ContratoCadastroComponent extends TSCrudComponent<ICliente> {
   estados = [] as IEstado[];
   cidades = [] as ICidade[];
   itemMenusTabs: MenuItem[] = [
-    { label: 'Cadastro', routerLink: `../cadastro`, skipLocationChange: false },
-    { label: 'Pesquisa', routerLink: `../pesquisa`, skipLocationChange: false }
+    { label: 'Cadastro', routerLink: `/dash/contrato/cadastro`, skipLocationChange: false },
+    { label: 'Pesquisa', routerLink: `/dash/contrato/pesquisa`, skipLocationChange: false }
   ];
   constructor(private service: ClienteService) {
     super();

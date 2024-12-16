@@ -1,8 +1,6 @@
 <p-scrollPanel id="homeScrollPanel" styleClass="customBarColor">
   <p-panel id="panelSinglePage" class="h-full min-h-100 w-full px-2 my-0">
     <div class="divSpacerCadastro px-1 gap-2 flex flex-wrap">
-      <p-panel [toggleable]="true" header="Filtros" styleClass="w-full py-0 px-0" [class]="'w-full mb-2'"
-        id="panelSimplesToggleParaForms">
         <div class="w-full mt-0" id="formPesquisaSinglePanel">
           <form [formGroup]="formGroup" id="formPesqPaneled"
             class="flex flex-auto justify-content-start p-1 w-full flex-wrap">
@@ -20,10 +18,12 @@
             </div>
           </form>
         </div>
-      </p-panel>
       <div class="w-full" id="pesquisaDiv">
+<!--         //TODO: TROCAR O METODO DE LAZYLOAD PARA O MODO CORRETO DO LAZYLOAD DO TSCRUDCOMPONENT // TROCAR changePageDBJson para changePage(); -->
+
         <app-crud-table-expansiva elementRowKeyExpand="contratos"
         [detailRequestMethod]="detailRequestMethod" (detailRequestEmitter)="requestedClique($event)"
+        (pageChange)="changePageDBJson($event)"
         [displayedColumnsExpandidas]="displayedColumnsExpandidas" [items]="(items | async) ?? []"
         [displayedColumns]="displayedColumns" (editClick)="openDialog($event)" (deleteClick)="delete($event)" />
      </div>

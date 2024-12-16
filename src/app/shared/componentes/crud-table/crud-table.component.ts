@@ -52,10 +52,18 @@ export class CrudTableComponent implements OnChanges {
     this.deleteClick.emit(id);
   };
   protected loadLazy(event: TableLazyLoadEvent) {
-    const parameters = {
-      page: event.first! / event.rows!,
-      size: this.totalRecords
-    };
+    let parameters = {};
+    if (event.first !== 0) {
+      parameters = {
+        page: event.first! / event.rows!,
+        size: this.totalRecords
+      };
+    } else {
+      parameters = {
+        page: 0,
+        size: this.totalRecords
+      };
+    }
     this.pageChange.emit(parameters);
 
   };

@@ -16,6 +16,8 @@ import { ICliente } from '../../model/cliente';
 import { ClienteService } from '../../services/cliente.service';
 import { MenuItem } from 'primeng/api';
 import { CrudTabsDinamicoComponent } from '../../../../shared/componentes/crud-tabs-dinamico/crud-tabs-dinamico.component';
+import { IRespostaLazyPesquisaJson } from '../../../../shared/topsys/tspage.interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-contrato-pesquisa',
@@ -42,8 +44,8 @@ export class ContratoPesquisaComponent extends TSCrudComponent<ICliente> {
 
   displayedColumns: any[] = [];
   itemMenusTabs: MenuItem[] = [
-    { label: 'Cadastro', routerLink: `../cadastro`, skipLocationChange: false },
-    { label: 'Pesquisa', routerLink: `../pesquisa`, skipLocationChange: false }
+    { label: 'Cadastro', routerLink: `/dash/contrato/cadastro`, skipLocationChange: false },
+    { label: 'Pesquisa', routerLink: `/dash/contrato/pesquisa`, skipLocationChange: false }
   ];
   override init(): void {
     this.displayedColumns = [

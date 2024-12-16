@@ -28,7 +28,7 @@ export class CrudBotoesCadastroComponent {
     this.methodSave.emit();
   }
   async redirecionarParaNovoCadastro() {
-    await this.router.navigate([`/${this.telaRota}/cadastro`], {
+    await this.router.navigate([`/dash/${this.telaRota}/cadastro`], {
       replaceUrl: true,
     });
   }

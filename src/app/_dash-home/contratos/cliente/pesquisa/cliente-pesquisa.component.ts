@@ -43,8 +43,8 @@ export class ClientePesquisaComponent extends TSCrudComponent<ICliente> {
 
   displayedColumns: any[] = [];
   itemMenusTabs: MenuItem[] = [
-    { label: 'Cadastro', routerLink: `../cadastro`, skipLocationChange: false },
-    { label: 'Pesquisa', routerLink: `../pesquisa`, skipLocationChange: false }
+    { label: 'Cadastro', routerLink: `/dash/cliente/cadastro`, skipLocationChange: false },
+    { label: 'Pesquisa', routerLink: `/dash/cliente/pesquisa`, skipLocationChange: false }
   ];
   override init(): void {
     this.displayedColumns = [

@@ -34,7 +34,7 @@ export class CrudTableExpansivaComponent implements OnChanges {
   @Input() paginatorSempreFlag: boolean = false;
   @Input() scrollavelFlag: boolean = true;
   @Input() posicaoPaginator: 'bottom' | 'top' | 'both' = 'bottom';
-  @Input() scrollHeightString: string = 'calc(100vh - 35rem)';
+  @Input() scrollHeightString: string = 'calc(100vh - 30rem)';
   @Input() totalRecords: number = 0;
   @Input() first: number = 0;
   @Input() showResultSummary: boolean = false;
@@ -75,10 +75,18 @@ export class CrudTableExpansivaComponent implements OnChanges {
   };
 
   protected loadLazy(event: TableLazyLoadEvent) {
-    const parameters = {
-      page: event.first! / event.rows!,
-      size: this.totalRecords
-    };
+    let parameters = {};
+    if (event.first !== 0) {
+      parameters = {
+        page: event.first! / event.rows!,
+        size: this.totalRecords
+      };
+    } else {
+      parameters = {
+        page: 0,
+        size: this.totalRecords
+      };
+    }
     this.pageChange.emit(parameters);
   };
 

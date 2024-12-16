@@ -1,19 +1,19 @@
 {
   "origem": [
     {
-      "id": 1,
+      "id": "1",
       "nome": "",
       "apelido": "smpep",
       "imagemUrl": "http://localhost:4200/assets/logoColored.pnj"
     },
     {
-      "id": 2,
+      "id": "2",
       "nome": "IGH - Instituto de Gestão e Humanização",
       "apelido": "igh",
       "imagemUrl": "http://localhost:4200/assets/ighImg.png"
     },
     {
-      "id": 3,
+      "id": "3",
       "nome": "Hospital de Brotas",
       "apelido": "hb",
       "imagemUrl": "http://localhost:4200/assets/hbImg.png"

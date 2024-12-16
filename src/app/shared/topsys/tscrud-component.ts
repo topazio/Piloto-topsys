@@ -18,7 +18,6 @@ import { ITSPage } from './tspage.interface';
 export abstract class TSCrudComponent<T extends TSCrudModel, Y = undefined> implements OnInit, OnDestroy {
 
   model: T = {} as T;
-
   id = 0;
 
   formGroup: FormGroup;
@@ -87,7 +86,7 @@ export abstract class TSCrudComponent<T extends TSCrudModel, Y = undefined> impl
   };
 
   edit(path: string, id: number | string) {
-    this.router.navigateByUrl(`${path}/cadastro/${id}`, {
+    this.router.navigateByUrl(`dash/${path}/cadastro/${id}`, {
       skipLocationChange: true,
     });
   };
@@ -123,7 +122,7 @@ export abstract class TSCrudComponent<T extends TSCrudModel, Y = undefined> impl
 
     this.model = modelParam ?? this.formGroup.value;
 
-    this.model.pageIndex = pageIndex ?? 0;
+    this.model.pageIndex = pageIndex ?? undefined;
 
     this.items = this.getServiceMain().find(this.model);
 
@@ -136,6 +135,17 @@ export abstract class TSCrudComponent<T extends TSCrudModel, Y = undefined> impl
 
   }
 
+  //METODO LAZY LOAD PARA DB JSON SERVER:
+  changePageDBJson(event: ITSPage) {
+
+      this.getServiceMain().changePageDBJson(undefined, undefined, event.page).subscribe(listaPagina => {
+        this.items = new Observable<T[]>(observer => {
+          observer.next(listaPagina.data as T[]);
+          observer.complete();
+        });
+      });
+
+  }
   async detail(id: any): Promise<void> {
 
 
@@ -148,7 +158,7 @@ export abstract class TSCrudComponent<T extends TSCrudModel, Y = undefined> impl
     //this.modelSubject.subscribe((data) => {this.model = data; this.formGroup = this.createForm(data)});
 
   }
-  findChildrenDetail(id: number): Observable<Y[]>{
+  findChildrenDetail(id: number): Observable<Y[]> {
 
     throw new Error('Method not implemented.');
   }
